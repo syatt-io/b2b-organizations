@@ -8,8 +8,12 @@
   "scripts": {
     "postreleasy": "vtex publish"
   },
+  "billingOptions": {
+    "type": "free",
+    "availableCountries": ["*"]
+  },
   "dependencies": {
-    "vtex.b2b-organizations-graphql": "0.x",
+    "syatt.b2b-organizations-graphql": "2.x",
     "vtex.catalog-graphql": "1.x",
     "vtex.admin-graphql": "2.x",
     "vtex.store-graphql": "2.x",
