@@ -271,5 +271,6 @@
   "store/b2b-organizations.user-widget.impersonating": "Работа от имени другого лица:",
   "store/b2b-organizations.request-new-organization.submit-button.create-new-request": "Создать новый запрос",
   "store/b2b-organizations.stop-impersonation": "Остановить работу от имени другого лица",
-  "store/b2b-organizations.stop-impersonation-error": "Сбой остановки работы от имени другого лица. Подробная информация доступна на консоли."
+  "store/b2b-organizations.stop-impersonation-error": "Сбой остановки работы от имени другого лица. Подробная информация доступна на консоли.",
+  "admin/b2b-organizations.custom-fields.title": "Custom Fields"
 }

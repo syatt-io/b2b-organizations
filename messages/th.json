@@ -271,5 +271,7 @@
   "store/b2b-organizations.user-widget.impersonating": "การเลียนแบบ",
   "store/b2b-organizations.request-new-organization.submit-button.create-new-request": "สร้างคำขอใหม่",
   "store/b2b-organizations.stop-impersonation": "หยุดการเลียนแบบ",
-  "store/b2b-organizations.stop-impersonation-error": "มีข้อผิดพลาดในการหยุดเลียนแบบ โปรดดูรายละเอียดในคอนโซล"
+  "store/b2b-organizations.stop-impersonation-error": "มีข้อผิดพลาดในการหยุดเลียนแบบ โปรดดูรายละเอียดในคอนโซล",
+
+  "admin/b2b-organizations.custom-fields.title": "Custom Fields"
 }

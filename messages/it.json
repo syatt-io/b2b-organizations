@@ -271,5 +271,7 @@
   "store/b2b-organizations.user-widget.impersonating": "Impersonando:",
   "store/b2b-organizations.request-new-organization.submit-button.create-new-request": "Crea nuova richiesta",
   "store/b2b-organizations.stop-impersonation": "Interrompi personificazione",
-  "store/b2b-organizations.stop-impersonation-error": "Errore durante il tentativo di interrompere la personificazione. Visualizza la console per i dettagli."
+  "store/b2b-organizations.stop-impersonation-error": "Errore durante il tentativo di interrompere la personificazione. Visualizza la console per i dettagli.",
+
+  "admin/b2b-organizations.custom-fields.title": "Custom Fields"
 }

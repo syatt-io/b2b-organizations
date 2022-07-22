@@ -271,5 +271,6 @@
   "store/b2b-organizations.user-widget.impersonating": "Vydávanie sa za používateľa:",
   "store/b2b-organizations.request-new-organization.submit-button.create-new-request": "Vytvoriť novú požiadavku",
   "store/b2b-organizations.stop-impersonation": "Zastaviť vydávanie sa za používateľa",
-  "store/b2b-organizations.stop-impersonation-error": "Vyskytla sa chyba pri zastavení vydávanie sa za používateľa. Podrobnosti nájdete v konzole."
+  "store/b2b-organizations.stop-impersonation-error": "Vyskytla sa chyba pri zastavení vydávanie sa za používateľa. Podrobnosti nájdete v konzole.",
+  "admin/b2b-organizations.custom-fields.title": "Custom Fields"
 }
