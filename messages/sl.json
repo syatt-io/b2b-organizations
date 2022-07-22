@@ -271,5 +271,9 @@
   "store/b2b-organizations.user-widget.impersonating": "Oponašanje:",
   "store/b2b-organizations.request-new-organization.submit-button.create-new-request": "Ustvari novo zahtevo",
   "store/b2b-organizations.stop-impersonation": "Nehaj oponašati",
-  "store/b2b-organizations.stop-impersonation-error": "Napaka pri zaustavitvi oponašanja. Za podrobnosti glejte konzolo."
+  "store/b2b-organizations.stop-impersonation-error": "Napaka pri zaustavitvi oponašanja. Za podrobnosti glejte konzolo.",
+
+  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
+  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
 }

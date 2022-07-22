@@ -271,5 +271,9 @@
   "store/b2b-organizations.user-widget.impersonating": "Impersoneer:",
   "store/b2b-organizations.request-new-organization.submit-button.create-new-request": "Nieuwe aanvraag aanmaken",
   "store/b2b-organizations.stop-impersonation": "Stop impersonatie",
-  "store/b2b-organizations.stop-impersonation-error": "Fout bij stoppen impersonatie. Zie console voor details."
+  "store/b2b-organizations.stop-impersonation-error": "Fout bij stoppen impersonatie. Zie console voor details.",
+
+  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
+  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
 }

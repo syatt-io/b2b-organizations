@@ -271,5 +271,9 @@
   "store/b2b-organizations.user-widget.impersonating": "Esiinny käyttäjänä:",
   "store/b2b-organizations.request-new-organization.submit-button.create-new-request": "Luo uusi pyyntö",
   "store/b2b-organizations.stop-impersonation": "Lopeta tekeytyminen toiseksi käyttäjäksi",
-  "store/b2b-organizations.stop-impersonation-error": "Virhe toiseksi käyttäjäksi tekeytymisen lopettamisessa. Katso lisätietoja konsolista."
+  "store/b2b-organizations.stop-impersonation-error": "Virhe toiseksi käyttäjäksi tekeytymisen lopettamisessa. Katso lisätietoja konsolista.",
+
+  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
+  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
 }

@@ -271,5 +271,9 @@
   "store/b2b-organizations.user-widget.impersonating": "Въплъщаване:",
   "store/b2b-organizations.request-new-organization.submit-button.create-new-request": "Създаване на нова заявка",
   "store/b2b-organizations.stop-impersonation": "Спиране на въплъщаването",
-  "store/b2b-organizations.stop-impersonation-error": "Грешка при спиране на въплъщаването. Вижте конзолата за подробности."
+  "store/b2b-organizations.stop-impersonation-error": "Грешка при спиране на въплъщаването. Вижте конзолата за подробности.",
+
+  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
+  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
 }

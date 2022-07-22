@@ -358,3 +358,15 @@ export const organizationRequestMessages = defineMessages({
     id: `${adminPrefix}organization-requests-admin.table.filters.includes`,
   },
 })
+
+export const organizationCustomFieldsMessages = defineMessages({
+  customFieldsTitle: {
+    id: `${adminPrefix}custom-fields.title`,
+  },
+  customFieldsTitleSingular: {
+    id: `${adminPrefix}custom-fields.titleSingular`,
+  },
+  customFieldsExplanation: {
+    id: `${adminPrefix}custom-fields.explanation`,
+  },
+})

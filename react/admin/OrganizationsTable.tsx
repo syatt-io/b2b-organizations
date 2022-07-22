@@ -6,9 +6,11 @@ import { HashRouter, Switch, Route } from 'react-router-dom'
 import {
   organizationMessages as messages,
   organizationRequestMessages as requestMessages,
+  organizationCustomFieldsMessages as customFieldsMessages,
 } from './utils/messages'
 import OrganizationsList from './OrganizationsList'
 import OrganizationRequestsTable from './OrganizationRequestsTable'
+import CustomFields from './OrganizationDetails/OrganizationCustomFields'
 import useHashRouter from './OrganizationDetails/useHashRouter'
 
 const SESSION_STORAGE_KEY = 'organization-tab'
@@ -24,7 +26,7 @@ const OrganizationsTable = () => {
   const { tab, handleTabChange, routerRef } = useHashRouter({
     sessionKey: SESSION_STORAGE_KEY,
     defaultPath: 'organizations',
-    routes: ['organizations', 'requests'],
+    routes: ['organizations', 'requests', 'custom-fields'],
   })
 
   return (
@@ -44,6 +46,11 @@ const OrganizationsTable = () => {
             active={tab === 'requests'}
             onClick={() => handleTabChange('requests')}
           />
+          <Tab
+            label={formatMessage(customFieldsMessages.customFieldsTitle)}
+            active={tab === 'custom-fields'}
+            onClick={() => handleTabChange('custom-fields')}
+          />
         </Tabs>
         <Container>
           <Switch>
@@ -53,6 +60,7 @@ const OrganizationsTable = () => {
               exact
               component={OrganizationRequestsTable}
             />
+            <Route path="/custom-fields" exact component={CustomFields} />
           </Switch>
         </Container>
       </HashRouter>
