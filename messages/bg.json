@@ -273,7 +273,7 @@
   "store/b2b-organizations.stop-impersonation": "Спиране на въплъщаването",
   "store/b2b-organizations.stop-impersonation-error": "Грешка при спиране на въплъщаването. Вижте конзолата за подробности.",
 
-  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
-  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
+  "admin/b2b-organizations.custom-fields.title": "Персонализирани полета",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Персонализирано поле",
+  "admin/b2b-organizations.custom-fields.explanation": "Персонализираните полета се използват за добавяне на допълнителна информация към организациите. Във формуляра за регистрация на организацията ще се появят полета."
 }

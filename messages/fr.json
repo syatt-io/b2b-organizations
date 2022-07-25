@@ -273,7 +273,7 @@
   "store/b2b-organizations.stop-impersonation": "Arrêter l’emprunt d’identité",
   "store/b2b-organizations.stop-impersonation-error": "Erreur lors de l’arrêt de l’emprunt d’identité. Voir la console pour plus de détails.",
 
-  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
-  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
+  "admin/b2b-organizations.custom-fields.title": "Les champs personnalisés",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Champ personnalisé",
+  "admin/b2b-organizations.custom-fields.explanation": "Les champs personnalisés sont utilisés pour ajouter des informations supplémentaires aux organisations.Les champs apparaîtront dans le formulaire d'inscription de l'organisation."
 }

@@ -273,7 +273,7 @@
   "store/b2b-organizations.stop-impersonation": "Stop impersonatie",
   "store/b2b-organizations.stop-impersonation-error": "Fout bij stoppen impersonatie. Zie console voor details.",
 
-  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
-  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
+  "admin/b2b-organizations.custom-fields.title": "Aangepaste velden",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Aangepast veld",
+  "admin/b2b-organizations.custom-fields.explanation": "Aangepaste velden worden gebruikt om aanvullende informatie aan organisaties toe te voegen.Velden verschijnen in het aanmeldingsformulier van de organisatie."
 }

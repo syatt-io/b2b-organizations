@@ -273,7 +273,7 @@
   "store/b2b-organizations.stop-impersonation": "Nehaj oponašati",
   "store/b2b-organizations.stop-impersonation-error": "Napaka pri zaustavitvi oponašanja. Za podrobnosti glejte konzolo.",
 
-  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
-  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
+  "admin/b2b-organizations.custom-fields.title": "Polja po meri",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Polje po meri",
+  "admin/b2b-organizations.custom-fields.explanation": "Polja po meri se uporabljajo za dodajanje dodatnih informacij organizacijam.Polja se prikažejo v obrazcu za prijavo organizacije."
 }

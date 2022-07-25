@@ -273,7 +273,7 @@
   "store/b2b-organizations.stop-impersonation": "Остановить работу от имени другого лица",
   "store/b2b-organizations.stop-impersonation-error": "Сбой остановки работы от имени другого лица. Подробная информация доступна на консоли.",
 
-  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
-  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
+  "admin/b2b-organizations.custom-fields.title": "Пользовательские поля",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Пользовательское поле",
+  "admin/b2b-organizations.custom-fields.explanation": "Пользовательские поля используются для добавления дополнительной информации в организации.Поля появятся в форме регистрации организации."
 }

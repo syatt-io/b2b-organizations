@@ -273,7 +273,7 @@
   "store/b2b-organizations.stop-impersonation": "إيقاف تعيين المستخدم",
   "store/b2b-organizations.stop-impersonation-error": "خطأ في إيقاف تعيين المستخدم. راجع وحدة التحكم للحصول على التفاصيل.",
 
-  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
-  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
+  "admin/b2b-organizations.custom-fields.title": "الحقول المخصصة",
+  "admin/b2b-organizations.custom-fields.titleSingular": "حقل مخصص",
+  "admin/b2b-organizations.custom-fields.explanation": "تُستخدم الحقول المخصصة لإضافة معلومات إضافية إلى المؤسسات. ستظهر الحقول في نموذج الاشتراك الخاص بالمؤسسة."
 }

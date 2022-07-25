@@ -273,7 +273,7 @@
   "store/b2b-organizations.stop-impersonation": "Διακοπή προσωποποίησης",
   "store/b2b-organizations.stop-impersonation-error": "Σφάλμα κατά τη διακοπή της προσωποποίησης. Δείτε την κονσόλα για λεπτομέρειες.",
 
-  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
-  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
+  "admin/b2b-organizations.custom-fields.title": "Προσαρμοσμένα πεδία",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Προσαρμοσμένο πεδίο",
+  "admin/b2b-organizations.custom-fields.explanation": "Τα προσαρμοσμένα πεδία χρησιμοποιούνται για την προσθήκη πρόσθετων πληροφοριών σε οργανισμούς.Τα πεδία θα εμφανιστούν στη φόρμα εγγραφής του οργανισμού."
 }

@@ -273,7 +273,7 @@
   "store/b2b-organizations.stop-impersonation": "Зупинити імітацію",
   "store/b2b-organizations.stop-impersonation-error": "Помилка при зупинці імітації. Докладніша інформація доступна на консолі.",
 
-  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
-  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
+  "admin/b2b-organizations.custom-fields.title": "Спеціальні поля",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Спеціальне поле",
+  "admin/b2b-organizations.custom-fields.explanation": "Спеціальні поля використовуються для додавання додаткової інформації до організацій.Поля з’являться у формі реєстрації організації."
 }

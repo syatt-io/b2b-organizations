@@ -273,7 +273,7 @@
   "store/b2b-organizations.stop-impersonation": "Interromper personificação",
   "store/b2b-organizations.stop-impersonation-error": "Erro ao interromper a personificação. Consulte o console para mais detalhes.",
 
-  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
-  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
+  "admin/b2b-organizations.custom-fields.title": "Os campos personalizados",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Campo customizado",
+  "admin/b2b-organizations.custom-fields.explanation": "Os campos personalizados são usados para adicionar informações adicionais às organizações.Os campos aparecerão no formulário de inscrição da organização."
 }

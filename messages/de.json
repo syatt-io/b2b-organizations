@@ -273,7 +273,7 @@
   "store/b2b-organizations.stop-impersonation": "Identitätswechsel abbrechen",
   "store/b2b-organizations.stop-impersonation-error": "Fehler beim Abbruch des Identitätswechsels. Siehe Konsole für Details.",
 
-  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
-  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
+  "admin/b2b-organizations.custom-fields.title": "Benutzerdefinierte Felder",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Benutzerdefinierte Feld",
+  "admin/b2b-organizations.custom-fields.explanation": "Benutzerdefinierte Felder werden verwendet, um Organisationen zusätzliche Informationen hinzuzufügen.Felder werden im Anmeldeformular der Organisation erscheinen."
 }
