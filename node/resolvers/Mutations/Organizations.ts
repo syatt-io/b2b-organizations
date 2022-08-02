@@ -16,6 +16,7 @@ import GraphQLError, { getErrorMessage } from '../../utils/GraphQLError'
 import checkConfig from '../config'
 import message from '../message'
 import B2BSettings from '../Queries/Settings'
+const B2B_SETTINGS_DOCUMENT_ID = 'b2bSettings'
 
 const Organizations = {
   createOrganization: async (
@@ -129,7 +130,7 @@ const Organizations = {
 
     const now = new Date()
 
-    const settings = await B2BSettings.getB2BSettings(undefined,{ page: 1, pageSize: 25 },ctx) as any
+    const settings = await B2BSettings.getB2BSettings(undefined,{id: B2B_SETTINGS_DOCUMENT_ID},ctx) as any
 
     const organizationRequest = {
       name,
