@@ -16,7 +16,6 @@ import GraphQLError, { getErrorMessage } from '../../utils/GraphQLError'
 import checkConfig from '../config'
 import message from '../message'
 import B2BSettings from '../Queries/Settings'
-const B2B_SETTINGS_DOCUMENT_ID = 'b2bSettings'
 
 const Organizations = {
   createOrganization: async (
@@ -130,7 +129,11 @@ const Organizations = {
 
     const now = new Date()
 
-    const settings = await B2BSettings.getB2BSettings(undefined,{id: B2B_SETTINGS_DOCUMENT_ID},ctx) as any
+    const settings = (await B2BSettings.getB2BSettings(
+      undefined,
+      undefined,
+      ctx
+    )) as any
 
     const organizationRequest = {
       name,
@@ -142,8 +145,8 @@ const Organizations = {
       status: ORGANIZATION_REQUEST_STATUSES.PENDING,
     }
 
-    if(settings?.data[0].autoApprove) {
-      organizationRequest.status = "approved"
+    if (settings?.data[0].autoApprove) {
+      organizationRequest.status = 'approved'
     }
 
     try {
@@ -153,16 +156,21 @@ const Organizations = {
         schema: ORGANIZATION_REQUEST_SCHEMA_VERSION,
       })
 
-      if(settings?.data[0].autoApprove) {
-        Organizations.updateOrganization(undefined, {
-          id: result.DocumentId, 
-          name: name,
-          status: "approved",
-          priceTables: settings?.data[0]?.defaultPriceTables,
-          paymentTerms: settings?.data[0]?.defaultPaymentTerms,
-          collections: []
-        }, ctx )
+      if (settings?.data[0].autoApprove) {
+        Organizations.updateOrganization(
+          undefined,
+          {
+            id: result.DocumentId,
+            name,
+            status: 'approved',
+            priceTables: settings?.data[0]?.defaultPriceTables,
+            paymentTerms: settings?.data[0]?.defaultPaymentTerms,
+            collections: [],
+          },
+          ctx
+        )
       }
+
       return { href: result.Href, id: result.DocumentId, status: duplicate }
     } catch (error) {
       logger.error({
