@@ -275,5 +275,9 @@
   "store/b2b-organizations.user-widget.impersonating": "Uppträder som:",
   "store/b2b-organizations.request-new-organization.submit-button.create-new-request": "Skapa ny förfrågan",
   "store/b2b-organizations.stop-impersonation": "Sluta uppträdandet",
-  "store/b2b-organizations.stop-impersonation-error": "Det inge inte att stoppa uppträdandet. Se konsolen för detaljer."
+  "store/b2b-organizations.stop-impersonation-error": "Det inge inte att stoppa uppträdandet. Se konsolen för detaljer.",
+
+  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
+  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
 }

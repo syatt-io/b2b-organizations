@@ -275,5 +275,9 @@
   "store/b2b-organizations.user-widget.impersonating": "가장:",
   "store/b2b-organizations.request-new-organization.submit-button.create-new-request": "새 요청 만들기",
   "store/b2b-organizations.stop-impersonation": "가장 중지",
-  "store/b2b-organizations.stop-impersonation-error": "가장을 중지하는 동안 오류가 발생했습니다. 자세한 내용은 콘솔을 참조하세요."
+  "store/b2b-organizations.stop-impersonation-error": "가장을 중지하는 동안 오류가 발생했습니다. 자세한 내용은 콘솔을 참조하세요.",
+
+  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
+  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
 }

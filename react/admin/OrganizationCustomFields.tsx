@@ -38,9 +38,9 @@ const CustomFields: FunctionComponent = () =>
 
     return (
       <>
-        <p className="t-heading-5 mb0 pt4">
+        <h3 className="t-heading-4 mt0">
           {formatMessage(customFieldsMessages.customFieldsExplanation)}
-        </p>
+        </h3>
         <div className="w-100 mv6">
           <Input
             autocomplete="off"

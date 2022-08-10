@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl'
 import { useQuery, useMutation } from 'react-apollo'
 import {
   Alert,
-  Box,
+  Divider,
   Table,
   IconCheck,
   Button,
@@ -22,6 +22,7 @@ import GET_SALES_CHANNELS from '../graphql/getSalesChannels.graphql'
 import GET_PAYMENT_TERMS from '../graphql/getPaymentTerms.graphql'
 import GET_B2BSETTINGS from '../graphql/getB2BSettings.graphql'
 import SAVE_B2BSETTINGS from '../graphql/saveB2BSettings.graphql'
+import OrganizationCustomFields from './OrganizationCustomFields'
 
 export interface CellRendererProps<RowType> {
   cellData: unknown
@@ -307,6 +308,9 @@ export default function AutoApproveSettings() {
           Save Settings
         </Button>
       </div>
+      <div className="mv7">
+        <Divider />
+      </div>
       <div className="flex w-100">
         <div style={{ marginRight: '4rem' }}>
           <h4 className="mt6">Selected Price Terms</h4>
@@ -355,7 +359,10 @@ export default function AutoApproveSettings() {
           />
         </div>
       </div>
-      <Box title="Custom Fields"></Box>
+      <div className="mv7">
+        <Divider />
+      </div>
+      <OrganizationCustomFields />
       <div className="absolute">
         {alertState ? (
           <Alert
