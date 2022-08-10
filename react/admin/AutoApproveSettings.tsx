@@ -3,6 +3,7 @@ import { useIntl } from 'react-intl'
 import { useQuery, useMutation } from 'react-apollo'
 import {
   Alert,
+  Box,
   Table,
   IconCheck,
   Button,
@@ -61,9 +62,9 @@ export default function AutoApproveSettings() {
     ssr: false,
   })
 
-  const paymentTerm = b2bSettings?.getB2BSettings?.data[0]?.defaultPaymentTerms
-  const autoApprove = b2bSettings?.getB2BSettings?.data[0]?.autoApprove
-  const priceTables = b2bSettings?.getB2BSettings?.data[0]?.defaultPriceTables
+  const paymentTerm = b2bSettings?.getB2BSettings?.defaultPaymentTerms
+  const autoApprove = b2bSettings?.getB2BSettings?.autoApprove
+  const priceTables = b2bSettings?.getB2BSettings?.defaultPriceTables
 
   const [saveB2BSettingsRequest] = useMutation(SAVE_B2BSETTINGS)
 
@@ -84,7 +85,7 @@ export default function AutoApproveSettings() {
    * Effects
    */
   useEffect(() => {
-    if (b2bSettings?.getB2BSettings?.data[0]) {
+    if (b2bSettings?.getB2BSettings) {
       toastMessage(settingMessage.toastUpdateSuccess)
       setAutoApproveState(autoApprove)
       setPriceTablesState(priceTables)
@@ -354,6 +355,7 @@ export default function AutoApproveSettings() {
           />
         </div>
       </div>
+      <Box title="Custom Fields"></Box>
       <div className="absolute">
         {alertState ? (
           <Alert
