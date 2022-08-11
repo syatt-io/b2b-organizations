@@ -1,39 +1,83 @@
+// TODO: Remove this console.log block
 /* eslint-disable no-console */
 
-// TODO: Remove this console.log
-import React, { useState } from 'react'
-import type { FunctionComponent } from 'react'
+import React, {
+  useState,
+  // useMemo
+} from 'react'
 import { Input, Button } from 'vtex.styleguide'
 import { FormattedMessage, useIntl } from 'react-intl'
 
 import { organizationCustomFieldsMessages as customFieldsMessages } from './utils/messages'
 
-// type Props = {}
+interface CustomFieldProps {
+  index: number
+  handleUpdate: (index: number, value: string) => void
+}
 
-const CustomFields: FunctionComponent = () =>
+const CustomField: React.FC<CustomFieldProps> = ({ index, handleUpdate }) => {
+  const { formatMessage } = useIntl()
+  const [customField, setCustomField] = useState('')
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomField(e.target.value)
+    handleUpdate(index, e.target.value)
+  }
+
+  return (
+    <div className="w-100 mv6">
+      <Input
+        autocomplete="off"
+        size="large"
+        label={`${formatMessage(
+          customFieldsMessages.customFieldsTitleSingular
+        )} ${index + 1}`}
+        value={customField}
+        onChange={handleChange}
+        required
+      />
+    </div>
+  )
+}
+
+interface CustomFieldsProps {
+  updateCustomFields: (customFields: string[]) => void
+}
+
+const CustomFields: React.FC<CustomFieldsProps> = ({ updateCustomFields }) =>
   // props: Props
   {
     const { formatMessage } = useIntl()
 
-    const [customField1, setCustomField1] = useState('')
-    const [customField2, setCustomField2] = useState('')
-    const [customField3, setCustomField3] = useState('')
-    const [customField4, setCustomField4] = useState('')
-    const [customField5, setCustomField5] = useState('')
-    const [customField6, setCustomField6] = useState('')
-    const [customField7, setCustomField7] = useState('')
-    const [customField8, setCustomField8] = useState('')
-    const [customField9, setCustomField9] = useState('')
-    const [customField10, setCustomField10] = useState('')
+    const [customFields, setCustomFields] = useState<string[]>([])
+    const [numberOfCustomFields, setNumberOfCustomFields] = useState<number[]>([
+      0,
+    ])
 
     const handleSave = () => {
-      console.log(customField1)
-      console.log(customField2)
+      setNumberOfCustomFields([
+        ...numberOfCustomFields,
+        numberOfCustomFields.length,
+      ])
     }
 
     const handleCancel = () => {
-      console.log(customField1)
-      console.log(customField2)
+      // remove last item from numberOfCustomFields, but only if there is more than one item
+      if (numberOfCustomFields.length > 1) {
+        setNumberOfCustomFields([
+          ...numberOfCustomFields.slice(0, numberOfCustomFields.length - 1),
+        ])
+      }
+    }
+
+    const handleUpdate = (index: number, value: string) => {
+      // populate customFields array with values from inputs
+      const newCustomFields = [...customFields]
+
+      newCustomFields[index] = value
+      setCustomFields(newCustomFields)
+
+      updateCustomFields(newCustomFields)
     }
 
     return (
@@ -41,153 +85,20 @@ const CustomFields: FunctionComponent = () =>
         <h3 className="t-heading-4 mt0">
           {formatMessage(customFieldsMessages.customFieldsExplanation)}
         </h3>
-        <div className="w-100 mv6">
-          <Input
-            autocomplete="off"
-            size="large"
-            label={`${formatMessage(
-              customFieldsMessages.customFieldsTitleSingular
-            )} 1`}
-            value={customField1}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setCustomField1(e.target.value)
-            }}
-            required
-          />
-        </div>
-        <div className="w-100 mv6">
-          <Input
-            autocomplete="off"
-            size="large"
-            label={`${formatMessage(
-              customFieldsMessages.customFieldsTitleSingular
-            )} 2`}
-            value={customField2}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setCustomField2(e.target.value)
-            }}
-            required
-          />
-        </div>
-        <div className="w-100 mv6">
-          <Input
-            autocomplete="off"
-            size="large"
-            label={`${formatMessage(
-              customFieldsMessages.customFieldsTitleSingular
-            )} 3`}
-            value={customField3}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setCustomField3(e.target.value)
-            }}
-            required
-          />
-        </div>
-        <div className="w-100 mv6">
-          <Input
-            autocomplete="off"
-            size="large"
-            label={`${formatMessage(
-              customFieldsMessages.customFieldsTitleSingular
-            )} 4`}
-            value={customField4}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setCustomField4(e.target.value)
-            }}
-            required
-          />
-        </div>
-        <div className="w-100 mv6">
-          <Input
-            autocomplete="off"
-            size="large"
-            label={`${formatMessage(
-              customFieldsMessages.customFieldsTitleSingular
-            )} 5`}
-            value={customField5}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setCustomField5(e.target.value)
-            }}
-            required
-          />
-        </div>
-        <div className="w-100 mv6">
-          <Input
-            autocomplete="off"
-            size="large"
-            label={`${formatMessage(
-              customFieldsMessages.customFieldsTitleSingular
-            )} 6`}
-            value={customField6}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setCustomField6(e.target.value)
-            }}
-            required
-          />
-        </div>
-        <div className="w-100 mv6">
-          <Input
-            autocomplete="off"
-            size="large"
-            label={`${formatMessage(
-              customFieldsMessages.customFieldsTitleSingular
-            )} 7`}
-            value={customField7}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setCustomField7(e.target.value)
-            }}
-            required
-          />
-        </div>
-        <div className="w-100 mv6">
-          <Input
-            autocomplete="off"
-            size="large"
-            label={`${formatMessage(
-              customFieldsMessages.customFieldsTitleSingular
-            )} 8`}
-            value={customField8}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setCustomField8(e.target.value)
-            }}
-            required
-          />
-        </div>
-        <div className="w-100 mv6">
-          <Input
-            autocomplete="off"
-            size="large"
-            label={`${formatMessage(
-              customFieldsMessages.customFieldsTitleSingular
-            )} 9`}
-            value={customField9}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setCustomField9(e.target.value)
-            }}
-            required
-          />
-        </div>
-        <div className="w-100 mv6">
-          <Input
-            autocomplete="off"
-            size="large"
-            label={`${formatMessage(
-              customFieldsMessages.customFieldsTitleSingular
-            )} 10`}
-            value={customField10}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setCustomField10(e.target.value)
-            }}
-            required
-          />
-        </div>
+
+        {numberOfCustomFields.map(index => (
+          <CustomField key={index} index={index} handleUpdate={handleUpdate} />
+        ))}
+
         <div className="mt3 flex">
           <Button
             variation="primary"
             onClick={() => handleSave()}
             isLoading={false}
-            // disabled={data.getOrganizationRequestById.status !== 'pending'}
+            disabled={numberOfCustomFields.length > 7}
           >
+            {/* // TODO: fix text */}
+            Add field &nbsp;
             <FormattedMessage id="admin/b2b-organizations.costCenter-details.button.save" />
           </Button>
           <div className="ml2">
@@ -195,8 +106,10 @@ const CustomFields: FunctionComponent = () =>
               variation="secondary"
               onClick={() => handleCancel()}
               isLoading={false}
-              // disabled={data.getOrganizationRequestById.status !== 'pending'}
+              disabled={numberOfCustomFields.length === 1}
             >
+              {/* // TODO: fix text */}
+              Remove Field &nbsp;
               <FormattedMessage id="admin/b2b-organizations.costCenter-details.button.cancel" />
             </Button>
           </div>

@@ -47,6 +47,8 @@ export default function AutoApproveSettings() {
 
   const [alertState, setAlertState] = useState(false)
 
+  const [customFields, setCustomFields] = useState([] as string[])
+
   /**
    * Queries
    */
@@ -151,10 +153,16 @@ export default function AutoApproveSettings() {
       return { name: paymentTerms.name, id: paymentTerms.paymentTermId }
     })
 
+    // initializing the variables to be sent to the mutation
+    const customFieldsInitialized = customFields.map((field: string) => {
+      return { name: field, value: '' }
+    })
+
     const B2BSettingsInput = {
       autoApprove: autoApproveState,
       defaultPaymentTerms: selectedPaymentTerms,
       defaultPriceTables: priceTablesState,
+      defaultCustomFields: customFieldsInitialized,
     }
 
     saveB2BSettingsRequest({
@@ -288,6 +296,10 @@ export default function AutoApproveSettings() {
     setPaymentTermsState(newPaymentTerms)
   }
 
+  const handleUpdateCustomFields = (fieldNames: string[]) => {
+    setCustomFields(fieldNames)
+  }
+
   return (
     <>
       <div className="flex justify-between items-center">
@@ -362,7 +374,7 @@ export default function AutoApproveSettings() {
       <div className="mv7">
         <Divider />
       </div>
-      <OrganizationCustomFields />
+      <OrganizationCustomFields updateCustomFields={handleUpdateCustomFields} />
       <div className="absolute">
         {alertState ? (
           <Alert
