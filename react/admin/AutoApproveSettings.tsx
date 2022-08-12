@@ -30,6 +30,11 @@ export interface CellRendererProps<RowType> {
   updateCellMeasurements: () => void
 }
 
+export interface CustomField {
+  name: string
+  type: string
+}
+
 export default function AutoApproveSettings() {
   const { formatMessage } = useIntl()
 
@@ -47,7 +52,9 @@ export default function AutoApproveSettings() {
 
   const [alertState, setAlertState] = useState(false)
 
-  const [customFields, setCustomFields] = useState([] as string[])
+  const [customFieldsState, setCustomFieldsState] = useState(
+    [] as CustomField[]
+  )
 
   /**
    * Queries
@@ -68,6 +75,7 @@ export default function AutoApproveSettings() {
   const paymentTerm = b2bSettings?.getB2BSettings?.defaultPaymentTerms
   const autoApprove = b2bSettings?.getB2BSettings?.autoApprove
   const priceTables = b2bSettings?.getB2BSettings?.defaultPriceTables
+  const customFields = b2bSettings?.getB2BSettings?.defaultCustomFields
 
   const [saveB2BSettingsRequest] = useMutation(SAVE_B2BSETTINGS)
 
@@ -92,6 +100,11 @@ export default function AutoApproveSettings() {
       toastMessage(settingMessage.toastUpdateSuccess)
       setAutoApproveState(autoApprove)
       setPriceTablesState(priceTables)
+      setCustomFieldsState(customFields)
+
+      // eslint-disable-next-line no-console
+      console.log(customFields, 'customFields')
+
       const selectedPaymentTerms = paymentTerm?.map((paymentTerms: any) => {
         return { name: paymentTerms.name, paymentTermId: paymentTerms.id }
       })
@@ -153,16 +166,11 @@ export default function AutoApproveSettings() {
       return { name: paymentTerms.name, id: paymentTerms.paymentTermId }
     })
 
-    // initializing the variables to be sent to the mutation
-    const customFieldsInitialized = customFields.map((field: string) => {
-      return { name: field, value: '' }
-    })
-
     const B2BSettingsInput = {
       autoApprove: autoApproveState,
       defaultPaymentTerms: selectedPaymentTerms,
       defaultPriceTables: priceTablesState,
-      defaultCustomFields: customFieldsInitialized,
+      defaultCustomFields: customFieldsState,
     }
 
     saveB2BSettingsRequest({
@@ -296,8 +304,8 @@ export default function AutoApproveSettings() {
     setPaymentTermsState(newPaymentTerms)
   }
 
-  const handleUpdateCustomFields = (fieldNames: string[]) => {
-    setCustomFields(fieldNames)
+  const handleUpdateCustomFields = (fieldNames: CustomField[]) => {
+    setCustomFieldsState(fieldNames)
   }
 
   return (
@@ -374,7 +382,10 @@ export default function AutoApproveSettings() {
       <div className="mv7">
         <Divider />
       </div>
-      <OrganizationCustomFields updateCustomFields={handleUpdateCustomFields} />
+      <OrganizationCustomFields
+        updateCustomFields={handleUpdateCustomFields}
+        customFieldsState={customFieldsState}
+      />
       <div className="absolute">
         {alertState ? (
           <Alert

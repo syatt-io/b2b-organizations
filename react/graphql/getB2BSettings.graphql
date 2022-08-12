@@ -6,5 +6,9 @@ query GetB2BSettings {
       id
       name
     }
+    defaultCustomFields {
+      name
+      type
+    }
   }
 }

@@ -1,27 +1,42 @@
 // TODO: Remove this console.log block
 /* eslint-disable no-console */
 
-import React, {
-  useState,
-  // useMemo
-} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Input, Button } from 'vtex.styleguide'
 import { FormattedMessage, useIntl } from 'react-intl'
 
 import { organizationCustomFieldsMessages as customFieldsMessages } from './utils/messages'
+import { CustomField } from './AutoApproveSettings'
 
 interface CustomFieldProps {
   index: number
-  handleUpdate: (index: number, value: string) => void
+  customFieldState: CustomField
+  handleUpdate: (index: number, customField: CustomField) => void
 }
 
-const CustomField: React.FC<CustomFieldProps> = ({ index, handleUpdate }) => {
+const CustomField: React.FC<CustomFieldProps> = ({
+  index,
+  handleUpdate,
+  customFieldState,
+}) => {
   const { formatMessage } = useIntl()
-  const [customField, setCustomField] = useState('')
+  const [customField, setCustomField] = useState<CustomField>({
+    name: '',
+    type: 'text',
+  })
+
+  useEffect(() => {
+    setCustomField(customFieldState)
+  }, [customFieldState])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCustomField(e.target.value)
-    handleUpdate(index, e.target.value)
+    const updatedCustomField = {
+      ...customField,
+      name: e.target.value,
+    }
+
+    setCustomField(updatedCustomField)
+    handleUpdate(index, updatedCustomField)
   }
 
   return (
@@ -32,8 +47,9 @@ const CustomField: React.FC<CustomFieldProps> = ({ index, handleUpdate }) => {
         label={`${formatMessage(
           customFieldsMessages.customFieldsTitleSingular
         )} ${index + 1}`}
-        value={customField}
+        value={customField.name}
         onChange={handleChange}
+        type={customField.type}
         required
       />
     </div>
@@ -41,81 +57,87 @@ const CustomField: React.FC<CustomFieldProps> = ({ index, handleUpdate }) => {
 }
 
 interface CustomFieldsProps {
-  updateCustomFields: (customFields: string[]) => void
+  updateCustomFields: (customFields: CustomField[]) => void
+  customFieldsState: CustomField[]
 }
 
-const CustomFields: React.FC<CustomFieldsProps> = ({ updateCustomFields }) =>
-  // props: Props
-  {
-    const { formatMessage } = useIntl()
+const CustomFields: React.FC<CustomFieldsProps> = ({
+  updateCustomFields,
+  customFieldsState,
+}) => {
+  const { formatMessage } = useIntl()
 
-    const [customFields, setCustomFields] = useState<string[]>([])
-    const [numberOfCustomFields, setNumberOfCustomFields] = useState<number[]>([
-      0,
-    ])
+  const [customFields, setCustomFields] = useState<CustomField[]>([
+    { name: '', type: 'text' },
+  ])
 
-    const handleSave = () => {
-      setNumberOfCustomFields([
-        ...numberOfCustomFields,
-        numberOfCustomFields.length,
-      ])
+  useEffect(() => {
+    setCustomFields(customFieldsState)
+  }, [customFieldsState])
+
+  const addCustomField = () => {
+    setCustomFields([...customFields, { name: '', type: 'text' }])
+  }
+
+  const removeCustomField = () => {
+    // remove last item from numberOfCustomFields, but only if there is more than one item
+    if (customFields.length > 1) {
+      setCustomFields([...customFields.slice(0, customFields.length - 1)])
     }
+  }
 
-    const handleCancel = () => {
-      // remove last item from numberOfCustomFields, but only if there is more than one item
-      if (numberOfCustomFields.length > 1) {
-        setNumberOfCustomFields([
-          ...numberOfCustomFields.slice(0, numberOfCustomFields.length - 1),
-        ])
-      }
-    }
+  const handleUpdate = (index: number, customField: CustomField) => {
+    console.log(index, customField)
+    // populate customFields array with values from inputs
+    const newCustomFields = [...customFields]
 
-    const handleUpdate = (index: number, value: string) => {
-      // populate customFields array with values from inputs
-      const newCustomFields = [...customFields]
+    newCustomFields[index] = customField
+    setCustomFields(newCustomFields)
 
-      newCustomFields[index] = value
-      setCustomFields(newCustomFields)
+    updateCustomFields(newCustomFields)
+  }
 
-      updateCustomFields(newCustomFields)
-    }
+  return (
+    <>
+      <h3 className="t-heading-4 mt0">
+        {formatMessage(customFieldsMessages.customFieldsExplanation)}
+      </h3>
 
-    return (
-      <>
-        <h3 className="t-heading-4 mt0">
-          {formatMessage(customFieldsMessages.customFieldsExplanation)}
-        </h3>
+      {customFields.map((customField, index: number) => (
+        <CustomField
+          key={index}
+          index={index}
+          customFieldState={customField}
+          handleUpdate={handleUpdate}
+        />
+      ))}
 
-        {numberOfCustomFields.map(index => (
-          <CustomField key={index} index={index} handleUpdate={handleUpdate} />
-        ))}
-
-        <div className="mt3 flex">
+      <div className="mt3 flex">
+        <Button
+          variation="primary"
+          onClick={() => addCustomField()}
+          isLoading={false}
+          disabled={customFields.length > 7}
+        >
+          {/* // TODO: fix text */}
+          Add field &nbsp;
+          <FormattedMessage id="admin/b2b-organizations.costCenter-details.button.save" />
+        </Button>
+        <div className="ml2">
           <Button
-            variation="primary"
-            onClick={() => handleSave()}
+            variation="secondary"
+            onClick={() => removeCustomField()}
             isLoading={false}
-            disabled={numberOfCustomFields.length > 7}
+            disabled={customFields.length === 1}
           >
             {/* // TODO: fix text */}
-            Add field &nbsp;
-            <FormattedMessage id="admin/b2b-organizations.costCenter-details.button.save" />
+            Remove Field &nbsp;
+            <FormattedMessage id="admin/b2b-organizations.costCenter-details.button.cancel" />
           </Button>
-          <div className="ml2">
-            <Button
-              variation="secondary"
-              onClick={() => handleCancel()}
-              isLoading={false}
-              disabled={numberOfCustomFields.length === 1}
-            >
-              {/* // TODO: fix text */}
-              Remove Field &nbsp;
-              <FormattedMessage id="admin/b2b-organizations.costCenter-details.button.cancel" />
-            </Button>
-          </div>
         </div>
-      </>
-    )
-  }
+      </div>
+    </>
+  )
+}
 
 export default CustomFields
