@@ -1,12 +1,9 @@
-// TODO: Remove this console.log block
-/* eslint-disable no-console */
-
-import React, { useState, useEffect } from 'react'
-import { Input, Button } from 'vtex.styleguide'
+import React, { useEffect, useState } from 'react'
 import { FormattedMessage, useIntl } from 'react-intl'
+import { Button, Input } from 'vtex.styleguide'
 
-import { organizationCustomFieldsMessages as customFieldsMessages } from './utils/messages'
 import { CustomField } from './AutoApproveSettings'
+import { organizationCustomFieldsMessages as customFieldsMessages } from './utils/messages'
 
 interface CustomFieldProps {
   index: number
@@ -80,14 +77,16 @@ const CustomFields: React.FC<CustomFieldsProps> = ({
   }
 
   const removeCustomField = () => {
-    // remove last item from numberOfCustomFields, but only if there is more than one item
-    if (customFields.length > 1) {
-      setCustomFields([...customFields.slice(0, customFields.length - 1)])
-    }
+    const customFieldsWithoutLastItem = customFields.slice(
+      0,
+      customFields.length - 1
+    )
+
+    setCustomFields(customFieldsWithoutLastItem)
+    updateCustomFields(customFieldsWithoutLastItem)
   }
 
   const handleUpdate = (index: number, customField: CustomField) => {
-    console.log(index, customField)
     // populate customFields array with values from inputs
     const newCustomFields = [...customFields]
 
@@ -99,9 +98,9 @@ const CustomFields: React.FC<CustomFieldsProps> = ({
 
   return (
     <>
-      <h3 className="t-heading-4 mt0">
+      <h4 className="mt6 t-heading-6">
         {formatMessage(customFieldsMessages.customFieldsExplanation)}
-      </h3>
+      </h4>
 
       {customFields.map((customField, index: number) => (
         <CustomField
@@ -119,20 +118,16 @@ const CustomFields: React.FC<CustomFieldsProps> = ({
           isLoading={false}
           disabled={customFields.length > 7}
         >
-          {/* // TODO: fix text */}
-          Add field &nbsp;
-          <FormattedMessage id="admin/b2b-organizations.costCenter-details.button.save" />
+          <FormattedMessage id="admin/b2b-organizations.custom-fields.addField" />
         </Button>
         <div className="ml2">
           <Button
             variation="secondary"
             onClick={() => removeCustomField()}
             isLoading={false}
-            disabled={customFields.length === 1}
+            disabled={customFields.length === 0}
           >
-            {/* // TODO: fix text */}
-            Remove Field &nbsp;
-            <FormattedMessage id="admin/b2b-organizations.costCenter-details.button.cancel" />
+            <FormattedMessage id="admin/b2b-organizations.custom-fields.removeField" />
           </Button>
         </div>
       </div>

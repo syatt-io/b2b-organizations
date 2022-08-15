@@ -282,5 +282,7 @@
 
   "admin/b2b-organizations.custom-fields.title": "admin/b2b-organizations.custom-fields.title",
   "admin/b2b-organizations.custom-fields.titleSingular": "admin/b2b-organizations.custom-fields.titleSingular",
-  "admin/b2b-organizations.custom-fields.explanation": "admin/b2b-organizations.custom-fields.explanation"
+  "admin/b2b-organizations.custom-fields.explanation": "admin/b2b-organizations.custom-fields.explanation",
+  "admin/b2b-organizations.custom-fields.addField": "admin/b2b-organizations.custom-fields.addField",
+  "admin/b2b-organizations.custom-fields.removeField": "admin/b2b-organizations.custom-fields.removeField"
 }

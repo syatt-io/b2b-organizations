@@ -277,7 +277,9 @@
   "store/b2b-organizations.stop-impersonation": "Zatrzymaj odgrywanie roli",
   "store/b2b-organizations.stop-impersonation-error": "Wystąpił błąd podczas zatrzymywania odgrywania roli. Zobacz konsolę, aby poznać szczegóły.",
 
-  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
-  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
+  "admin/b2b-organizations.custom-fields.title": "Pola niestandardowe",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Pole niestandardowe",
+  "admin/b2b-organizations.custom-fields.explanation": "Pola niestandardowe służą do dodawania dodatkowych informacji do organizacji.Tylko użycie wewnętrzne, nie zostanie pokazane klientowi.",
+  "admin/b2b-organizations.custom-fields.addField": "Dodaj pole",
+  "admin/b2b-organizations.custom-fields.removeField": "Usuń pole"
 }

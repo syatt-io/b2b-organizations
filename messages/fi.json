@@ -277,7 +277,9 @@
   "store/b2b-organizations.stop-impersonation": "Lopeta tekeytyminen toiseksi käyttäjäksi",
   "store/b2b-organizations.stop-impersonation-error": "Virhe toiseksi käyttäjäksi tekeytymisen lopettamisessa. Katso lisätietoja konsolista.",
 
-  "admin/b2b-organizations.custom-fields.title": "Custom Fields",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
-  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
+  "admin/b2b-organizations.custom-fields.title": "Mukautetut kentät",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Räätälöity kenttä",
+  "admin/b2b-organizations.custom-fields.explanation": "Mukautettuja kenttiä käytetään lisätietoja organisaatioihin.Vain sisäinen käyttö ei näy asiakkaalle.",
+  "admin/b2b-organizations.custom-fields.addField": "Lisätä",
+  "admin/b2b-organizations.custom-fields.removeField": "Poista kenttä"
 }

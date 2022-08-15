@@ -282,5 +282,7 @@
 
   "admin/b2b-organizations.custom-fields.title": "Custom Fields",
   "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
-  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Fields will appear in the organization's sign-up form."
+  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations. Internal use only, will not be shown to the customer.",
+  "admin/b2b-organizations.custom-fields.addField": "Add Field",
+  "admin/b2b-organizations.custom-fields.removeField": "Remove Field"
 }

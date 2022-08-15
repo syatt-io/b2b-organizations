@@ -1,28 +1,28 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { useMutation, useQuery } from 'react-apollo'
 import { useIntl } from 'react-intl'
-import { useQuery, useMutation } from 'react-apollo'
 import {
   Alert,
-  Divider,
-  Table,
-  IconCheck,
   Button,
-  ToastContext,
   Checkbox,
+  Divider,
+  IconCheck,
+  Table,
+  ToastContext,
 } from 'vtex.styleguide'
 
-import type { PriceTable } from './OrganizationDetails/OrganizationDetailsPriceTables'
-import type { PaymentTerm } from './OrganizationDetails/OrganizationDetailsPayTerms'
+import GET_B2BSETTINGS from '../graphql/getB2BSettings.graphql'
+import GET_PAYMENT_TERMS from '../graphql/getPaymentTerms.graphql'
+import GET_PRICE_TABLES from '../graphql/getPriceTables.graphql'
+import GET_SALES_CHANNELS from '../graphql/getSalesChannels.graphql'
+import SAVE_B2BSETTINGS from '../graphql/saveB2BSettings.graphql'
+import OrganizationCustomFields from './OrganizationCustomFields'
 import {
   organizationMessages as messages,
   organizationSettingsMessages as settingMessage,
 } from './utils/messages'
-import GET_PRICE_TABLES from '../graphql/getPriceTables.graphql'
-import GET_SALES_CHANNELS from '../graphql/getSalesChannels.graphql'
-import GET_PAYMENT_TERMS from '../graphql/getPaymentTerms.graphql'
-import GET_B2BSETTINGS from '../graphql/getB2BSettings.graphql'
-import SAVE_B2BSETTINGS from '../graphql/saveB2BSettings.graphql'
-import OrganizationCustomFields from './OrganizationCustomFields'
+import type { PriceTable } from './OrganizationDetails/OrganizationDetailsPriceTables'
+import type { PaymentTerm } from './OrganizationDetails/OrganizationDetailsPayTerms'
 
 export interface CellRendererProps<RowType> {
   cellData: unknown
@@ -101,9 +101,6 @@ export default function AutoApproveSettings() {
       setAutoApproveState(autoApprove)
       setPriceTablesState(priceTables)
       setCustomFieldsState(customFields)
-
-      // eslint-disable-next-line no-console
-      console.log(customFields, 'customFields')
 
       const selectedPaymentTerms = paymentTerm?.map((paymentTerms: any) => {
         return { name: paymentTerms.name, paymentTermId: paymentTerms.id }
