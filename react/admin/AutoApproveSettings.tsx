@@ -74,7 +74,7 @@ export default function AutoApproveSettings() {
 
   const paymentTerm = b2bSettings?.getB2BSettings?.defaultPaymentTerms
   const autoApprove = b2bSettings?.getB2BSettings?.autoApprove
-  const priceTables = b2bSettings?.getB2BSettings?.defaultPriceTables
+  const priceTables = b2bSettings?.getB2BSetings?.defaultPriceTables
   const customFields = b2bSettings?.getB2BSettings?.defaultCustomFields
 
   const [saveB2BSettingsRequest] = useMutation(SAVE_B2BSETTINGS)
@@ -311,7 +311,7 @@ export default function AutoApproveSettings() {
         <Checkbox
           checked={autoApproveState}
           id="option-1"
-          label="Auto approve new organizations"
+          label={formatMessage(settingMessage.autoApprove)}
           name="default-checkbox-group"
           onChange={() => setAutoApproveState(!autoApproveState)}
           value="option-1"
@@ -322,7 +322,7 @@ export default function AutoApproveSettings() {
             saveB2BSettings()
           }}
         >
-          Save Settings
+          {formatMessage(settingMessage.saveSettings)}
         </Button>
       </div>
       <div className="mv7">
@@ -330,7 +330,9 @@ export default function AutoApproveSettings() {
       </div>
       <div className="flex w-100">
         <div style={{ marginRight: '4rem' }}>
-          <h4 className="mt6">Selected Price Terms</h4>
+          <h4 className="mt6">
+            {formatMessage(settingMessage.selectedPaymentsTableTitle)}
+          </h4>
           <Table
             fullWidth
             schema={getSchema()}
@@ -339,7 +341,9 @@ export default function AutoApproveSettings() {
           />
         </div>
         <div>
-          <h4 className="mt6">Available Payment terms</h4>
+          <h4 className="mt6">
+            {formatMessage(settingMessage.availablePaymentsTableTitle)}
+          </h4>
           <Table
             fullWidth
             schema={getSchema('availablePayments')}
@@ -350,7 +354,9 @@ export default function AutoApproveSettings() {
       </div>
       <div className="flex w-100">
         <div style={{ marginRight: '4rem' }}>
-          <h4 className="mt6">Selected Price tables</h4>
+          <h4 className="mt6">
+            {formatMessage(settingMessage.selectedPriceTablesTitle)}
+          </h4>
           <Table
             fullWidth
             schema={getSchema()}
@@ -367,7 +373,9 @@ export default function AutoApproveSettings() {
           />
         </div>
         <div>
-          <h4 className="mt6">Available Price tables</h4>
+          <h4 className="mt6">
+            {formatMessage(settingMessage.availablePriceTablesTitle)}
+          </h4>
           <Table
             fullWidth
             schema={getSchema('availablePriceTables')}
@@ -390,7 +398,7 @@ export default function AutoApproveSettings() {
             onClose={() => setAlertState(false)}
             autoClose={5000}
           >
-            Settings were updated successfully.
+            {formatMessage(settingMessage.toastUpdateSuccess)}
           </Alert>
         ) : null}
       </div>
