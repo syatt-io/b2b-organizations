@@ -4,6 +4,13 @@ import {
 } from '../../mdSchema'
 import GraphQLError from '../../utils/GraphQLError'
 import checkConfig from '../config'
+import {
+  APP_NAME,
+  QUOTE_DATA_ENTITY,
+  QUOTE_FIELDS,
+  SCHEMA_VERSION,
+  routes,
+} from '../../constants'
 
 export const B2B_SETTINGS_DOCUMENT_ID = 'b2bSettings'
 
@@ -20,7 +27,7 @@ const B2BSettings = {
     ctx: Context
   ) => {
     const {
-      clients: { masterdata },
+      clients: { masterdata, vbase },
       vtex: { logger },
     } = ctx
 
