@@ -36,6 +36,7 @@ const checkConfig = async (ctx: Context) => {
 
   if (!settings?.schemaHash || settings.schemaHash !== currSchemaHash) {
     const updates: any = []
+
     logger.info({
       message: 'checkConfig-updatingSchema',
     })
@@ -64,7 +65,6 @@ const checkConfig = async (ctx: Context) => {
     })
 
     await Promise.all(updates).then(results => {
-      console.info("updates", updates)
       if (results.every(res => res === true)) {
         settings.schemaHash = currSchemaHash
         schemaChanged = true
