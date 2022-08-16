@@ -4,13 +4,10 @@ import {
 } from '../../mdSchema'
 import GraphQLError from '../../utils/GraphQLError'
 import checkConfig from '../config'
-import {
-  APP_NAME,
-  QUOTE_DATA_ENTITY,
-  QUOTE_FIELDS,
-  SCHEMA_VERSION,
-  routes,
-} from '../../constants'
+
+// import {
+//   APP_NAME,
+// } from '../../constants'
 
 export const B2B_SETTINGS_DOCUMENT_ID = 'b2bSettings'
 
@@ -27,12 +24,29 @@ const B2BSettings = {
     ctx: Context
   ) => {
     const {
-      clients: { masterdata, vbase },
+      clients: { masterdata },
       vtex: { logger },
     } = ctx
 
     // create schema if it doesn't exist
     await checkConfig(ctx)
+    // let settings = null
+    // let noSettingsFound = false
+
+    // try {
+    //   settings = await vbase.getJSON<Settings | null>(
+    //     APP_NAME,
+    //     'settings',
+    //     true
+    //   )
+    // } catch (error) {
+    //   logger.error({
+    //     error,
+    //     message: 'saveAppSettings-getAppSettingsError',
+    //   })
+
+    //   return null
+    // }
 
     try {
       const b2bSettings = {
