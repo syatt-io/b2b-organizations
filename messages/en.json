@@ -11,6 +11,7 @@
   "admin/b2b-organizations.invalid-schema": "B2B user creation is currently disabled because the MasterData CL (user profile) schema is invalid on this account. Please see the B2B Suite documentation (Frequently Asked Questions) for more information.",
   "admin/b2b-organizations.autocomplete-searching": "Search organization",
   "admin/b2b-organizations.organization-settings-admin.title": "Settings",
+  "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Custom Fields",
   "admin/b2b-organizations.organization-settings-admin.toast.update-success": "Settings updated successfully",
   "admin/b2b-organizations.organization-settings-admin.toast.update-failure": "Update failed, see console for details",
   "admin/b2b-organizations.organization-requests-admin.table.column-name.title": "Organization Name",

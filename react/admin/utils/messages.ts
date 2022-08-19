@@ -402,6 +402,9 @@ export const organizationSettingsMessages = defineMessages({
   tablePageTitle: {
     id: `${adminPrefix}organization-settings-admin.title`,
   },
+  customFieldsTitle: {
+    id: `${adminPrefix}organization-settings-admin.customFieldsTitle`,
+  },
   emptyState: {
     id: `${adminPrefix}organization-requests-admin.table.empty-state`,
   },
