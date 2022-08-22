@@ -8,13 +8,18 @@ import {
   Input,
 } from 'vtex.styleguide'
 
-import { CustomField } from './AutoApproveSettings'
+// import type { CustomField } from './AutoApproveSettings'
 import { organizationCustomFieldsMessages as customFieldsMessages } from './utils/messages'
 
 interface CustomFieldProps {
   index: number
   customFieldState: CustomField
   handleUpdate: (index: number, customField: CustomField) => void
+}
+
+interface CustomField {
+  name: string
+  type: string
 }
 
 const OrganizationCustomField: React.FC<CustomFieldProps> = ({

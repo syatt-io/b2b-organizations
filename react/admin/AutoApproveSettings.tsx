@@ -16,7 +16,7 @@ import GET_PAYMENT_TERMS from '../graphql/getPaymentTerms.graphql'
 import GET_PRICE_TABLES from '../graphql/getPriceTables.graphql'
 import GET_SALES_CHANNELS from '../graphql/getSalesChannels.graphql'
 import SAVE_B2BSETTINGS from '../graphql/saveB2BSettings.graphql'
-import OrganizationCustomFields from './OrganizationCustomFields'
+// import OrganizationCustomFields from './OrganizationCustomFields'
 import {
   organizationMessages as messages,
   organizationSettingsMessages as settingMessage,
@@ -30,10 +30,10 @@ export interface CellRendererProps<RowType> {
   updateCellMeasurements: () => void
 }
 
-export interface CustomField {
-  name: string
-  type: string
-}
+// export interface CustomField {
+//   name: string
+//   type: string
+// }
 
 export default function AutoApproveSettings() {
   const { formatMessage } = useIntl()
@@ -52,9 +52,9 @@ export default function AutoApproveSettings() {
 
   const [alertState, setAlertState] = useState(false)
 
-  const [customFieldsState, setCustomFieldsState] = useState(
-    [] as CustomField[]
-  )
+  // const [customFieldsState, setCustomFieldsState] = useState(
+  //   [] as CustomField[]
+  // )
 
   /**
    * Queries
@@ -75,7 +75,7 @@ export default function AutoApproveSettings() {
   const paymentTerm = b2bSettings?.getB2BSettings?.defaultPaymentTerms
   const autoApprove = b2bSettings?.getB2BSettings?.autoApprove
   const priceTables = b2bSettings?.getB2BSettings?.defaultPriceTables
-  const customFields = b2bSettings?.getB2BSettings?.defaultCustomFields
+  // const customFields = b2bSettings?.getB2BSettings?.defaultCustomFields
 
   const [saveB2BSettingsRequest] = useMutation(SAVE_B2BSETTINGS)
 
@@ -100,9 +100,12 @@ export default function AutoApproveSettings() {
       toastMessage(settingMessage.toastUpdateSuccess)
       setAutoApproveState(autoApprove)
       setPriceTablesState(priceTables)
-      setCustomFieldsState(customFields)
+      // setCustomFieldsState(customFields)
 
-      const selectedPaymentTerms = paymentTerm?.map((paymentTerms: any) => {
+      // eslint-disable-next-line no-console
+      console.log(paymentTerm, 'paymentTerm')
+
+      const selectedPaymentTerms = paymentTerm.map((paymentTerms: any) => {
         return { name: paymentTerms.name, paymentTermId: paymentTerms.id }
       })
 
@@ -159,7 +162,7 @@ export default function AutoApproveSettings() {
   }
 
   const saveB2BSettings = () => {
-    const selectedPaymentTerms = paymentTermsState?.map((paymentTerms: any) => {
+    const selectedPaymentTerms = paymentTermsState.map((paymentTerms: any) => {
       return { name: paymentTerms.name, id: paymentTerms.paymentTermId }
     })
 
@@ -167,7 +170,7 @@ export default function AutoApproveSettings() {
       autoApprove: autoApproveState,
       defaultPaymentTerms: selectedPaymentTerms,
       defaultPriceTables: priceTablesState,
-      defaultCustomFields: customFieldsState,
+      // defaultCustomFields: customFieldsState,
     }
 
     saveB2BSettingsRequest({
@@ -301,9 +304,9 @@ export default function AutoApproveSettings() {
     setPaymentTermsState(newPaymentTerms)
   }
 
-  const handleUpdateCustomFields = (fieldNames: CustomField[]) => {
-    setCustomFieldsState(fieldNames)
-  }
+  // const handleUpdateCustomFields = (fieldNames: CustomField[]) => {
+  //   setCustomFieldsState(fieldNames)
+  // }
 
   return (
     <>
@@ -379,10 +382,10 @@ export default function AutoApproveSettings() {
       <div className="mv7">
         <Divider />
       </div>
-      <OrganizationCustomFields
+      {/* <OrganizationCustomFields
         updateCustomFields={handleUpdateCustomFields}
         customFieldsState={customFieldsState}
-      />
+      /> */}
       <div className="absolute">
         {alertState ? (
           <Alert
