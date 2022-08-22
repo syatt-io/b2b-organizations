@@ -36,11 +36,9 @@ const checkConfig = async (ctx: Context) => {
 
   if (!settings?.schemaHash || settings.schemaHash !== currSchemaHash) {
     const updates: any = []
-
     logger.info({
       message: 'checkConfig-updatingSchema',
     })
-
     schemas.forEach(schema => {
       updates.push(
         masterdata
