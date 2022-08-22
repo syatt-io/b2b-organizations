@@ -8,13 +8,11 @@ import {
   ORGANIZATION_REQUEST_SCHEMA_VERSION,
   ORGANIZATION_SCHEMA_VERSION,
 } from '../../mdSchema'
-import {
-  ORGANIZATION_REQUEST_STATUSES,
-  ORGANIZATION_STATUSES,
-} from '../../utils/constants'
 import GraphQLError, { getErrorMessage } from '../../utils/GraphQLError'
 import checkConfig from '../config'
 import message from '../message'
+import B2BSettings from '../Queries/Settings'
+import { updateOrganizationRequest } from '../../utils/updateOrganizationRequest'
 import B2BSettings from '../Queries/Settings'
 import { updateOrganizationRequest } from '../../utils/updateOrganizationRequest'
 
@@ -41,12 +39,12 @@ const Organizations = {
       const organization = {
         name,
         ...(tradeName && { tradeName }),
-        collections: [],
-        costCenters: [],
+        status: 'active',
         created: now,
+        collections: [],
         paymentTerms: [],
         priceTables: [],
-        status: ORGANIZATION_STATUSES.ACTIVE,
+        costCenters: [],
       }
 
       const createOrganizationResult = await masterdata.createDocument({
@@ -59,8 +57,8 @@ const Organizations = {
 
       // create cost center
       const costCenter = {
-        addresses: [defaultCostCenter.address],
         name: defaultCostCenter.name,
+        addresses: [defaultCostCenter.address],
         organization: organizationId,
         ...(defaultCostCenter.phoneNumber && {
           phoneNumber: defaultCostCenter.phoneNumber,
@@ -70,7 +68,7 @@ const Organizations = {
         }),
       }
 
-      const costCenterResult = await masterdata.createDocument({
+      await masterdata.createDocument({
         dataEntity: COST_CENTER_DATA_ENTITY,
         fields: costCenter,
         schema: COST_CENTER_SCHEMA_VERSION,
@@ -79,17 +77,16 @@ const Organizations = {
       message({ storefrontPermissions, logger, mail }).organizationCreated(name)
 
       return {
-        costCenterId: costCenterResult.DocumentId,
         href: createOrganizationResult.Href,
         id: createOrganizationResult.DocumentId,
         status: '',
       }
-    } catch (error) {
+    } catch (e) {
       logger.error({
-        error,
         message: 'createOrganization-error',
+        error: e,
       })
-      throw new GraphQLError(getErrorMessage(error))
+      throw new GraphQLError(getErrorMessage(e))
     }
   },
   createOrganizationRequest: async (
@@ -100,7 +97,7 @@ const Organizations = {
     ctx: Context
   ) => {
     const {
-      clients: { masterdata, mail, storefrontPermissions },
+      clients: { masterdata, mail, storefrontPermissions, mail, storefrontPermissions },
       vtex: { logger },
     } = ctx
 
@@ -111,24 +108,30 @@ const Organizations = {
       .searchDocumentsWithPaginationInfo({
         dataEntity: ORGANIZATION_REQUEST_DATA_ENTITY,
         fields: ORGANIZATION_REQUEST_FIELDS,
+        schema: ORGANIZATION_REQUEST_SCHEMA_VERSION,
+        sort: `created DESC`,
+        where: `b2bCustomerAdmin.email=${b2bCustomerAdmin.email} AND (status=pending OR status=approved)`,
         pagination: {
           page: 1,
           pageSize: 1,
         },
-        schema: ORGANIZATION_REQUEST_SCHEMA_VERSION,
-        sort: `created DESC`,
-        where: `b2bCustomerAdmin.email=${b2bCustomerAdmin.email} AND (status=pending OR status=approved)`,
       })
       .then((res: any) => {
         return res.data[0]?.status ?? ''
       })
       .catch(() => '')
 
-    if (duplicate) {
-      return { href: '', id: '', status: duplicate }
-    }
+    if (duplicate !== '') return { href: '', id: '', status: duplicate }
 
     const now = new Date()
+
+    const settings = await B2BSettings.getB2BSettings(undefined, undefined, ctx)
+
+    let status = 'pending'
+
+    if (settings?.autoApprove) {
+      status = 'approved'
+    }
 
     const settings = await B2BSettings.getB2BSettings(undefined, undefined, ctx)
 
@@ -144,6 +147,8 @@ const Organizations = {
       b2bCustomerAdmin,
       status,
       notes: '',
+      status,
+      notes: '',
       created: now,
       defaultCostCenter,
       notes: '',
@@ -151,7 +156,7 @@ const Organizations = {
     }
 
     try {
-      const result = (await masterdata.createDocument({
+      const result = ((await masterdata.createDocument({
         dataEntity: ORGANIZATION_REQUEST_DATA_ENTITY,
         fields: organizationRequest,
         schema: ORGANIZATION_REQUEST_SCHEMA_VERSION,
@@ -177,15 +182,14 @@ const Organizations = {
       }
 
       return { href: result.Href, id: result.DocumentId, status: duplicate }
-    } catch (error) {
+    } catch (e) {
       logger.error({
-        error,
         message: 'createOrganizationRequest-error',
+        error: e,
       })
-      throw new GraphQLError(getErrorMessage(error))
+      throw new GraphQLError(getErrorMessage(e))
     }
   },
-
   deleteOrganizationRequest: async (
     _: void,
     { id }: { id: string },
