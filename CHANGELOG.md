@@ -4,10 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
-
 ## [Unreleased]
-### Added
- - Allow users to set auto approval for new organization with a new setting fields
+
+## [0.19.6] - 2022-08-08
+
+### Changed
+
+- App Review: Added logging, fixed security issues and code cleanup
+
 ## [0.19.5] - 2022-07-19
 
 ### Fixed
