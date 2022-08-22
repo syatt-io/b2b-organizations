@@ -1,39 +1,32 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { useMutation, useQuery } from 'react-apollo'
+import React, { useEffect, useState, useContext } from 'react'
 import { useIntl } from 'react-intl'
+import { useQuery, useMutation } from 'react-apollo'
 import {
   Alert,
-  Button,
-  Checkbox,
-  Divider,
-  IconCheck,
   Table,
+  IconCheck,
+  Button,
   ToastContext,
+  Checkbox,
 } from 'vtex.styleguide'
 
-import GET_B2BSETTINGS from '../graphql/getB2BSettings.graphql'
-import GET_PAYMENT_TERMS from '../graphql/getPaymentTerms.graphql'
-import GET_PRICE_TABLES from '../graphql/getPriceTables.graphql'
-import GET_SALES_CHANNELS from '../graphql/getSalesChannels.graphql'
-import SAVE_B2BSETTINGS from '../graphql/saveB2BSettings.graphql'
-// import OrganizationCustomFields from './OrganizationCustomFields'
+import type { PriceTable } from './OrganizationDetails/OrganizationDetailsPriceTables'
+import type { PaymentTerm } from './OrganizationDetails/OrganizationDetailsPayTerms'
 import {
   organizationMessages as messages,
   organizationSettingsMessages as settingMessage,
 } from './utils/messages'
-import type { PriceTable } from './OrganizationDetails/OrganizationDetailsPriceTables'
-import type { PaymentTerm } from './OrganizationDetails/OrganizationDetailsPayTerms'
+import GET_PRICE_TABLES from '../graphql/getPriceTables.graphql'
+import GET_SALES_CHANNELS from '../graphql/getSalesChannels.graphql'
+import GET_PAYMENT_TERMS from '../graphql/getPaymentTerms.graphql'
+import GET_B2BSETTINGS from '../graphql/getB2BSettings.graphql'
+import SAVE_B2BSETTINGS from '../graphql/saveB2BSettings.graphql'
 
 export interface CellRendererProps<RowType> {
   cellData: unknown
   rowData: RowType
   updateCellMeasurements: () => void
 }
-
-// export interface CustomField {
-//   name: string
-//   type: string
-// }
 
 export default function AutoApproveSettings() {
   const { formatMessage } = useIntl()
@@ -51,10 +44,6 @@ export default function AutoApproveSettings() {
   const [autoApproveState, setAutoApproveState] = useState(false)
 
   const [alertState, setAlertState] = useState(false)
-
-  // const [customFieldsState, setCustomFieldsState] = useState(
-  //   [] as CustomField[]
-  // )
 
   /**
    * Queries
@@ -75,7 +64,6 @@ export default function AutoApproveSettings() {
   const paymentTerm = b2bSettings?.getB2BSettings?.defaultPaymentTerms
   const autoApprove = b2bSettings?.getB2BSettings?.autoApprove
   const priceTables = b2bSettings?.getB2BSettings?.defaultPriceTables
-  // const customFields = b2bSettings?.getB2BSettings?.defaultCustomFields
 
   const [saveB2BSettingsRequest] = useMutation(SAVE_B2BSETTINGS)
 
@@ -100,12 +88,7 @@ export default function AutoApproveSettings() {
       toastMessage(settingMessage.toastUpdateSuccess)
       setAutoApproveState(autoApprove)
       setPriceTablesState(priceTables)
-      // setCustomFieldsState(customFields)
-
-      // eslint-disable-next-line no-console
-      console.log(paymentTerm, 'paymentTerm')
-
-      const selectedPaymentTerms = paymentTerm.map((paymentTerms: any) => {
+      const selectedPaymentTerms = paymentTerm?.map((paymentTerms: any) => {
         return { name: paymentTerms.name, paymentTermId: paymentTerms.id }
       })
 
@@ -162,7 +145,7 @@ export default function AutoApproveSettings() {
   }
 
   const saveB2BSettings = () => {
-    const selectedPaymentTerms = paymentTermsState.map((paymentTerms: any) => {
+    const selectedPaymentTerms = paymentTermsState?.map((paymentTerms: any) => {
       return { name: paymentTerms.name, id: paymentTerms.paymentTermId }
     })
 
@@ -170,7 +153,6 @@ export default function AutoApproveSettings() {
       autoApprove: autoApproveState,
       defaultPaymentTerms: selectedPaymentTerms,
       defaultPriceTables: priceTablesState,
-      // defaultCustomFields: customFieldsState,
     }
 
     saveB2BSettingsRequest({
@@ -304,17 +286,13 @@ export default function AutoApproveSettings() {
     setPaymentTermsState(newPaymentTerms)
   }
 
-  // const handleUpdateCustomFields = (fieldNames: CustomField[]) => {
-  //   setCustomFieldsState(fieldNames)
-  // }
-
   return (
     <>
       <div className="flex justify-between items-center">
         <Checkbox
           checked={autoApproveState}
           id="option-1"
-          label="Auto approve new organizations"
+          label={formatMessage(settingMessage.autoApprove)}
           name="default-checkbox-group"
           onChange={() => setAutoApproveState(!autoApproveState)}
           value="option-1"
@@ -325,15 +303,14 @@ export default function AutoApproveSettings() {
             saveB2BSettings()
           }}
         >
-          Save Settings
+          {formatMessage(settingMessage.saveSettings)}
         </Button>
-      </div>
-      <div className="mv7">
-        <Divider />
       </div>
       <div className="flex w-100">
         <div style={{ marginRight: '4rem' }}>
-          <h4 className="mt6">Selected Price Terms</h4>
+          <h4 className="mt6">
+            {formatMessage(settingMessage.selectedPaymentsTableTitle)}
+          </h4>
           <Table
             fullWidth
             schema={getSchema()}
@@ -342,7 +319,9 @@ export default function AutoApproveSettings() {
           />
         </div>
         <div>
-          <h4 className="mt6">Available Payment terms</h4>
+          <h4 className="mt6">
+            {formatMessage(settingMessage.availablePaymentsTableTitle)}
+          </h4>
           <Table
             fullWidth
             schema={getSchema('availablePayments')}
@@ -353,7 +332,9 @@ export default function AutoApproveSettings() {
       </div>
       <div className="flex w-100">
         <div style={{ marginRight: '4rem' }}>
-          <h4 className="mt6">Selected Price tables</h4>
+          <h4 className="mt6">
+            {formatMessage(settingMessage.selectedPriceTablesTitle)}
+          </h4>
           <Table
             fullWidth
             schema={getSchema()}
@@ -370,7 +351,9 @@ export default function AutoApproveSettings() {
           />
         </div>
         <div>
-          <h4 className="mt6">Available Price tables</h4>
+          <h4 className="mt6">
+            {formatMessage(settingMessage.availablePriceTablesTitle)}
+          </h4>
           <Table
             fullWidth
             schema={getSchema('availablePriceTables')}
@@ -379,13 +362,6 @@ export default function AutoApproveSettings() {
           />
         </div>
       </div>
-      <div className="mv7">
-        <Divider />
-      </div>
-      {/* <OrganizationCustomFields
-        updateCustomFields={handleUpdateCustomFields}
-        customFieldsState={customFieldsState}
-      /> */}
       <div className="absolute">
         {alertState ? (
           <Alert
@@ -393,7 +369,7 @@ export default function AutoApproveSettings() {
             onClose={() => setAlertState(false)}
             autoClose={5000}
           >
-            Settings were updated successfully.
+            {formatMessage(settingMessage.toastUpdateSuccess)}
           </Alert>
         ) : null}
       </div>

@@ -366,38 +366,11 @@ export const organizationRequestMessages = defineMessages({
 })
 
 export const organizationSettingsMessages = defineMessages({
-  toastCreatedSuccess: {
-    id: `${adminPrefix}organization-request-details.toast.created-success`,
-  },
   toastUpdateSuccess: {
     id: `${adminPrefix}organization-settings-admin.toast.update-success`,
   },
   toastUpdateFailure: {
     id: `${adminPrefix}organization-settings-admin.toast.update-failure`,
-  },
-  detailsPageTitle: {
-    id: `${adminPrefix}organization-request-details.title`,
-  },
-  back: {
-    id: `${adminPrefix}back`,
-  },
-  addNote: {
-    id: `${adminPrefix}organization-request-details.add-note.label`,
-  },
-  columnName: {
-    id: `${adminPrefix}organization-requests-admin.table.column-name.title`,
-  },
-  columnAdmin: {
-    id: `${adminPrefix}organization-requests-admin.table.column-admin.title`,
-  },
-  columnStatus: {
-    id: `${adminPrefix}organization-requests-admin.table.column-status.title`,
-  },
-  columnCreated: {
-    id: `${adminPrefix}organization-requests-admin.table.column-created.title`,
-  },
-  view: {
-    id: `${adminPrefix}organization-requests-admin.table.view.label`,
   },
   tablePageTitle: {
     id: `${adminPrefix}organization-settings-admin.title`,
@@ -408,29 +381,23 @@ export const organizationSettingsMessages = defineMessages({
   emptyState: {
     id: `${adminPrefix}organization-requests-admin.table.empty-state`,
   },
-  showRows: {
-    id: `${adminPrefix}showRows`,
+  autoApprove: {
+    id: `${adminPrefix}organization-settings-admin.autoApprove`,
   },
-  of: {
-    id: `${adminPrefix}of`,
+  saveSettings: {
+    id: `${adminPrefix}organization-settings-admin.saveSettings`,
   },
-  searchPlaceholder: {
-    id: `${adminPrefix}organization-requests-admin.table.search.placeholder`,
+  selectedPaymentsTableTitle: {
+    id: `${adminPrefix}organization-settings-admin.selectedPaymentsTableTitle`,
   },
-  clearFilters: {
-    id: `${adminPrefix}organization-requests-admin.table.clearFilters.label`,
+  availablePaymentsTableTitle: {
+    id: `${adminPrefix}organization-settings-admin.availablePaymentsTableTitle`,
   },
-  statusFilter: {
-    id: `${adminPrefix}organization-requests-admin.table.statusFilter.label`,
+  selectedPriceTablesTitle: {
+    id: `${adminPrefix}organization-settings-admin.selectedPriceTablesTitle`,
   },
-  filtersAll: {
-    id: `${adminPrefix}organization-requests-admin.table.filters.all`,
-  },
-  filtersNone: {
-    id: `${adminPrefix}organization-requests-admin.table.filters.none`,
-  },
-  filtersIncludes: {
-    id: `${adminPrefix}organization-requests-admin.table.filters.includes`,
+  availablePriceTablesTitle: {
+    id: `${adminPrefix}organization-settings-admin.availablePriceTablesTitle`,
   },
 })
 
