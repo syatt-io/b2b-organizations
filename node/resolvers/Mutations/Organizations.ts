@@ -130,11 +130,7 @@ const Organizations = {
 
     const now = new Date()
 
-    const settings = (await B2BSettings.getB2BSettings(
-      undefined,
-      undefined,
-      ctx
-    )) as B2BSetting
+    const settings = await B2BSettings.getB2BSettings(undefined, undefined, ctx)
 
     let status = 'pending'
 

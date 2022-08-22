@@ -36,6 +36,7 @@ const checkConfig = async (ctx: Context) => {
 
   if (!settings?.schemaHash || settings.schemaHash !== currSchemaHash) {
     const updates: any = []
+
     logger.info({
       message: 'checkConfig-updatingSchema',
     })
@@ -62,19 +63,13 @@ const checkConfig = async (ctx: Context) => {
           })
       )
     })
-    try {
-      await Promise.all(updates).then(results => {
-        if (results.every(res => res === true)) {
-          settings.schemaHash = currSchemaHash
-          schemaChanged = true
-        }
-      })
-    } catch (error) {
-      logger.error({
-        error,
-        message: 'checkConfig-createOrUpdateSchemaError',
-      })
-    }
+
+    await Promise.all(updates).then(results => {
+      if (results.every(res => res === true)) {
+        settings.schemaHash = currSchemaHash
+        schemaChanged = true
+      }
+    })
   }
 
   if (!settings?.templateHash || settings.templateHash !== currTemplateHash) {
