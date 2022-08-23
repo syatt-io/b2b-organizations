@@ -19,7 +19,7 @@ interface CustomFieldProps {
 
 interface CustomField {
   name: string
-  type: string
+  type: 'text'
 }
 
 const OrganizationCustomField: React.FC<CustomFieldProps> = ({
