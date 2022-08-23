@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import {
-  // FormattedMessage
-  useIntl,
-} from 'react-intl'
-import {
-  // Button
-  Input,
-} from 'vtex.styleguide'
+import { useIntl } from 'react-intl'
+import { Input } from 'vtex.styleguide'
 
-// import type { CustomField } from './AutoApproveSettings'
 import { organizationCustomFieldsMessages as customFieldsMessages } from './utils/messages'
 
 interface CustomFieldProps {
@@ -19,7 +12,7 @@ interface CustomFieldProps {
 
 interface CustomField {
   name: string
-  type: string
+  type: 'text'
 }
 
 const OrganizationCustomField: React.FC<CustomFieldProps> = ({
