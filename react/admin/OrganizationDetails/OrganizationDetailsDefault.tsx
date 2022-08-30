@@ -4,6 +4,8 @@ import React, { Fragment } from 'react'
 import type { FunctionComponent } from 'react'
 
 import { organizationMessages as messages } from '../utils/messages'
+import type { CustomField } from '../OrganizationCustomFields'
+import OrganizationCustomField from '../OrganizationCustomField'
 
 interface Props {
   organizationNameState: string
@@ -13,6 +15,9 @@ interface Props {
   statusState: string
   setStatusState: (value: string) => void
   data: any
+  // TODO: Add type
+  customFieldsState: CustomField[]
+  setCustomFieldsState: (value: CustomField[]) => void
 }
 
 const OrganizationDetailsDefault: FunctionComponent<Props> = ({
@@ -23,6 +28,9 @@ const OrganizationDetailsDefault: FunctionComponent<Props> = ({
   statusState,
   setStatusState,
   data,
+  // defaultCustomFields,
+  customFieldsState,
+  setCustomFieldsState,
 }) => {
   /**
    * Hooks
@@ -46,6 +54,16 @@ const OrganizationDetailsDefault: FunctionComponent<Props> = ({
       label: formatMessage(messages.statusInactive),
     },
   ]
+
+  const handleCustomFieldsUpdate = (
+    index: number,
+    customField: CustomField
+  ) => {
+    const newCustomFields = [...customFieldsState]
+
+    newCustomFields[index] = customField
+    setCustomFieldsState(newCustomFields)
+  }
 
   return (
     <Fragment>
@@ -105,6 +123,19 @@ const OrganizationDetailsDefault: FunctionComponent<Props> = ({
             year: 'numeric',
           })}
         </div>
+      </PageBlock>
+      <PageBlock>
+        <h4 className="t-heading-5 mb0 pt3">Custom Fields</h4>
+        {customFieldsState?.map((customField: CustomField, index: number) => (
+          <OrganizationCustomField
+            key={`${customField.name}` + `${index}`}
+            fieldLabel={customField.name}
+            fieldValue={customField.value ?? ''}
+            fieldType={customField.type}
+            index={index}
+            handleUpdate={handleCustomFieldsUpdate}
+          />
+        ))}
       </PageBlock>
     </Fragment>
   )

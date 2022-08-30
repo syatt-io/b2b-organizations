@@ -20,6 +20,7 @@ import { HashRouter, Route, Switch } from 'react-router-dom'
 import { organizationMessages as messages } from './utils/messages'
 import GET_ORGANIZATION from '../graphql/getOrganization.graphql'
 import UPDATE_ORGANIZATION from '../graphql/updateOrganization.graphql'
+import GET_B2B_CUSTOM_FIELDS from '../graphql/getB2BCustomFields.graphql'
 import OrganizationDetailsCostCenters from './OrganizationDetails/OrganizationDetailsCostCenters'
 import type { Collection } from './OrganizationDetails/OrganizationDetailsCollections'
 import OrganizationDetailsCollections from './OrganizationDetails/OrganizationDetailsCollections'
@@ -30,6 +31,7 @@ import OrganizationDetailsPriceTables from './OrganizationDetails/OrganizationDe
 import OrganizationDetailsUsers from './OrganizationDetails/OrganizationDetailsUsers'
 import OrganizationDetailsDefault from './OrganizationDetails/OrganizationDetailsDefault'
 import useHashRouter from './OrganizationDetails/useHashRouter'
+import type { CustomField } from './OrganizationCustomFields'
 
 export interface CellRendererProps<RowType> {
   cellData: unknown
@@ -71,10 +73,18 @@ const OrganizationDetails: FunctionComponent = () => {
 
   const [loadingState, setLoadingState] = useState(false)
 
+  const [customFieldsState, setCustomFieldsState] = useState<CustomField[]>([])
+
   /**
    * Queries
    */
   const { data, loading, refetch } = useQuery(GET_ORGANIZATION, {
+    variables: { id: params?.id },
+    skip: !params?.id,
+    ssr: false,
+  })
+
+  const { data: defaultCustomFieldsData } = useQuery(GET_B2B_CUSTOM_FIELDS, {
     variables: { id: params?.id },
     skip: !params?.id,
     ssr: false,
@@ -115,6 +125,7 @@ const OrganizationDetails: FunctionComponent = () => {
       collections,
       paymentTerms,
       priceTables: priceTablesState,
+      customFields: customFieldsState,
     }
 
     updateOrganization({ variables })
@@ -208,6 +219,20 @@ const OrganizationDetails: FunctionComponent = () => {
     }
   }
 
+  // combines defaultCustomFields and customFields from the org to show data
+  const joinById = (...lists: any[]) =>
+    Object.values(
+      lists.reduce((idx, list) => {
+        list.forEach((record: { name: string }) => {
+          if (idx[record.name])
+            idx[record.name] = Object.assign(idx[record.name], record)
+          else idx[record.name] = record
+        })
+
+        return idx
+      }, {})
+    )
+
   /**
    * Effects
    */
@@ -236,6 +261,18 @@ const OrganizationDetails: FunctionComponent = () => {
     setPriceTablesState(data.getOrganizationById.priceTables ?? [])
   }, [data])
 
+  useEffect(() => {
+    const customFieldsToShow = joinById(
+      defaultCustomFieldsData?.getB2BSettings.defaultCustomFields || [],
+      data?.getOrganizationById?.customFields || []
+    ) as CustomField[]
+
+    setCustomFieldsState(customFieldsToShow)
+  }, [
+    data?.getOrganizationById?.customFields &&
+      defaultCustomFieldsData?.getB2BSettings.defaultCustomFields,
+  ])
+
   /**
    * Data Variables
    */
@@ -253,6 +290,8 @@ const OrganizationDetails: FunctionComponent = () => {
           statusState={statusState}
           setStatusState={setStatusState}
           data={data}
+          customFieldsState={customFieldsState}
+          setCustomFieldsState={setCustomFieldsState}
         />
       ),
     },

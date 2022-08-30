@@ -1,42 +1,34 @@
-import React, { useEffect, useState } from 'react'
-import { useIntl } from 'react-intl'
+import React from 'react'
+// import { useIntl } from 'react-intl'
 import { Input } from 'vtex.styleguide'
 
-import { organizationCustomFieldsMessages as customFieldsMessages } from './utils/messages'
+import type { CustomField } from './OrganizationCustomFields'
 
 interface CustomFieldProps {
   index: number
-  customFieldState: CustomField
   handleUpdate: (index: number, customField: CustomField) => void
-}
-
-interface CustomField {
-  name: string
-  type: 'text'
+  fieldLabel: string
+  fieldValue: string
+  fieldType: 'text'
+  isDefaultCustomField?: boolean
 }
 
 const OrganizationCustomField: React.FC<CustomFieldProps> = ({
   index,
   handleUpdate,
-  customFieldState,
+  fieldLabel,
+  fieldValue,
+  fieldType,
+  isDefaultCustomField,
 }) => {
-  const { formatMessage } = useIntl()
-  const [customField, setCustomField] = useState<CustomField>({
-    name: '',
-    type: 'text',
-  })
-
-  useEffect(() => {
-    setCustomField(customFieldState)
-  }, [customFieldState])
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const updatedCustomField = {
-      ...customField,
-      name: e.target.value,
+      type: fieldType,
+      // name: e.target.value,
+      name: isDefaultCustomField ? e.target.value : fieldLabel,
+      value: e.target.value,
     }
 
-    setCustomField(updatedCustomField)
     handleUpdate(index, updatedCustomField)
   }
 
@@ -45,13 +37,10 @@ const OrganizationCustomField: React.FC<CustomFieldProps> = ({
       <Input
         autocomplete="off"
         size="large"
-        label={`${formatMessage(
-          customFieldsMessages.customFieldsTitleSingular
-        )} ${index + 1}`}
-        value={customField.name}
+        label={fieldLabel}
+        value={fieldValue}
+        type={fieldType}
         onChange={handleChange}
-        type={customField.type}
-        required
       />
     </div>
   )

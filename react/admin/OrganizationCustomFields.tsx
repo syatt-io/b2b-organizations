@@ -20,6 +20,7 @@ interface CustomFieldsProps {
 export interface CustomField {
   name: string
   type: 'text'
+  value?: string
 }
 
 const CustomFields: React.FC<CustomFieldsProps> = () => {
@@ -142,8 +143,13 @@ const CustomFields: React.FC<CustomFieldsProps> = () => {
           <OrganizationCustomField
             key={index}
             index={index}
-            customFieldState={customField}
+            fieldLabel={`${formatMessage(
+              customFieldsMessages.customFieldsTitleSingular
+            )} ${index + 1}`}
+            fieldValue={customField.name}
+            fieldType={customField.type}
             handleUpdate={handleUpdate}
+            isDefaultCustomField={true}
           />
         ))
       )}

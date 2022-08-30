@@ -1,0 +1,8 @@
+query GetB2BCustomFields {
+  getB2BSettings {
+    defaultCustomFields {
+      name
+      type
+    }
+  }
+}

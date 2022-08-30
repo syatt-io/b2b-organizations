@@ -6,6 +6,7 @@ mutation UpdateOrganization(
   $collections: [CollectionInput]
   $paymentTerms: [PaymentTermInput]
   $priceTables: [String]
+  $customFields: [CustomFieldInput]
 ) {
   updateOrganization(
     id: $id
@@ -15,6 +16,7 @@ mutation UpdateOrganization(
     collections: $collections
     paymentTerms: $paymentTerms
     priceTables: $priceTables
+    customFields: $customFields
   ) @context(provider: "vtex.b2b-organizations-graphql") {
     id
     status
