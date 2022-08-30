@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useMutation, useQuery } from 'react-apollo'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Button, Spinner } from 'vtex.styleguide'
