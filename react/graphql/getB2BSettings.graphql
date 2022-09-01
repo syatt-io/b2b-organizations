@@ -6,7 +6,11 @@ query GetB2BSettings {
       id
       name
     }
-    defaultCustomFields {
+    organizationCustomFields {
+      name
+      type
+    }
+    costCenterCustomFields {
       name
       type
     }

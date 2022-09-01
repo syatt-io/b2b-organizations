@@ -1,8 +1,7 @@
 import React from 'react'
-// import { useIntl } from 'react-intl'
 import { Input } from 'vtex.styleguide'
 
-import type { CustomField } from './OrganizationCustomFields'
+import type { CustomField } from './CustomFields'
 
 interface CustomFieldProps {
   index: number
@@ -26,7 +25,7 @@ const OrganizationCustomField: React.FC<CustomFieldProps> = ({
       type: fieldType,
       // name: e.target.value,
       name: isDefaultCustomField ? e.target.value : fieldLabel,
-      value: e.target.value,
+      ...(!isDefaultCustomField && { value: e.target.value }),
     }
 
     handleUpdate(index, updatedCustomField)

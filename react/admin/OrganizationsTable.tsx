@@ -12,7 +12,7 @@ import OrganizationsList from './OrganizationsList'
 import OrganizationRequestsTable from './OrganizationRequestsTable'
 import useHashRouter from './OrganizationDetails/useHashRouter'
 import AutoApproveSettings from './AutoApproveSettings'
-import OrganizationCustomFields from './OrganizationCustomFields'
+import OrganizationCustomFields from './CustomFields'
 import CheckCustomerSchema from '../components/CheckCustomerSchema'
 
 const SESSION_STORAGE_KEY = 'organization-tab'

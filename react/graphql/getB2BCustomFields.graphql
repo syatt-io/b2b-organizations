@@ -1,6 +1,10 @@
 query GetB2BCustomFields {
   getB2BSettings {
-    defaultCustomFields {
+    organizationCustomFields {
+      name
+      type
+    }
+    costCenterCustomFields {
       name
       type
     }

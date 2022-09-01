@@ -4,8 +4,8 @@ import React, { Fragment } from 'react'
 import type { FunctionComponent } from 'react'
 
 import { organizationMessages as messages } from '../utils/messages'
-import type { CustomField } from '../OrganizationCustomFields'
-import OrganizationCustomField from '../OrganizationCustomField'
+import type { CustomField } from '../CustomFields'
+import CustomFieldInput from '../CustomField'
 
 interface Props {
   organizationNameState: string
@@ -15,7 +15,6 @@ interface Props {
   statusState: string
   setStatusState: (value: string) => void
   data: any
-  // TODO: Add type
   customFieldsState: CustomField[]
   setCustomFieldsState: (value: CustomField[]) => void
 }
@@ -28,7 +27,6 @@ const OrganizationDetailsDefault: FunctionComponent<Props> = ({
   statusState,
   setStatusState,
   data,
-  // defaultCustomFields,
   customFieldsState,
   setCustomFieldsState,
 }) => {
@@ -125,9 +123,11 @@ const OrganizationDetailsDefault: FunctionComponent<Props> = ({
         </div>
       </PageBlock>
       <PageBlock>
-        <h4 className="t-heading-5 mb0 pt3">Custom Fields</h4>
+        <h4 className="t-heading-5 mb0 pt3">
+          <FormattedMessage id="admin/b2b-organizations.custom-fields.title" />
+        </h4>
         {customFieldsState?.map((customField: CustomField, index: number) => (
-          <OrganizationCustomField
+          <CustomFieldInput
             key={`${customField.name}` + `${index}`}
             fieldLabel={customField.name}
             fieldValue={customField.value ?? ''}

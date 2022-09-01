@@ -237,6 +237,9 @@ export const organizationMessages = defineMessages({
   defaultCostCenterName: {
     id: `${adminPrefix}organizations-admin.add-organization.default-costCenter-name`,
   },
+  organizationsTitle: {
+    id: `${adminPrefix}organizations.navigation.label`,
+  },
 })
 
 export const costCenterMessages = defineMessages({

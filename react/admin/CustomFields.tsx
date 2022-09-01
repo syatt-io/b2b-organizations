@@ -2,20 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { useMutation, useQuery } from 'react-apollo'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Button, Spinner } from 'vtex.styleguide'
-import { useToast } from '@vtex/admin-ui'
+import { useToast, Dropdown, useDropdownState } from '@vtex/admin-ui'
 
 import GET_B2BSETTINGS from '../graphql/getB2BSettings.graphql'
 import SAVE_B2BSETTINGS from '../graphql/saveB2BSettings.graphql'
-import OrganizationCustomField from './OrganizationCustomField'
+import OrganizationCustomField from './CustomField'
 import {
   organizationCustomFieldsMessages as customFieldsMessages,
   organizationSettingsMessages as settingMessage,
+  organizationMessages as messages,
 } from './utils/messages'
-
-interface CustomFieldsProps {
-  updateCustomFields: (customFields: CustomField[]) => void
-  customFieldsState: CustomField[]
-}
 
 export interface CustomField {
   name: string
@@ -23,7 +19,7 @@ export interface CustomField {
   value?: string
 }
 
-const CustomFields: React.FC<CustomFieldsProps> = () => {
+const CustomFields: React.FC = () => {
   /**
    * Hooks
    */
@@ -34,7 +30,31 @@ const CustomFields: React.FC<CustomFieldsProps> = () => {
    * States
    */
 
-  const [customFields, setCustomFields] = useState<CustomField[]>([])
+  const [activeCustomFields, setActiveCustomFields] = useState<CustomField[]>(
+    []
+  )
+
+  const [organizationCustomFields, setOrganizationCustomFields] = useState<
+    CustomField[]
+  >([])
+
+  const [costCenterCustomFields, setCostCenterCustomFields] = useState<
+    CustomField[]
+  >([])
+
+  const customFieldsLocation = [
+    formatMessage(messages.organizationsTitle),
+    formatMessage(messages.costCenters),
+  ]
+
+  const customFieldsDropdownState = useDropdownState({
+    items: customFieldsLocation,
+    initialSelectedItem: formatMessage(messages.organizationsTitle),
+  })
+
+  const isOrgActive =
+    customFieldsDropdownState.selectedItem ===
+    formatMessage(messages.organizationsTitle)
 
   /**
    * Queries
@@ -69,7 +89,8 @@ const CustomFields: React.FC<CustomFieldsProps> = () => {
 
   const saveB2BSettings = () => {
     const B2BSettingsInput = {
-      defaultCustomFields: customFields,
+      organizationCustomFields,
+      costCenterCustomFields,
     }
 
     saveB2BSettingsRequest({
@@ -86,42 +107,81 @@ const CustomFields: React.FC<CustomFieldsProps> = () => {
   }
 
   const addCustomField = () => {
-    setCustomFields([...customFields, { name: '', type: 'text' }])
+    setActiveCustomFields([...activeCustomFields, { name: '', type: 'text' }])
   }
 
   const removeCustomField = () => {
-    const customFieldsWithoutLastItem = customFields.slice(
+    const customFieldsWithoutLastItem = activeCustomFields.slice(
       0,
-      customFields.length - 1
+      activeCustomFields.length - 1
     )
 
-    setCustomFields(customFieldsWithoutLastItem)
+    setActiveCustomFields(customFieldsWithoutLastItem)
+    if (isOrgActive) {
+      setOrganizationCustomFields(customFieldsWithoutLastItem)
+    } else {
+      setCostCenterCustomFields(customFieldsWithoutLastItem)
+    }
   }
 
   const handleUpdate = (index: number, customField: CustomField) => {
-    // populate customFields array with values from inputs
-    const newCustomFields = [...customFields]
+    // populate activeCustomFields array with values from inputs
+    const newCustomFields = [...activeCustomFields]
 
     newCustomFields[index] = customField
-    setCustomFields(newCustomFields)
+    setActiveCustomFields(newCustomFields)
+
+    if (isOrgActive) {
+      setOrganizationCustomFields(newCustomFields)
+    } else {
+      setCostCenterCustomFields(newCustomFields)
+    }
   }
 
   /**
    * Effects
    */
 
-  const customFieldsData = b2bSettings?.getB2BSettings?.defaultCustomFields
+  const organizationCustomFieldsData =
+    b2bSettings?.getB2BSettings?.organizationCustomFields
+
+  const costCenterCustomFieldsData =
+    b2bSettings?.getB2BSettings?.costCenterCustomFields
 
   useEffect(() => {
-    if (customFieldsData) {
-      // in case customFields comes as null, make an empty array
-      setCustomFields(customFieldsData ?? [])
+    if (organizationCustomFieldsData) {
+      // in case activeCustomFields comes as null, make an empty array
+      setOrganizationCustomFields(organizationCustomFieldsData ?? [])
     }
-  }, [customFieldsData])
+  }, [organizationCustomFieldsData?.length])
+
+  useEffect(() => {
+    if (costCenterCustomFieldsData) {
+      setCostCenterCustomFields(costCenterCustomFieldsData ?? [])
+    }
+  }, [costCenterCustomFieldsData?.length])
+
+  useEffect(() => {
+    if (isOrgActive) {
+      setActiveCustomFields(organizationCustomFields)
+    } else {
+      setActiveCustomFields(costCenterCustomFields)
+    }
+  }, [
+    customFieldsDropdownState.selectedItem,
+    organizationCustomFields?.length > 0,
+    costCenterCustomFields?.length > 0,
+  ])
 
   return (
     <>
-      <div className="flex justify-end items-center">
+      <div className="flex justify-between items-center">
+        <Dropdown
+          variant="primary"
+          items={customFieldsLocation}
+          state={customFieldsDropdownState}
+          label="Methods"
+        />
         <Button
           variation="primary"
           onClick={() => {
@@ -139,7 +199,7 @@ const CustomFields: React.FC<CustomFieldsProps> = () => {
       {b2bSettingsLoading ? (
         <Spinner />
       ) : (
-        customFields.map((customField, index: number) => (
+        activeCustomFields.map((customField, index: number) => (
           <OrganizationCustomField
             key={index}
             index={index}
@@ -158,7 +218,8 @@ const CustomFields: React.FC<CustomFieldsProps> = () => {
         <Button
           variation="primary"
           onClick={() => addCustomField()}
-          disabled={customFields?.length > 7}
+          // max of 10 activeCustomFields
+          disabled={activeCustomFields?.length > 9}
         >
           <FormattedMessage id="admin/b2b-organizations.custom-fields.addField" />
         </Button>
@@ -167,7 +228,7 @@ const CustomFields: React.FC<CustomFieldsProps> = () => {
           <Button
             variation="secondary"
             onClick={() => removeCustomField()}
-            disabled={customFields?.length === 0}
+            disabled={activeCustomFields?.length === 0}
           >
             <FormattedMessage id="admin/b2b-organizations.custom-fields.removeField" />
           </Button>

@@ -31,7 +31,7 @@ import OrganizationDetailsPriceTables from './OrganizationDetails/OrganizationDe
 import OrganizationDetailsUsers from './OrganizationDetails/OrganizationDetailsUsers'
 import OrganizationDetailsDefault from './OrganizationDetails/OrganizationDetailsDefault'
 import useHashRouter from './OrganizationDetails/useHashRouter'
-import type { CustomField } from './OrganizationCustomFields'
+import type { CustomField } from './CustomFields'
 
 export interface CellRendererProps<RowType> {
   cellData: unknown
@@ -40,6 +40,20 @@ export interface CellRendererProps<RowType> {
 }
 
 const SESSION_STORAGE_KEY = 'organization-details-tab'
+
+// combines defaultCustomFields and customFields input from the organization data to fill in input fields
+export const joinById = (...lists: any[]) =>
+  Object.values(
+    lists.reduce((idx, list) => {
+      list.forEach((record: { name: string }) => {
+        if (idx[record.name])
+          idx[record.name] = Object.assign(idx[record.name], record)
+        else idx[record.name] = record
+      })
+
+      return idx
+    }, {})
+  )
 
 const OrganizationDetails: FunctionComponent = () => {
   /**
@@ -56,6 +70,7 @@ const OrganizationDetails: FunctionComponent = () => {
   /**
    * States
    */
+
   const [organizationNameState, setOrganizationNameState] = useState('')
   const [organizationTradeNameState, setOrganizationTradeNameState] = useState(
     ''
@@ -219,20 +234,6 @@ const OrganizationDetails: FunctionComponent = () => {
     }
   }
 
-  // combines defaultCustomFields and customFields from the org to show data
-  const joinById = (...lists: any[]) =>
-    Object.values(
-      lists.reduce((idx, list) => {
-        list.forEach((record: { name: string }) => {
-          if (idx[record.name])
-            idx[record.name] = Object.assign(idx[record.name], record)
-          else idx[record.name] = record
-        })
-
-        return idx
-      }, {})
-    )
-
   /**
    * Effects
    */
@@ -263,14 +264,14 @@ const OrganizationDetails: FunctionComponent = () => {
 
   useEffect(() => {
     const customFieldsToShow = joinById(
-      defaultCustomFieldsData?.getB2BSettings.defaultCustomFields || [],
+      defaultCustomFieldsData?.getB2BSettings.organizationCustomFields || [],
       data?.getOrganizationById?.customFields || []
     ) as CustomField[]
 
     setCustomFieldsState(customFieldsToShow)
   }, [
     data?.getOrganizationById?.customFields &&
-      defaultCustomFieldsData?.getB2BSettings.defaultCustomFields,
+      defaultCustomFieldsData?.getB2BSettings.customFields,
   ])
 
   /**
