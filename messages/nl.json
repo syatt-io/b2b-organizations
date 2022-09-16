@@ -11,7 +11,6 @@
   "admin/b2b-organizations.check-it-out": "Bekijken",
   "admin/b2b-organizations.invalid-schema": "B2B aanmaken is momenteel uitgeschakeld omdat het MasterData CL (gebruikersprofiel) schema ongeldig is voor dit account. Bekijk de B2B Suite-documentatie (Frequently Asked Vragens) voor meer informatie.",
   "admin/b2b-organizations.autocomplete-searching": "Organisatie zoeken",
-  "admin/b2b-organizations.organization-settings-admin.title": "Settings",
   "admin/b2b-organizations.organization-settings-admin.saveSettings": "Save Settings",
   "admin/b2b-organizations.organization-settings-admin.autoApprove": "Auto approve new organizations",
   "admin/b2b-organizations.organization-settings-admin.selectedPaymentsTableTitle": "Selected Payment Terms",
@@ -304,6 +303,12 @@
   "store/b2b-organizations.request-new-organization.submit-button.create-new-request": "Nieuwe aanvraag aanmaken",
   "store/b2b-organizations.stop-impersonation": "Stop impersonatie",
   "store/b2b-organizations.stop-impersonation-error": "Fout bij stoppen impersonatie. Zie console voor details.",
+  "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Aangepaste velden",
+  "admin/b2b-organizations.custom-fields.title": "Aangepaste velden",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Aangepast veld",
+  "admin/b2b-organizations.custom-fields.explanation": "Aangepaste velden worden gebruikt om aanvullende informatie over organisatie- of kostencentrumformulieren op te slaan.",
+  "admin/b2b-organizations.custom-fields.addField": "Voeg veld toe",
+  "admin/b2b-organizations.custom-fields.removeField": "Verwijder het veld",
   "store/b2b-organizations.set-current-organization": "Huidige organisatie instellen",
   "store/b2b-organizations.set-organization-error": "Fout bij het instellen van de huidige organisatie. Zie console voor details."
 }

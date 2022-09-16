@@ -11,7 +11,6 @@
   "admin/b2b-organizations.check-it-out": "Preverite",
   "admin/b2b-organizations.invalid-schema": "Ustvarjanje uporabnikov B2B je trenutno onemogočeno, ker je shema MasterData CL (profil uporabnika) v tem računu neveljavna. Za več informacij glejte dokumentacijo paketa B2B Suite (Pogosta vprašanja).",
   "admin/b2b-organizations.autocomplete-searching": "Išči organizacije",
-  "admin/b2b-organizations.organization-settings-admin.title": "Settings",
   "admin/b2b-organizations.organization-settings-admin.saveSettings": "Save Settings",
   "admin/b2b-organizations.organization-settings-admin.autoApprove": "Auto approve new organizations",
   "admin/b2b-organizations.organization-settings-admin.selectedPaymentsTableTitle": "Selected Payment Terms",
@@ -304,6 +303,12 @@
   "store/b2b-organizations.request-new-organization.submit-button.create-new-request": "Ustvari novo zahtevo",
   "store/b2b-organizations.stop-impersonation": "Nehaj oponašati",
   "store/b2b-organizations.stop-impersonation-error": "Napaka pri zaustavitvi oponašanja. Za podrobnosti glejte konzolo.",
+  "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Polja po meri",
+  "admin/b2b-organizations.custom-fields.title": "Polja po meri",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Polje po meri",
+  "admin/b2b-organizations.custom-fields.explanation": "Polja po meri se uporabljajo za varčevanje z dodatnimi informacijami o obrazcih organizacije ali stroškov.",
+  "admin/b2b-organizations.custom-fields.addField": "Dodaj polje",
+  "admin/b2b-organizations.custom-fields.removeField": "Odstranite polje",
   "store/b2b-organizations.set-current-organization": "Nastavitev trenutne organizacije",
   "store/b2b-organizations.set-organization-error": "Napaka pri nastavitvi trenutne organizacije. Za podrobnosti glejte konzolo."
 }

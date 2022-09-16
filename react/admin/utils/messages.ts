@@ -246,6 +246,9 @@ export const organizationMessages = defineMessages({
   defaultCostCenterName: {
     id: `${adminPrefix}organizations-admin.add-organization.default-costCenter-name`,
   },
+  organizationsTitle: {
+    id: `${adminPrefix}organizations.navigation.label`,
+  },
 })
 
 export const costCenterMessages = defineMessages({
@@ -393,6 +396,12 @@ export const organizationSettingsMessages = defineMessages({
   tablePageTitle: {
     id: `${adminPrefix}organization-settings-admin.title`,
   },
+  customFieldsTitle: {
+    id: `${adminPrefix}organization-settings-admin.customFieldsTitle`,
+  },
+  emptyState: {
+    id: `${adminPrefix}organization-requests-admin.table.empty-state`,
+  },
   autoApprove: {
     id: `${adminPrefix}organization-settings-admin.autoApprove`,
   },
@@ -411,10 +420,6 @@ export const organizationSettingsMessages = defineMessages({
   availablePriceTablesTitle: {
     id: `${adminPrefix}organization-settings-admin.availablePriceTablesTitle`,
   },
-  //syatt messages
-  tablePageTitle: {
-    id: `${adminPrefix}organization-settings-admin.title`,
-  },
   bindingTitle: {
     id: `${adminPrefix}organization-settings-select.binding.title`,
   },
@@ -424,12 +429,6 @@ export const organizationSettingsMessages = defineMessages({
   bindingSelected: {
     id: `${adminPrefix}organization-settings-select.binding.selected`,
   },
-  toastUpdateSuccess: {
-    id: `${adminPrefix}organization-settings-select.toast.update-success`,
-  },
-  toastUpdateFailure: {
-    id: `${adminPrefix}organization-settings-select.toast.update-failure`,
-  },
   selectedRows: {
     id: `${adminPrefix}selected-rows`,
   },
@@ -438,5 +437,17 @@ export const organizationSettingsMessages = defineMessages({
   },
   addToBinding: {
     id: `${adminPrefix}organization-settings-select.add-to-binding`,
+  },
+})
+
+export const organizationCustomFieldsMessages = defineMessages({
+  customFieldsTitle: {
+    id: `${adminPrefix}custom-fields.title`,
+  },
+  customFieldsTitleSingular: {
+    id: `${adminPrefix}custom-fields.titleSingular`,
+  },
+  customFieldsExplanation: {
+    id: `${adminPrefix}custom-fields.explanation`,
   },
 })

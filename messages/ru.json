@@ -11,7 +11,6 @@
   "admin/b2b-organizations.check-it-out": "Взгляните!",
   "admin/b2b-organizations.invalid-schema": "В настоящее время создание корпоративных пользователей не работает, поскольку схема MasterData CL (профиль пользователя) для этой учетной записи недействительна. Ознакомьтесь с документацией в разделе частых вопросов для корпоративного пакета (B2B Suite), чтобы получить более подробную информацию.",
   "admin/b2b-organizations.autocomplete-searching": "Поиск организаций",
-  "admin/b2b-organizations.organization-settings-admin.title": "Settings",
   "admin/b2b-organizations.organization-settings-admin.saveSettings": "Save Settings",
   "admin/b2b-organizations.organization-settings-admin.autoApprove": "Auto approve new organizations",
   "admin/b2b-organizations.organization-settings-admin.selectedPaymentsTableTitle": "Selected Payment Terms",
@@ -304,6 +303,12 @@
   "store/b2b-organizations.request-new-organization.submit-button.create-new-request": "Создать новый запрос",
   "store/b2b-organizations.stop-impersonation": "Остановить работу от имени другого лица",
   "store/b2b-organizations.stop-impersonation-error": "Сбой остановки работы от имени другого лица. Подробная информация доступна на консоли.",
+  "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Настраиваемые поля",
+  "admin/b2b-organizations.custom-fields.title": "Настраиваемые поля",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Пользовательское поле",
+  "admin/b2b-organizations.custom-fields.explanation": "Пользовательские поля используются для сохранения дополнительной информации о формах организации или центра затрат.",
+  "admin/b2b-organizations.custom-fields.addField": "Добавить поле",
+  "admin/b2b-organizations.custom-fields.removeField": "Удалить поле",
   "store/b2b-organizations.set-current-organization": "Установить текущую организацию",
   "store/b2b-organizations.set-organization-error": "Не удалось установить текущую организацию. Просмотрите консоль для получения дополнительной информации."
 }
