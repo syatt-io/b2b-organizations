@@ -1,30 +1,26 @@
 import React from 'react'
 import { Input } from 'vtex.styleguide'
 
-import type { CustomField } from './CustomFields'
-
-interface CustomFieldProps {
+interface CustomFieldProps extends CustomField {
   index: number
   handleUpdate: (index: number, customField: CustomField) => void
-  fieldLabel: string
-  fieldValue: string
-  fieldType: 'text'
   isDefaultCustomField?: boolean
 }
 
 const OrganizationCustomField: React.FC<CustomFieldProps> = ({
   index,
   handleUpdate,
-  fieldLabel,
-  fieldValue,
-  fieldType,
+  name,
+  type,
+  value,
   isDefaultCustomField,
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const updatedCustomField = {
-      type: fieldType,
-      // name: e.target.value,
-      name: isDefaultCustomField ? e.target.value : fieldLabel,
+      type,
+      // if located inside Custom Fields tab, where we setup default fields for all organizations, update name of the custom field. In case located inside Organizations details, update value of the field
+      name: isDefaultCustomField ? e.target.value : name,
+      // value key is added organizations details page
       ...(!isDefaultCustomField && { value: e.target.value }),
     }
 
@@ -36,9 +32,9 @@ const OrganizationCustomField: React.FC<CustomFieldProps> = ({
       <Input
         autocomplete="off"
         size="large"
-        label={fieldLabel}
-        value={fieldValue}
-        type={fieldType}
+        label={name}
+        value={value}
+        type={type}
         onChange={handleChange}
       />
     </div>

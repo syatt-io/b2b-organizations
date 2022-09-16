@@ -16,6 +16,7 @@ import { useToast } from '@vtex/admin-ui'
 import { useIntl, FormattedMessage } from 'react-intl'
 import { useRuntime } from 'vtex.render-runtime'
 import { HashRouter, Route, Switch } from 'react-router-dom'
+import unionBy from 'lodash/unionBy'
 
 import { organizationMessages as messages } from './utils/messages'
 import GET_ORGANIZATION from '../graphql/getOrganization.graphql'
@@ -31,7 +32,6 @@ import OrganizationDetailsPriceTables from './OrganizationDetails/OrganizationDe
 import OrganizationDetailsUsers from './OrganizationDetails/OrganizationDetailsUsers'
 import OrganizationDetailsDefault from './OrganizationDetails/OrganizationDetailsDefault'
 import useHashRouter from './OrganizationDetails/useHashRouter'
-import type { CustomField } from './CustomFields'
 
 export interface CellRendererProps<RowType> {
   cellData: unknown
@@ -41,19 +41,10 @@ export interface CellRendererProps<RowType> {
 
 const SESSION_STORAGE_KEY = 'organization-details-tab'
 
-// combines defaultCustomFields and customFields input from the organization data to fill in input fields
-export const joinById = (...lists: any[]) =>
-  Object.values(
-    lists.reduce((idx, list) => {
-      list.forEach((record: { name: string }) => {
-        if (idx[record.name])
-          idx[record.name] = Object.assign(idx[record.name], record)
-        else idx[record.name] = record
-      })
-
-      return idx
-    }, {})
-  )
+// combines defaultCustomFields and customFields input from the organization data to fill input fields
+export const joinById = (...lists: CustomField[] | CustomFieldSetting[]) => {
+  return unionBy(lists, 'name')
+}
 
 const OrganizationDetails: FunctionComponent = () => {
   /**
@@ -392,6 +383,7 @@ const OrganizationDetails: FunctionComponent = () => {
                   label={item.label}
                   active={tab === item.tab}
                   onClick={() => handleTabChange(item.tab)}
+                  key={item.label}
                 />
               ))}
             </Tabs>
@@ -402,7 +394,7 @@ const OrganizationDetails: FunctionComponent = () => {
             )}
             <Switch>
               {tabsList.map(({ tab: path, component }) => (
-                <Route path={`/${path}`} exact>
+                <Route path={`/${path}`} key={path} exact>
                   <div className="mt6">{component}</div>
                 </Route>
               ))}

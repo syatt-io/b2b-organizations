@@ -562,7 +562,7 @@ const CostCenterDetails: FunctionComponent = () => {
       <PageBlock title={formatMessage(orgaizationMessages.customFieldsTitle)}>
         {customFieldsState?.map((customField: CustomField, index: number) => (
           <CustomFieldInput
-            key={`${customField.name}` + `${index}`}
+            key={`${customField.name} ${index}`}
             fieldLabel={customField.name}
             fieldValue={customField.value ?? ''}
             fieldType={customField.type}

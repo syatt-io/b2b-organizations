@@ -13,12 +13,6 @@ import {
   organizationMessages as messages,
 } from './utils/messages'
 
-export interface CustomField {
-  name: string
-  type: 'text'
-  value?: string
-}
-
 const CustomFields: React.FC = () => {
   /**
    * Hooks
@@ -203,11 +197,11 @@ const CustomFields: React.FC = () => {
           <OrganizationCustomField
             key={index}
             index={index}
-            fieldLabel={`${formatMessage(
+            name={`${formatMessage(
               customFieldsMessages.customFieldsTitleSingular
             )} ${index + 1}`}
-            fieldValue={customField.name}
-            fieldType={customField.type}
+            value={customField.name}
+            type={customField.type}
             handleUpdate={handleUpdate}
             isDefaultCustomField={true}
           />
