@@ -190,15 +190,19 @@ const OrganizationSettings: FunctionComponent = () => {
     Promise.all(promises)
       .then(() => {
         showToast({
-          type: 'success',
+          variant: 'positive',
           message: formatMessage(messages.toastUpdateSuccess),
         })
         refetch()
         refetchSettings()
         setLoading(false)
       })
-      .catch(() => {
-        setLoading(false)
+      .catch(error => {
+        console.error(error)
+        showToast({
+          variant: 'critical',
+          message: formatMessage(messages.toastUpdateFailure),
+        })
       })
   }
 

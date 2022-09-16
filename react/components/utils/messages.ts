@@ -240,12 +240,6 @@ export const organizationMessages = defineMessages({
   organizationsWithoutSalesManagerWarning: {
     id: `${storePrefix}organization-details.organizations-without-sales-manager-warning`,
   },
-  tradeName: {
-    id: `${storePrefix}organizations-details.tradeName`,
-  },
-  tradeNameHelp: {
-    id: `${storePrefix}organizations-details.tradeName.helpText`,
-  },
 })
 
 export const organizationRequestMessages = defineMessages({
