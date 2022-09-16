@@ -304,6 +304,13 @@
   "store/b2b-organizations.request-new-organization.submit-button.create-new-request": "Vytvoriť novú požiadavku",
   "store/b2b-organizations.stop-impersonation": "Zastaviť vydávanie sa za používateľa",
   "store/b2b-organizations.stop-impersonation-error": "Vyskytla sa chyba pri zastavení vydávanie sa za používateľa. Podrobnosti nájdete v konzole.",
+
+  "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Vlastné polia",
+  "admin/b2b-organizations.custom-fields.title": "Vlastné polia",
+  "admin/b2b-organizations.custom-fields.titleSingular": "Vlastné pole",
+  "admin/b2b-organizations.custom-fields.explanation": "Vlastné polia sa používajú na ukladanie ďalších informácií o formulároch organizácie alebo nákladového strediska.",
+  "admin/b2b-organizations.custom-fields.addField": "Pole pridať",
+  "admin/b2b-organizations.custom-fields.removeField": "Odstrániť pole",
   "store/b2b-organizations.set-current-organization": "Set current organization",
   "store/b2b-organizations.set-organization-error": "Error setting current organization. See console for details."
 }
