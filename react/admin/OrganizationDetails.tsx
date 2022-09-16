@@ -16,10 +16,12 @@ import { useToast } from '@vtex/admin-ui'
 import { useIntl, FormattedMessage } from 'react-intl'
 import { useRuntime } from 'vtex.render-runtime'
 import { HashRouter, Route, Switch } from 'react-router-dom'
+import unionBy from 'lodash/unionBy'
 
 import { organizationMessages as messages } from './utils/messages'
 import GET_ORGANIZATION from '../graphql/getOrganization.graphql'
 import UPDATE_ORGANIZATION from '../graphql/updateOrganization.graphql'
+import GET_B2B_CUSTOM_FIELDS from '../graphql/getB2BCustomFields.graphql'
 import OrganizationDetailsCostCenters from './OrganizationDetails/OrganizationDetailsCostCenters'
 import type { Collection } from './OrganizationDetails/OrganizationDetailsCollections'
 import OrganizationDetailsCollections from './OrganizationDetails/OrganizationDetailsCollections'
@@ -40,6 +42,14 @@ export interface CellRendererProps<RowType> {
 
 const SESSION_STORAGE_KEY = 'organization-details-tab'
 
+// combines defaultCustomFields and customFields input from the organization data to fill input fields
+export const joinById = (
+  fields: CustomField[],
+  defaultFields: CustomFieldSetting[]
+): CustomField[] => {
+  return unionBy(fields, defaultFields, 'name')
+}
+
 const OrganizationDetails: FunctionComponent = () => {
   /**
    * Hooks
@@ -55,6 +65,7 @@ const OrganizationDetails: FunctionComponent = () => {
   /**
    * States
    */
+
   const [organizationNameState, setOrganizationNameState] = useState('')
   const [organizationTradeNameState, setOrganizationTradeNameState] = useState(
     ''
@@ -73,10 +84,18 @@ const OrganizationDetails: FunctionComponent = () => {
 
   const [loadingState, setLoadingState] = useState(false)
 
+  const [customFieldsState, setCustomFieldsState] = useState<CustomField[]>([])
+
   /**
    * Queries
    */
   const { data, loading, refetch } = useQuery(GET_ORGANIZATION, {
+    variables: { id: params?.id },
+    skip: !params?.id,
+    ssr: false,
+  })
+
+  const { data: defaultCustomFieldsData } = useQuery(GET_B2B_CUSTOM_FIELDS, {
     variables: { id: params?.id },
     skip: !params?.id,
     ssr: false,
@@ -117,6 +136,7 @@ const OrganizationDetails: FunctionComponent = () => {
       collections,
       paymentTerms,
       priceTables: priceTablesState,
+      customFields: customFieldsState,
       salesChannel: salesChannelState,
     }
 
@@ -124,7 +144,7 @@ const OrganizationDetails: FunctionComponent = () => {
       .then(() => {
         setLoadingState(false)
         showToast({
-          type: 'success',
+          variant: 'positive',
           message: formatMessage(messages.toastUpdateSuccess),
         })
         refetch({ id: params?.id })
@@ -133,7 +153,7 @@ const OrganizationDetails: FunctionComponent = () => {
         setLoadingState(false)
         console.error(error)
         showToast({
-          type: 'error',
+          variant: 'critical',
           message: formatMessage(messages.toastUpdateFailure),
         })
       })
@@ -240,6 +260,20 @@ const OrganizationDetails: FunctionComponent = () => {
     setSalesChannelState(data.getOrganizationById.salesChannel ?? '')
   }, [data])
 
+  useEffect(() => {
+    const customFieldsToShow = joinById(
+      data?.getOrganizationById?.customFields || [],
+      defaultCustomFieldsData?.getB2BSettings?.organizationCustomFields || []
+    )
+
+    setCustomFieldsState(customFieldsToShow)
+  }, [
+    data &&
+      defaultCustomFieldsData &&
+      data?.getOrganizationById?.customFields &&
+      defaultCustomFieldsData?.getB2BSettings.organizationCustomFields,
+  ])
+
   /**
    * Data Variables
    */
@@ -257,6 +291,8 @@ const OrganizationDetails: FunctionComponent = () => {
           statusState={statusState}
           setStatusState={setStatusState}
           data={data}
+          customFieldsState={customFieldsState}
+          setCustomFieldsState={setCustomFieldsState}
         />
       ),
     },
@@ -376,7 +412,7 @@ const OrganizationDetails: FunctionComponent = () => {
             )}
             <Switch>
               {tabsList.map(({ tab: path, component }) => (
-                <Route path={`/${path}`} exact>
+                <Route path={`/${path}`} key={path} exact>
                   <div className="mt6">{component}</div>
                 </Route>
               ))}

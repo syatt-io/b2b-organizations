@@ -295,6 +295,12 @@
   "store/b2b-organizations.request-new-organization.submit-button.create-new-request": "สร้างคำขอใหม่",
   "store/b2b-organizations.stop-impersonation": "หยุดการเลียนแบบ",
   "store/b2b-organizations.stop-impersonation-error": "มีข้อผิดพลาดในการหยุดเลียนแบบ โปรดดูรายละเอียดในคอนโซล",
+  "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "ฟิลด์ที่กำหนดเอง",
+  "admin/b2b-organizations.custom-fields.title": "ฟิลด์ที่กำหนดเอง",
+  "admin/b2b-organizations.custom-fields.name-singular": "ชื่อฟิลด์ที่กำหนดเอง",
+  "admin/b2b-organizations.custom-fields.explanation": "ฟิลด์ที่กำหนดเองใช้เพื่อบันทึกข้อมูลเพิ่มเติมเกี่ยวกับแบบฟอร์มองค์กรหรือศูนย์ต้นทุน.",
+  "admin/b2b-organizations.custom-fields.addField": "เพิ่มฟิลด์",
+  "admin/b2b-organizations.custom-fields.removeField": "ลบฟิลด์",
   "store/b2b-organizations.set-current-organization": "ตั้งค่าองค์กรปัจจุบัน",
   "store/b2b-organizations.set-organization-error": "มีข้อผิดพลาดในการตั้งค่าองค์กรปัจจุบัน โปรดดูรายละเอียดในคอนโซล"
 }
