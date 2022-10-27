@@ -4,7 +4,7 @@ import React, { Fragment } from 'react'
 import type { FunctionComponent } from 'react'
 
 import { organizationMessages as messages } from '../utils/messages'
-import CustomFieldInput from '../CustomField'
+import CustomFieldInput from '../OrganizationDetailsCustomField'
 
 interface Props {
   organizationNameState: string
@@ -129,11 +129,9 @@ const OrganizationDetailsDefault: FunctionComponent<Props> = ({
           {customFieldsState?.map((customField: CustomField, index: number) => (
             <CustomFieldInput
               key={`${customField.name} ${index}`}
-              name={customField.name}
-              value={customField.value ?? ''}
-              type={customField.type}
               index={index}
               handleUpdate={handleCustomFieldsUpdate}
+              customField={customField}
             />
           ))}
         </PageBlock>

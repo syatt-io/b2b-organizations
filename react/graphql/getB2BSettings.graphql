@@ -9,6 +9,11 @@ query GetB2BSettings {
     organizationCustomFields {
       name
       type
+      dropdownValues {
+        value
+        label
+      }
+      useOnRegistration
     }
     costCenterCustomFields {
       name

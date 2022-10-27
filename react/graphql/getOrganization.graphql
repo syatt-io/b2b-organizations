@@ -20,6 +20,11 @@ query GetOrganization($id: ID) {
       name
       value
       type
+      dropdownValues {
+        value
+        label
+      }
+      useOnRegistration
     }
   }
 }
