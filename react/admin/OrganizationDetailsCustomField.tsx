@@ -27,6 +27,7 @@ const OrganizationDetailsCustomField: React.FC<CustomFieldProps> = ({
       <Dropdown
         key={index}
         label={name}
+        size="large"
         options={dropdownValues ?? []}
         onChange={handleChange}
         value={value}
@@ -36,6 +37,7 @@ const OrganizationDetailsCustomField: React.FC<CustomFieldProps> = ({
 
   return (
     <Input
+      csx={{ margin: '30px' }}
       autocomplete="off"
       size="large"
       label={name}
