@@ -3,6 +3,11 @@ query GetB2BCustomFields {
     organizationCustomFields {
       name
       type
+      dropdownValues {
+        value
+        label
+      }
+      useOnRegistration
     }
     costCenterCustomFields {
       name

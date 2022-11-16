@@ -33,6 +33,8 @@ import { getEmptyAddress, isValidAddress } from '../utils/addresses'
 import CREATE_ORGANIZATION_REQUEST from '../graphql/createOrganizationRequest.graphql'
 import GET_ORGANIZATION_REQUEST from '../graphql/getOrganizationRequest.graphql'
 import GET_LOGISTICS from '../graphql/getLogistics.graphql'
+import GET_B2B_CUSTOM_FIELDS from '../graphql/getB2BCustomFields.graphql'
+import CustomFieldInput from '../admin/OrganizationDetailsCustomField'
 
 const localStore = storageFactory(() => localStorage)
 let requestId = localStore.getItem('b2b-organizations_orgRequestId') ?? ''
@@ -170,6 +172,37 @@ const RequestOrganizationForm: FC = () => {
     setAddressState(() => addValidation(getEmptyAddress(country)))
   }
 
+  //! CUSTOM FIELDS
+  const {
+    data: defaultCustomFieldsData,
+    loading: defaultCustomFieldsDataLoading,
+  } = useQuery(GET_B2B_CUSTOM_FIELDS, {
+    ssr: false,
+  })
+
+  const [customFieldsState, setCustomFieldsState] = useState<CustomField[]>([])
+
+  useEffect(() => {
+    if (defaultCustomFieldsDataLoading) return
+
+    const fieldsToDisplay = defaultCustomFieldsData?.getB2BSettings.organizationCustomFields.filter(
+      (item: CustomField) => item.useOnRegistration
+    )
+
+    setCustomFieldsState(fieldsToDisplay)
+  }, [defaultCustomFieldsData])
+
+  const handleCustomFieldsUpdate = (
+    index: number,
+    customField: CustomField
+  ) => {
+    const newCustomFields = [...customFieldsState]
+
+    newCustomFields[index] = customField
+    setCustomFieldsState(newCustomFields)
+  }
+  //! CUSTOM FIELDS
+
   const handleSubmit = () => {
     setFormState({
       ...formState,
@@ -206,6 +239,7 @@ const RequestOrganizationForm: FC = () => {
         phoneNumber: formState.phoneNumber,
         businessDocument: formState.businessDocument,
       },
+      customFields: customFieldsState,
     }
 
     createOrganizationRequest({
@@ -358,6 +392,27 @@ const RequestOrganizationForm: FC = () => {
               }}
             />
           </div>
+          {/* //! Custom fields */}
+          {defaultCustomFieldsDataLoading ? (
+            <div className="mb5">
+              <Spinner />
+            </div>
+          ) : (
+            customFieldsState?.map(
+              (customField: CustomField, index: number) => {
+                return (
+                  <CustomFieldInput
+                    key={`${customField.name} ${index}`}
+                    index={index}
+                    handleUpdate={handleCustomFieldsUpdate}
+                    customField={customField}
+                  />
+                )
+              }
+            )
+          )}
+
+          {/* //! Custom fields */}
         </PageBlock>
         <PageBlock
           variation="full"
@@ -514,7 +569,10 @@ const RequestOrganizationForm: FC = () => {
                     !validateEmail(formState.email) ||
                     !isValidAddress(addressState) ||
                     (formState.phoneNumber &&
-                      !validatePhoneNumber(formState.phoneNumber))
+                      !validatePhoneNumber(formState.phoneNumber)) ||
+                    customFieldsState?.some((customField: CustomField) => {
+                      return !customField.value
+                    })
                   }
                 >
                   <FormattedMessage id="store/b2b-organizations.request-new-organization.submit-button.label" />

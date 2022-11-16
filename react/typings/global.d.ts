@@ -60,11 +60,13 @@ interface UserDetails {
 
 interface CustomField {
   name: string
-  type: 'text'
+  type: 'text' | 'dropdown'
   value?: string
+  dropdownValues?: Array<{ label: string; value: string }>
+  useOnRegistration?: boolean
 }
 
 interface CustomFieldSetting {
   name: string
-  type: 'text'
+  type: 'text' | 'dropdown'
 }

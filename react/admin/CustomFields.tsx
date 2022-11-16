@@ -6,7 +6,7 @@ import { useToast, Dropdown, useDropdownState } from '@vtex/admin-ui'
 
 import GET_B2BSETTINGS from '../graphql/getB2BSettings.graphql'
 import SAVE_B2BSETTINGS from '../graphql/saveB2BSettings.graphql'
-import OrganizationCustomField from './CustomField'
+import DefaultCustomField from './DefaultCustomField'
 import {
   organizationCustomFieldsMessages as customFieldsMessages,
   organizationSettingsMessages as settingMessage,
@@ -194,16 +194,14 @@ const CustomFields: React.FC = () => {
         <Spinner />
       ) : (
         activeCustomFields.map((customField, index: number) => (
-          <OrganizationCustomField
+          <DefaultCustomField
             key={index}
             index={index}
+            customField={customField}
             name={`${formatMessage(
               customFieldsMessages.customFieldsTitleSingular
             )} ${index + 1}`}
-            value={customField.name}
-            type={customField.type}
             handleUpdate={handleUpdate}
-            isDefaultCustomField={true}
           />
         ))
       )}
