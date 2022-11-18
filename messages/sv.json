@@ -289,7 +289,7 @@
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Anpassade fält",
   "admin/b2b-organizations.custom-fields.title": "Anpassade fält",
   "admin/b2b-organizations.custom-fields.titleSingular": "Anpassat fält",
-  "admin/b2b-organizations.custom-fields.explanation": "Anpassade fält används för att lägga till ytterligare information till organisationer.Endast internt bruk visas inte kunden.",
+  "admin/b2b-organizations.custom-fields.explanation": "Anpassade fält används för att spara ytterligare information om organisations- eller kostnadscentrumformer.",
   "admin/b2b-organizations.custom-fields.addField": "Lägg till fält",
   "admin/b2b-organizations.custom-fields.removeField": "Ta bort fältet"
 }

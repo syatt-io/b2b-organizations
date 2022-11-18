@@ -24,27 +24,31 @@ const OrganizationDetailsCustomField: React.FC<CustomFieldProps> = ({
 
   if (type === 'dropdown') {
     return (
-      <Dropdown
-        key={index}
-        label={name}
-        size="large"
-        options={dropdownValues ?? []}
-        onChange={handleChange}
-        value={value}
-      />
+      <div className="mb5">
+        <Dropdown
+          key={index}
+          label={name}
+          size="large"
+          options={dropdownValues ?? []}
+          onChange={handleChange}
+          value={value}
+        />
+      </div>
     )
   }
 
   return (
-    <Input
-      csx={{ margin: '30px' }}
-      autocomplete="off"
-      size="large"
-      label={name}
-      value={value}
-      type={type}
-      onChange={handleChange}
-    />
+    <div className="mb5">
+      <Input
+        className="test-class-plus"
+        autocomplete="off"
+        size="large"
+        label={name}
+        value={value}
+        type={type}
+        onChange={handleChange}
+      />
+    </div>
   )
 }
 

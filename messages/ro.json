@@ -289,7 +289,7 @@
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "câmpuri customizate",
   "admin/b2b-organizations.custom-fields.title": "câmpuri customizate",
   "admin/b2b-organizations.custom-fields.titleSingular": "Câmp personalizat",
-  "admin/b2b-organizations.custom-fields.explanation": "Câmpurile personalizate sunt utilizate pentru a adăuga informații suplimentare organizațiilor.Numai utilizarea internă, nu va fi arătat clientului.",
+  "admin/b2b-organizations.custom-fields.explanation": "Câmpurile personalizate sunt utilizate pentru a economisi informații suplimentare despre formularele de organizare sau centru de costuri.",
   "admin/b2b-organizations.custom-fields.addField": "Adăugați câmp",
   "admin/b2b-organizations.custom-fields.removeField": "Scoateți câmpul"
 }

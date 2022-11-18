@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Input, IconDelete, IconPlus, Toggle } from 'vtex.styleguide'
-import { Button, Dropdown, useDropdownState, Flex } from '@vtex/admin-ui'
+import { Input, IconDelete, IconPlus, Toggle, Dropdown } from 'vtex.styleguide'
+import { Button, Flex } from '@vtex/admin-ui'
 
 interface CustomFieldProps {
   index: number
@@ -32,6 +32,19 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
     setUseOnRegistrationLocal(!!useOnRegistration)
   }, [dropdownValues, useOnRegistration])
 
+  const fieldOptionsNew = [
+    {
+      value: 'text',
+      label: 'Text',
+    },
+    {
+      value: 'dropdown',
+      label: 'Dropdown',
+    },
+  ]
+
+  const [dropdownState, setDropdownState] = useState('text')
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const updatedCustomField = {
       ...customField,
@@ -41,30 +54,25 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
     handleUpdate(index, updatedCustomField)
   }
 
-  const fieldOptions = [
-    {
-      id: 0,
-      label: 'Text',
-    },
-    {
-      id: 1,
-      label: 'Dropdown',
-    },
-  ]
+  const handleDropdownChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDropdownState(
+      e.target.value === 'dropdown'
+        ? fieldOptionsNew[1].value
+        : fieldOptionsNew[0].value
+    )
+    if (e.target.value === 'text') {
+      handleUpdate(index, { ...customField, type: 'text', dropdownValues: [] })
 
-  const dropdownState = useDropdownState({
-    items: fieldOptions,
+      setDropdownValuesLocal([])
+    }
 
-    initialSelectedItem:
-      type === 'dropdown' ? fieldOptions[1] : fieldOptions[0],
-    onSelectedItemChange: ({ selectedItem }) => {
-      if (selectedItem?.label === 'Text') {
-        handleUpdate(index, { type: 'text', name, value })
+    const updatedCustomField = {
+      ...customField,
+      type: 'dropdown' as const,
+    }
 
-        setDropdownValuesLocal([])
-      }
-    },
-  })
+    handleUpdate(index, updatedCustomField)
+  }
 
   const handleDropdownItemChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -83,9 +91,8 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
       }
 
       const updatedCustomField = {
-        // name: value,
         name: value ?? name,
-        type: dropdownState.selectedItem?.id === 1 ? 'dropdown' : type,
+        type: dropdownState === 'dropdown' ? 'dropdown' : type,
         dropdownValues: newDropdownValues,
       }
 
@@ -133,6 +140,12 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
     })
   }
 
+  useEffect(() => {
+    setDropdownState(
+      type === 'dropdown' ? fieldOptionsNew[1].value : fieldOptionsNew[0].value
+    )
+  }, [type])
+
   return (
     <div className="w-100 mv6 flex">
       <Toggle
@@ -141,22 +154,20 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
         label="Show on registration form"
         className="flex flex-column w-100"
       />
+
       <Dropdown
-        variant="primary"
-        items={fieldOptions}
-        state={dropdownState}
-        renderItem={item => item?.label}
         label="Field Type"
-        csx={{ width: '120px', marginTop: '28px', marginRight: '10px' }}
+        size="large"
+        options={fieldOptionsNew ?? []}
+        onChange={handleDropdownChange}
+        value={dropdownState}
       />
       <Flex direction="column" className="w-100">
         <Input
           autocomplete="off"
           size="large"
           label={`${name}${
-            dropdownState.selectedItem?.label === 'Dropdown'
-              ? ' - Dropdown name:'
-              : ''
+            dropdownState === 'dropdown' ? ' - Dropdown name:' : ''
           }`}
           value={customField.name}
           type={type}
@@ -208,7 +219,7 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
           </Flex>
         ) : null}
       </Flex>
-      {dropdownState.selectedItem?.label === 'Dropdown' ? (
+      {dropdownState === 'dropdown' ? (
         <Button
           icon={<IconPlus title="Add field" />}
           aria-label="Add field"

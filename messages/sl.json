@@ -289,7 +289,7 @@
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Polja po meri",
   "admin/b2b-organizations.custom-fields.title": "Polja po meri",
   "admin/b2b-organizations.custom-fields.titleSingular": "Polje po meri",
-  "admin/b2b-organizations.custom-fields.explanation": "Polja po meri se uporabljajo za dodajanje dodatnih informacij organizacijam.Samo notranja uporaba, kupcu ne bo prikazana.",
+  "admin/b2b-organizations.custom-fields.explanation": "Polja po meri se uporabljajo za varčevanje z dodatnimi informacijami o obrazcih organizacije ali stroškov.",
   "admin/b2b-organizations.custom-fields.addField": "Dodaj polje",
   "admin/b2b-organizations.custom-fields.removeField": "Odstranite polje"
 }

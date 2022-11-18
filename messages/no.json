@@ -289,7 +289,7 @@
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Tilpassede felt",
   "admin/b2b-organizations.custom-fields.title": "Tilpassede felt",
   "admin/b2b-organizations.custom-fields.titleSingular": "Tilpasset felt",
-  "admin/b2b-organizations.custom-fields.explanation": "Tilpassede felt brukes til å legge til tilleggsinformasjon til organisasjoner.Bare intern bruk, vil ikke bli vist for kunden.",
+  "admin/b2b-organizations.custom-fields.explanation": "Tilpassede felt brukes til å spare ytterligere informasjon om organisasjons- eller kostnadssenterskjemaer.",
   "admin/b2b-organizations.custom-fields.addField": "Legg til felt",
   "admin/b2b-organizations.custom-fields.removeField": "Fjern feltet"
 }

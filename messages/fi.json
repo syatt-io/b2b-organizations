@@ -289,7 +289,7 @@
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Mukautetut kentät",
   "admin/b2b-organizations.custom-fields.title": "Mukautetut kentät",
   "admin/b2b-organizations.custom-fields.titleSingular": "Räätälöity kenttä",
-  "admin/b2b-organizations.custom-fields.explanation": "Mukautettuja kenttiä käytetään lisätietoja organisaatioihin.Vain sisäinen käyttö ei näy asiakkaalle.",
+  "admin/b2b-organizations.custom-fields.explanation": "Mukautettuja kenttiä käytetään lisätietoja organisaation tai kustannuskeskuksen lomakkeista.",
   "admin/b2b-organizations.custom-fields.addField": "Lisätä",
   "admin/b2b-organizations.custom-fields.removeField": "Poista kenttä"
 }

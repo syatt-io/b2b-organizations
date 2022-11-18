@@ -289,7 +289,7 @@
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "  Vlastní pole",
   "admin/b2b-organizations.custom-fields.title": "Vlastní pole",
   "admin/b2b-organizations.custom-fields.titleSingular": "Vlastní pole",
-  "admin/b2b-organizations.custom-fields.explanation": "Vlastní pole se používají k přidání dalších informací organizacím.Pouze interní použití, nebude zobrazen zákazníkovi.",
+  "admin/b2b-organizations.custom-fields.explanation": "Vlastní pole se používají k uložení dalších informací o formulářích organizace nebo nákladů.",
   "admin/b2b-organizations.custom-fields.addField": "Přidat pole",
   "admin/b2b-organizations.custom-fields.removeField": "Odstraňte pole"
 }

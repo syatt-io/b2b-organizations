@@ -260,6 +260,7 @@ const RequestOrganizationForm: FC = () => {
         },
         phoneNumber: formState.phoneNumber,
         businessDocument: formState.businessDocument,
+        customFields: costCenterCustomFieldsState,
       },
       customFields: orgCustomFieldsState,
     }
@@ -545,32 +546,29 @@ const RequestOrganizationForm: FC = () => {
                 })
               }}
             />
-            {/* //! Custom fields */}
-            {defaultCustomFieldsDataLoading ? (
-              <div
-                className={`${handles.newOrganizationAddressForm} mb5 flex flex-column`}
-              >
-                <Spinner />
-              </div>
-            ) : (
-              <>
-                {costCenterCustomFieldsState?.map(
-                  (customField: CustomField, index: number) => {
-                    return (
-                      <CustomFieldInput
-                        key={`${customField.name} ${index}`}
-                        index={index}
-                        handleUpdate={handleCostCenterCustomFieldsUpdate}
-                        customField={customField}
-                      />
-                    )
-                  }
-                )}
-              </>
-            )}
-
-            {/* //! Custom fields */}
           </div>
+          {/* //! Custom fields */}
+          {defaultCustomFieldsDataLoading ? (
+            <div className="mb5 flex flex-column">
+              <Spinner />
+            </div>
+          ) : (
+            <>
+              {costCenterCustomFieldsState?.map(
+                (customField: CustomField, index: number) => {
+                  return (
+                    <CustomFieldInput
+                      key={`${customField.name} ${index}`}
+                      index={index}
+                      handleUpdate={handleCostCenterCustomFieldsUpdate}
+                      customField={customField}
+                    />
+                  )
+                }
+              )}
+            </>
+          )}
+          {/* //! Custom fields */}
           <div
             className={`${handles.newOrganizationAddressForm} mb5 flex flex-column`}
           >

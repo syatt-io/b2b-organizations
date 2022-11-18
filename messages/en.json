@@ -289,7 +289,7 @@
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Custom Fields",
   "admin/b2b-organizations.custom-fields.title": "Custom Fields",
   "admin/b2b-organizations.custom-fields.titleSingular": "Custom Field",
-  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to add additional information to organizations or custom fields. Internal use only, will not be shown to the customer.",
+  "admin/b2b-organizations.custom-fields.explanation": "Custom fields are used to save additional information on organization or cost center forms.",
   "admin/b2b-organizations.custom-fields.addField": "Add Field",
   "admin/b2b-organizations.custom-fields.removeField": "Remove Field"
 }
