@@ -7,9 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [2.1.1] - 2022-09-30
+## [2.2.0] - 2022-11-22
 
-## [2.1.0] - 2022-09-22
+- WITI-319 Added dropdown fields to custom fields
+- WITI-215 use custom cost centre fields to update cost centre form
 
 ## [1.12.1] - 2022-07-22
 
@@ -46,8 +47,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial Crowdin integration
 
 ## [1.11.0] - 2022-06-23
-- 
+
+-
+
 ### Added
+
 - UI support for organization `tradeName` and cost center `phoneNumber` fields
 
 ## [1.10.3] - 2022-06-22
