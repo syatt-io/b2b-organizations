@@ -12,6 +12,11 @@ query GetB2BCustomFields {
     costCenterCustomFields {
       name
       type
+      dropdownValues {
+        value
+        label
+      }
+      useOnRegistration
     }
   }
 }

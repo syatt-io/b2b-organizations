@@ -289,7 +289,7 @@
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "  Προσαρμοσμένα πεδία",
   "admin/b2b-organizations.custom-fields.title": "Προσαρμοσμένα πεδία",
   "admin/b2b-organizations.custom-fields.titleSingular": "Προσαρμοσμένο πεδίο",
-  "admin/b2b-organizations.custom-fields.explanation": "Τα προσαρμοσμένα πεδία χρησιμοποιούνται για την προσθήκη πρόσθετων πληροφοριών σε οργανισμούς.Μόνο εσωτερική χρήση, δεν θα εμφανιστεί στον πελάτη.",
+  "admin/b2b-organizations.custom-fields.explanation": "Τα προσαρμοσμένα πεδία χρησιμοποιούνται για την εξοικονόμηση πρόσθετων πληροφοριών σχετικά με τα έντυπα του οργανισμού ή του κέντρου κόστους.",
   "admin/b2b-organizations.custom-fields.addField": "Προσθήκη πεδίου",
   "admin/b2b-organizations.custom-fields.removeField": "Αφαιρέστε το πεδίο"
 }

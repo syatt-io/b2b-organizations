@@ -289,7 +289,7 @@
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "  Brugerdefinerede felter",
   "admin/b2b-organizations.custom-fields.title": "Brugerdefinerede felter",
   "admin/b2b-organizations.custom-fields.titleSingular": "Brugerdefineret felt",
-  "admin/b2b-organizations.custom-fields.explanation": "Brugerdefinerede felter bruges til at tilføje yderligere oplysninger til organisationer.Kun intern brug, vises ikke for kunden.",
+  "admin/b2b-organizations.custom-fields.explanation": "Brugerdefinerede felter bruges til at gemme yderligere oplysninger om organiserings- eller omkostningscenterformer.",
   "admin/b2b-organizations.custom-fields.addField": "Tilføj felt",
   "admin/b2b-organizations.custom-fields.removeField": "Fjern feltet"
 }

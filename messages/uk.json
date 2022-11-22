@@ -289,7 +289,7 @@
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Спеціальні поля",
   "admin/b2b-organizations.custom-fields.title": "Спеціальні поля",
   "admin/b2b-organizations.custom-fields.titleSingular": "Спеціальне поле",
-  "admin/b2b-organizations.custom-fields.explanation": "Спеціальні поля використовуються для додавання додаткової інформації до організацій.Тільки внутрішнє використання, не буде показано замовнику.",
+  "admin/b2b-organizations.custom-fields.explanation": "Спеціальні поля використовуються для збереження додаткової інформації про форми організації або вартості.",
   "admin/b2b-organizations.custom-fields.addField": "Додати поле",
   "admin/b2b-organizations.custom-fields.removeField": "Видаліть поле"
 }

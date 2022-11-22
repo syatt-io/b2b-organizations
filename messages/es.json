@@ -289,7 +289,7 @@
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Campos Personalizados",
   "admin/b2b-organizations.custom-fields.title": "Campos Personalizados",
   "admin/b2b-organizations.custom-fields.titleSingular": "Campo personalizado",
-  "admin/b2b-organizations.custom-fields.explanation": "Los campos personalizados se utilizan para agregar información adicional a las organizaciones.Solo uso interno, no se mostrará al cliente.",
+  "admin/b2b-organizations.custom-fields.explanation": "Los campos personalizados se utilizan para ahorrar información adicional sobre formularios de organización o centro de costos.",
   "admin/b2b-organizations.custom-fields.addField": "Agregue campo",
   "admin/b2b-organizations.custom-fields.removeField": "Eliminar el campo"
 }

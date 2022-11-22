@@ -289,7 +289,7 @@
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Настраиваемые поля",
   "admin/b2b-organizations.custom-fields.title": "Настраиваемые поля",
   "admin/b2b-organizations.custom-fields.titleSingular": "Пользовательское поле",
-  "admin/b2b-organizations.custom-fields.explanation": "Пользовательские поля используются для добавления дополнительной информации в организации.Только внутреннее использование, не будет показано клиенту.",
+  "admin/b2b-organizations.custom-fields.explanation": "Пользовательские поля используются для сохранения дополнительной информации о формах организации или центра затрат.",
   "admin/b2b-organizations.custom-fields.addField": "Добавить поле",
   "admin/b2b-organizations.custom-fields.removeField": "Удалить поле"
 }

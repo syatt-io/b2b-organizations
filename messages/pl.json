@@ -289,7 +289,7 @@
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Pola niestandardowe",
   "admin/b2b-organizations.custom-fields.title": "Pola niestandardowe",
   "admin/b2b-organizations.custom-fields.titleSingular": "Pole niestandardowe",
-  "admin/b2b-organizations.custom-fields.explanation": "Pola niestandardowe służą do dodawania dodatkowych informacji do organizacji.Tylko użycie wewnętrzne, nie zostanie pokazane klientowi.",
+  "admin/b2b-organizations.custom-fields.explanation": "Pola niestandardowe służą do oszczędzania dodatkowych informacji na temat formularzy organizacji lub centrów kosztów.",
   "admin/b2b-organizations.custom-fields.addField": "Dodaj pole",
   "admin/b2b-organizations.custom-fields.removeField": "Usuń pole"
 }

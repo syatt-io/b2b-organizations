@@ -29,6 +29,11 @@ query GetCostCenter($id: ID!) {
       name
       type
       value
+      dropdownValues {
+        value
+        label
+      }
+      useOnRegistration
     }
   }
 }

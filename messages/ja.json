@@ -289,7 +289,7 @@
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "カスタムフィールド",
   "admin/b2b-organizations.custom-fields.title": "カスタムフィールド",
   "admin/b2b-organizations.custom-fields.titleSingular": "カスタムフィールド",
-  "admin/b2b-organizations.custom-fields.explanation": "カスタムフィールドは、組織に追加情報を追加するために使用されます。内部使用のみが顧客に表示されません.",
+  "admin/b2b-organizations.custom-fields.explanation": "カスタムフィールドは、組織またはコストセンターフォームに関する追加情報を保存するために使用されます。",
   "admin/b2b-organizations.custom-fields.addField": "フィールドを追加します",
   "admin/b2b-organizations.custom-fields.removeField": "フィールドを削除します"
 }

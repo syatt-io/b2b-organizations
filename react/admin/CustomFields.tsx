@@ -174,7 +174,7 @@ const CustomFields: React.FC = () => {
           variant="primary"
           items={customFieldsLocation}
           state={customFieldsDropdownState}
-          label="Methods"
+          label="Organization or Cost Center"
         />
         <Button
           variation="primary"
@@ -207,12 +207,7 @@ const CustomFields: React.FC = () => {
       )}
 
       <div className="mt3 flex">
-        <Button
-          variation="primary"
-          onClick={() => addCustomField()}
-          // max of 10 activeCustomFields
-          disabled={activeCustomFields?.length > 9}
-        >
+        <Button variation="primary" onClick={() => addCustomField()}>
           <FormattedMessage id="admin/b2b-organizations.custom-fields.addField" />
         </Button>
 

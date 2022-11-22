@@ -180,26 +180,48 @@ const RequestOrganizationForm: FC = () => {
     ssr: false,
   })
 
-  const [customFieldsState, setCustomFieldsState] = useState<CustomField[]>([])
+  const [orgCustomFieldsState, setOrgCustomFieldsState] = useState<
+    CustomField[]
+  >([])
+
+  const [
+    costCenterCustomFieldsState,
+    setCostCenterCustomFieldsState,
+  ] = useState<CustomField[]>([])
 
   useEffect(() => {
     if (defaultCustomFieldsDataLoading) return
 
-    const fieldsToDisplay = defaultCustomFieldsData?.getB2BSettings.organizationCustomFields.filter(
+    const organizationFieldsToDisplay = defaultCustomFieldsData?.getB2BSettings.organizationCustomFields.filter(
       (item: CustomField) => item.useOnRegistration
     )
 
-    setCustomFieldsState(fieldsToDisplay)
+    const costCenterFieldsToDisplay = defaultCustomFieldsData?.getB2BSettings.costCenterCustomFields.filter(
+      (item: CustomField) => item.useOnRegistration
+    )
+
+    setOrgCustomFieldsState(organizationFieldsToDisplay)
+    setCostCenterCustomFieldsState(costCenterFieldsToDisplay)
   }, [defaultCustomFieldsData])
 
-  const handleCustomFieldsUpdate = (
+  const handleOrgCustomFieldsUpdate = (
     index: number,
     customField: CustomField
   ) => {
-    const newCustomFields = [...customFieldsState]
+    const newCustomFields = [...orgCustomFieldsState]
 
     newCustomFields[index] = customField
-    setCustomFieldsState(newCustomFields)
+    setOrgCustomFieldsState(newCustomFields)
+  }
+
+  const handleCostCenterCustomFieldsUpdate = (
+    index: number,
+    customField: CustomField
+  ) => {
+    const newCustomFields = [...costCenterCustomFieldsState]
+
+    newCustomFields[index] = customField
+    setCostCenterCustomFieldsState(newCustomFields)
   }
   //! CUSTOM FIELDS
 
@@ -238,8 +260,9 @@ const RequestOrganizationForm: FC = () => {
         },
         phoneNumber: formState.phoneNumber,
         businessDocument: formState.businessDocument,
+        customFields: costCenterCustomFieldsState,
       },
-      customFields: customFieldsState,
+      customFields: orgCustomFieldsState,
     }
 
     createOrganizationRequest({
@@ -398,13 +421,13 @@ const RequestOrganizationForm: FC = () => {
               <Spinner />
             </div>
           ) : (
-            customFieldsState?.map(
+            orgCustomFieldsState?.map(
               (customField: CustomField, index: number) => {
                 return (
                   <CustomFieldInput
                     key={`${customField.name} ${index}`}
                     index={index}
-                    handleUpdate={handleCustomFieldsUpdate}
+                    handleUpdate={handleOrgCustomFieldsUpdate}
                     customField={customField}
                   />
                 )
@@ -524,6 +547,28 @@ const RequestOrganizationForm: FC = () => {
               }}
             />
           </div>
+          {/* //! Custom fields */}
+          {defaultCustomFieldsDataLoading ? (
+            <div className="mb5 flex flex-column">
+              <Spinner />
+            </div>
+          ) : (
+            <>
+              {costCenterCustomFieldsState?.map(
+                (customField: CustomField, index: number) => {
+                  return (
+                    <CustomFieldInput
+                      key={`${customField.name} ${index}`}
+                      index={index}
+                      handleUpdate={handleCostCenterCustomFieldsUpdate}
+                      customField={customField}
+                    />
+                  )
+                }
+              )}
+            </>
+          )}
+          {/* //! Custom fields */}
           <div
             className={`${handles.newOrganizationAddressForm} mb5 flex flex-column`}
           >
@@ -570,9 +615,15 @@ const RequestOrganizationForm: FC = () => {
                     !isValidAddress(addressState) ||
                     (formState.phoneNumber &&
                       !validatePhoneNumber(formState.phoneNumber)) ||
-                    customFieldsState?.some((customField: CustomField) => {
+                    // custom fields need to be filled
+                    orgCustomFieldsState?.some((customField: CustomField) => {
                       return !customField.value
-                    })
+                    }) ||
+                    costCenterCustomFieldsState?.some(
+                      (customField: CustomField) => {
+                        return !customField.value
+                      }
+                    )
                   }
                 >
                   <FormattedMessage id="store/b2b-organizations.request-new-organization.submit-button.label" />
