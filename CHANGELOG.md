@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Added the possibility to control whether to show the dropdowns in the UserWidget component when we have more than one organization associated with the email
+
 ## [2.2.0] - 2022-11-22
 
 - WITI-319 Added dropdown fields to custom fields

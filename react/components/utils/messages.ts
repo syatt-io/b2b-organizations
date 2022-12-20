@@ -150,6 +150,9 @@ export const organizationMessages = defineMessages({
   autocompleteSearching: {
     id: `${storePrefix}autocomplete-searching`,
   },
+  autocompleteSearchingCostCenter: {
+    id: `${storePrefix}autocomplete-searching.cost-center`,
+  },
   new: {
     id: `${storePrefix}organization-details.button.new`,
   },
@@ -335,5 +338,8 @@ export const userWidgetMessages = defineMessages({
   },
   stopImpersonation: {
     id: `${storePrefix}stop-impersonation`,
+  },
+  setCurrentOrganization: {
+    id: `${storePrefix}set-current-organization`,
   },
 })
