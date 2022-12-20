@@ -17,6 +17,7 @@
   "dependencies": {
     "syatt.b2b-organizations-graphql": "2.x",
     "vtex.b2b-organizations-graphql": "0.x",
+    "vtex.b2b-organizations": "1.x",
     "vtex.catalog-graphql": "1.x",
     "vtex.admin-graphql": "2.x",
     "vtex.store-graphql": "2.x",

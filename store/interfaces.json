@@ -26,7 +26,7 @@
   "b2b-user-widget": {
     "component": "StorefrontUserWidget",
     "content": {
-      "$ref": "app:syatt.b2b-organizations#/definitions/StorefrontUserWidgetProps"
+      "$ref": "#/definitions/StorefrontUserWidgetProps"
     }
   }
 }
