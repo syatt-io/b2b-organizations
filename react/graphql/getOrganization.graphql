@@ -1,6 +1,6 @@
 query GetOrganization($id: ID) {
   getOrganizationById(id: $id)
-    @context(provider: "vtex.b2b-organizations-graphql") {
+    @context(provider: "syatt.b2b-organizations-graphql") {
     id
     name
     tradeName
@@ -17,5 +17,15 @@ query GetOrganization($id: ID) {
     priceTables
     salesChannel
     costCenters
+    customFields {
+      name
+      value
+      type
+      dropdownValues {
+        value
+        label
+      }
+      useOnRegistration
+    }
   }
 }

@@ -1,5 +1,6 @@
 query userWidgetQuery($orgId: ID) {
-  getOrganizationsByEmail @context(provider: "vtex.b2b-organizations-graphql") {
+  getOrganizationsByEmail
+    @context(provider: "syatt.b2b-organizations-graphql") {
     id
     costCenterName
     costId
@@ -22,7 +23,7 @@ query userWidgetQuery($orgId: ID) {
   }
 
   getOrganizationByIdStorefront(id: $orgId)
-    @context(provider: "vtex.b2b-organizations-graphql") {
+    @context(provider: "syatt.b2b-organizations-graphql") {
     id
     name
     status
@@ -33,7 +34,7 @@ query userWidgetQuery($orgId: ID) {
   }
 
   getCostCenterByIdStorefront(id: $orgId)
-    @context(provider: "vtex.b2b-organizations-graphql") {
+    @context(provider: "syatt.b2b-organizations-graphql") {
     id
     name
     organization
