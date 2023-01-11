@@ -633,16 +633,7 @@ const RequestOrganizationForm: FC = () => {
                     !validateEmail(formState.email) ||
                     !isValidAddress(addressState) ||
                     (formState.phoneNumber &&
-                      !validatePhoneNumber(formState.phoneNumber)) ||
-                    // custom fields need to be filled
-                    orgCustomFieldsState?.some((customField: CustomField) => {
-                      return !customField.value
-                    }) ||
-                    costCenterCustomFieldsState?.some(
-                      (customField: CustomField) => {
-                        return !customField.value
-                      }
-                    )
+                      !validatePhoneNumber(formState.phoneNumber))
                   }
                 >
                   <FormattedMessage id="store/b2b-organizations.request-new-organization.submit-button.label" />
