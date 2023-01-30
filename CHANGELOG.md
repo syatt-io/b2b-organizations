@@ -7,9 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [2.4.0] - 2023-01-30
+## [2.5.0] - 2023-01-30
 
-## [2.3.0] - 2023-01-11
+- WITI-421 - Added custom fields to /account/organization when creating a new custom cost center
+- WITI-432 - CustomFields not required on registration
 
 ### Fixed
 
