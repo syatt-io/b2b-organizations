@@ -190,13 +190,11 @@ const OrganizationDetails: FunctionComponent<RouterProps> = ({
     address,
     phoneNumber,
     businessDocument,
-    customFields,
   }: {
     name: string
     address: AddressFormFields
     phoneNumber: string
     businessDocument: string
-    customFields: CustomField[]
   }) => {
     setLoadingState(true)
     const newAddress = {
@@ -222,7 +220,6 @@ const OrganizationDetails: FunctionComponent<RouterProps> = ({
         addresses: [newAddress],
         phoneNumber,
         businessDocument,
-        customFields,
       },
     }
 
