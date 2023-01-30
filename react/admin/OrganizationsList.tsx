@@ -570,16 +570,7 @@ const OrganizationsList: FunctionComponent = () => {
                   !newCostCenterName ||
                   !isValidAddress(newCostCenterAddressState) ||
                   (newCostCenterPhoneNumber &&
-                    !validatePhoneNumber(newCostCenterPhoneNumber)) ||
-                  // custom fields need to be filled
-                  orgCustomFieldsState?.some((customField: CustomField) => {
-                    return !customField.value
-                  }) ||
-                  costCenterCustomFieldsState?.some(
-                    (customField: CustomField) => {
-                      return !customField.value
-                    }
-                  )
+                    !validatePhoneNumber(newCostCenterPhoneNumber))
                 }
               >
                 {formatMessage(messages.add)}

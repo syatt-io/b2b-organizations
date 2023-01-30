@@ -149,13 +149,7 @@ const NewCostCenterModal: FunctionComponent<Props> = ({
                 !newCostCenterName ||
                 !isValidAddress(newCostCenterAddressState) ||
                 (newCostCenterPhoneNumber &&
-                  !validatePhoneNumber(newCostCenterPhoneNumber)) ||
-                // custom fields need to be filled
-                costCenterCustomFieldsState?.some(
-                  (customField: CustomField) => {
-                    return !customField.value
-                  }
-                )
+                  !validatePhoneNumber(newCostCenterPhoneNumber))
               }
             >
               {formatMessage(messages.add)}
