@@ -220,7 +220,7 @@ const CostCenterDetails: FunctionComponent = () => {
     updateCostCenter({ variables })
       .then(() => {
         showToast({
-          type: 'success',
+          variant: 'positive',
           message: formatMessage(messages.toastUpdateSuccess),
         })
         refetch()
@@ -230,7 +230,7 @@ const CostCenterDetails: FunctionComponent = () => {
       .catch(error => {
         console.error(error)
         showToast({
-          type: 'error',
+          variant: 'critical',
           message: formatMessage(messages.toastUpdateFailure),
         })
         setLoadingState(false)
@@ -247,7 +247,7 @@ const CostCenterDetails: FunctionComponent = () => {
       .catch(error => {
         console.error(error)
         showToast({
-          type: 'error',
+          variant: 'critical',
           message: formatMessage(messages.toastDeleteFailure),
         })
         setLoadingState(false)
@@ -343,7 +343,7 @@ const CostCenterDetails: FunctionComponent = () => {
       handleCloseModals()
     } else {
       showToast({
-        type: 'error',
+        variant: 'critical',
         message: formatMessage(messages.duplicateAddress),
       })
     }

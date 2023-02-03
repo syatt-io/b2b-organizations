@@ -12,6 +12,7 @@ import {
   organizationSettingsMessages as settingMessage,
   organizationMessages as messages,
 } from './utils/messages'
+import CustomFieldsTable from './CustomFieldsTable'
 
 const CustomFields: React.FC = () => {
   /**
@@ -74,11 +75,11 @@ const CustomFields: React.FC = () => {
 
   const toastMessage = (
     message: MessageDescriptor,
-    type: 'error' | 'info' | 'success' | 'warning'
+    type: 'critical' | 'info' | 'positive' | 'warning'
   ) => {
     const translatedMessage = translateMessage(message)
 
-    showToast({ message: translatedMessage, duration: 5000, type })
+    showToast({ message: translatedMessage, duration: 5000, variant: type })
   }
 
   const saveB2BSettings = () => {
@@ -93,10 +94,10 @@ const CustomFields: React.FC = () => {
       },
     })
       .then(() => {
-        toastMessage(settingMessage.toastUpdateSuccess, 'success')
+        toastMessage(settingMessage.toastUpdateSuccess, 'positive')
       })
       .catch(() => {
-        toastMessage(settingMessage.toastUpdateFailure, 'error')
+        toastMessage(settingMessage.toastUpdateFailure, 'warning')
       })
   }
 
@@ -104,10 +105,11 @@ const CustomFields: React.FC = () => {
     setActiveCustomFields([...activeCustomFields, { name: '', type: 'text' }])
   }
 
-  const removeCustomField = () => {
+  const removeCustomField = (indexToRemove: number) => {
+    // remove item at the provided index
     const customFieldsWithoutLastItem = activeCustomFields.slice(
       0,
-      activeCustomFields.length - 1
+      indexToRemove
     )
 
     setActiveCustomFields(customFieldsWithoutLastItem)
@@ -167,6 +169,9 @@ const CustomFields: React.FC = () => {
     costCenterCustomFields?.length > 0,
   ])
 
+  // eslint-disable-next-line no-console
+  console.log(activeCustomFields, 'activeCustomFields')
+
   return (
     <>
       <div className="flex justify-between items-center">
@@ -202,6 +207,7 @@ const CustomFields: React.FC = () => {
               customFieldsMessages.customFieldsTitleSingular
             )} ${index + 1}`}
             handleUpdate={handleUpdate}
+            handleDelete={removeCustomField}
           />
         ))
       )}
@@ -210,17 +216,12 @@ const CustomFields: React.FC = () => {
         <Button variation="primary" onClick={() => addCustomField()}>
           <FormattedMessage id="admin/b2b-organizations.custom-fields.addField" />
         </Button>
-
-        <div className="ml2">
-          <Button
-            variation="secondary"
-            onClick={() => removeCustomField()}
-            disabled={activeCustomFields?.length === 0}
-          >
-            <FormattedMessage id="admin/b2b-organizations.custom-fields.removeField" />
-          </Button>
-        </div>
       </div>
+
+      <CustomFieldsTable
+        customFields={activeCustomFields}
+        handleDelete={removeCustomField}
+      />
     </>
   )
 }

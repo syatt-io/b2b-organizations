@@ -144,7 +144,7 @@ const OrganizationDetails: FunctionComponent = () => {
       .then(() => {
         setLoadingState(false)
         showToast({
-          type: 'success',
+          variant: 'positive',
           message: formatMessage(messages.toastUpdateSuccess),
         })
         refetch({ id: params?.id })
@@ -153,7 +153,7 @@ const OrganizationDetails: FunctionComponent = () => {
         setLoadingState(false)
         console.error(error)
         showToast({
-          type: 'error',
+          variant: 'critical',
           message: formatMessage(messages.toastUpdateFailure),
         })
       })

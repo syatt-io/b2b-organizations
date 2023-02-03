@@ -6,3 +6,8 @@ body,
 .render-provider {
   height: 100%;
 }
+
+sup {
+  z-index: 1;
+  border: 5px solid red;
+}

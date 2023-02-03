@@ -7,6 +7,7 @@ interface CustomFieldProps {
   customField: CustomField
   name: string
   handleUpdate: (index: number, customField: CustomField) => void
+  handleDelete: (index: number) => void
 }
 
 interface DropdownValue {
@@ -18,6 +19,7 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
   index,
   name,
   handleUpdate,
+  handleDelete,
   customField,
   customField: { type, value, dropdownValues, useOnRegistration = false },
 }) => {
@@ -55,27 +57,15 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
   }
 
   const handleDropdownChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value === 'text') {
-      setDropdownState(fieldOptionsNew[0].value)
+    const updatedType = e.target.value === 'text' ? 'text' : 'dropdown'
 
-      handleUpdate(index, {
-        ...customField,
-        type: 'text',
-        dropdownValues: [],
-      })
-
-      setDropdownValuesLocal([])
-    } else {
-      setDropdownState(fieldOptionsNew[1].value)
-
-      const updatedCustomField = {
-        ...customField,
-        type: 'dropdown' as const,
-        dropdownValues: [],
-      }
-
-      handleUpdate(index, updatedCustomField)
-    }
+    handleUpdate(index, {
+      ...customField,
+      type: updatedType,
+      dropdownValues: [],
+    })
+    setDropdownState(updatedType)
+    setDropdownValuesLocal([])
   }
 
   const handleDropdownItemChange = (
@@ -107,16 +97,10 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
   }
 
   const handleAddDropdownItem = () => {
-    setDropdownValuesLocal(prev => {
-      const newDropdownValues = [...prev]
-
-      newDropdownValues.push({
-        value: '',
-        label: '',
-      })
-
-      return newDropdownValues
-    })
+    setDropdownValuesLocal(prevValues => [
+      ...prevValues,
+      { value: '', label: '' },
+    ])
   }
 
   const handleDeleteDropdownItem = (i: number) => {
@@ -234,15 +218,15 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
           }}
         />
       ) : null}
-      {/* // TODO - make deletion work per field, currently removes last item */}
-      {/* <Button
+      <Button
         icon={<IconDelete title="Delete" />}
         aria-label="Delete line"
         csx={{
           marginTop: '28px',
           marginLeft: '10px',
         }}
-      /> */}
+        onClick={() => handleDelete(index)}
+      />
     </div>
   )
 }

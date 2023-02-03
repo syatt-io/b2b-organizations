@@ -1,15 +1,15 @@
 import type { FunctionComponent } from 'react'
 import React from 'react'
-import { createSystem, ToastProvider } from '@vtex/admin-ui'
+import { ThemeProvider, ToastProvider } from '@vtex/admin-ui'
 import 'vtex.country-codes/locales'
 
 const B2BAdminLayout: FunctionComponent = ({ children }) => {
-  const [SystemProvider] = createSystem({ key: 'btob-organizations' })
+  // const [SystemProvider] = createSystem()
 
   return (
-    <SystemProvider>
+    <ThemeProvider>
       <ToastProvider>{children}</ToastProvider>
-    </SystemProvider>
+    </ThemeProvider>
   )
 }
 
