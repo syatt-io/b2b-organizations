@@ -305,7 +305,7 @@
   "store/b2b-organizations.stop-impersonation-error": "Feil ved stopp av etterligning. Se konsoll for mer informasjon.",
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Tilpassede felt",
   "admin/b2b-organizations.custom-fields.title": "Tilpassede felt",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Tilpasset felt",
+  "admin/b2b-organizations.custom-fields.name-singular": "Tilpasset feltnavn",
   "admin/b2b-organizations.custom-fields.explanation": "Tilpassede felt brukes til å spare ytterligere informasjon om organisasjons- eller kostnadssenterskjemaer.",
   "admin/b2b-organizations.custom-fields.addField": "Legg til felt",
   "admin/b2b-organizations.custom-fields.removeField": "Fjern feltet",

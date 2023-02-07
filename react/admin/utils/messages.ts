@@ -445,7 +445,7 @@ export const organizationCustomFieldsMessages = defineMessages({
     id: `${adminPrefix}custom-fields.title`,
   },
   customFieldsTitleSingular: {
-    id: `${adminPrefix}custom-fields.titleSingular`,
+    id: `${adminPrefix}custom-fields.name-singular`,
   },
   customFieldsExplanation: {
     id: `${adminPrefix}custom-fields.explanation`,

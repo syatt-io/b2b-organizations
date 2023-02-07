@@ -6,8 +6,7 @@ interface CustomFieldProps {
   index: number
   customField: CustomField
   name: string
-  handleUpdate: (index: number, customField: CustomField) => void
-  handleDelete: (index: number) => void
+  handleUpdate: (customField: CustomField) => void
 }
 
 interface DropdownValue {
@@ -19,7 +18,6 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
   index,
   name,
   handleUpdate,
-  handleDelete,
   customField,
   customField: { type, value, dropdownValues, useOnRegistration = false },
 }) => {
@@ -53,13 +51,13 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
       name: e.target.value,
     }
 
-    handleUpdate(index, updatedCustomField)
+    handleUpdate(updatedCustomField)
   }
 
   const handleDropdownChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const updatedType = e.target.value === 'text' ? 'text' : 'dropdown'
 
-    handleUpdate(index, {
+    handleUpdate({
       ...customField,
       type: updatedType,
       dropdownValues: [],
@@ -90,7 +88,7 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
         dropdownValues: newDropdownValues,
       }
 
-      handleUpdate(index, updatedCustomField)
+      handleUpdate(updatedCustomField)
 
       return newDropdownValues
     })
@@ -116,13 +114,11 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
   const handleToggle = () => {
     setUseOnRegistrationLocal(prev => {
       const updatedCustomField = {
-        name: value ?? name,
-        type,
-        dropdownValues,
+        ...customField,
         useOnRegistration: !prev,
       }
 
-      handleUpdate(index, updatedCustomField)
+      handleUpdate(updatedCustomField)
 
       return !prev
     })
@@ -136,12 +132,13 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
 
   return (
     <div className="w-100 mv6 flex">
-      <Toggle
-        checked={useOnRegistrationLocal}
-        onChange={handleToggle}
-        label="Show on registration form"
-        className="flex flex-column w-100"
-      />
+      <Flex className="w-20 mr4 pv6">
+        <Toggle
+          checked={useOnRegistrationLocal}
+          onChange={handleToggle}
+          label="Show on registration form"
+        />
+      </Flex>
 
       <Dropdown
         label="Field Type"
@@ -149,14 +146,13 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
         options={fieldOptionsNew ?? []}
         onChange={handleDropdownChange}
         value={dropdownState}
+        className="w-100"
       />
-      <Flex direction="column" className="w-100">
+      <Flex direction="column" className="w-100 ml4">
         <Input
           autocomplete="off"
           size="large"
-          label={`${name}${
-            dropdownState === 'dropdown' ? ' - Dropdown name:' : ''
-          }`}
+          label={name}
           value={customField.name}
           type={type}
           onChange={handleChange}
@@ -169,19 +165,25 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
                 <Flex
                   direction="row"
                   align="end"
-                  className="w-80"
+                  className="w-100"
                   key={`dropdown${index}${i}`}
                 >
-                  <Input
-                    autocomplete="off"
-                    size="medium"
-                    label="Value"
-                    value={dropdownValue.value}
-                    type="text"
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                      handleDropdownItemChange(e, i)
-                    }
-                  />
+                  <Flex className="w-50 mr6">
+                    <Input
+                      autocomplete="off"
+                      size="medium"
+                      label="Value"
+                      value={dropdownValue.value}
+                      type="text"
+                      className="mr4 w-50"
+                      style={{
+                        border: '1px solid red',
+                      }}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        handleDropdownItemChange(e, i)
+                      }
+                    />
+                  </Flex>
                   <Input
                     autocomplete="off"
                     size="medium"
@@ -213,20 +215,11 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
           aria-label="Add field"
           onClick={handleAddDropdownItem}
           csx={{
-            marginTop: '28px',
+            marginTop: '35px',
             marginLeft: '10px',
           }}
         />
       ) : null}
-      <Button
-        icon={<IconDelete title="Delete" />}
-        aria-label="Delete line"
-        csx={{
-          marginTop: '28px',
-          marginLeft: '10px',
-        }}
-        onClick={() => handleDelete(index)}
-      />
     </div>
   )
 }

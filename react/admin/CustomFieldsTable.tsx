@@ -11,33 +11,54 @@ import {
   Tag,
   IconEye,
   IconTrash,
-  Modal,
-  useModalState,
-  ModalHeader,
-  ModalTitle,
-  ModalContent,
-  ModalDismiss,
-  ModalButton,
-  ModalFooter,
-  Button,
 } from '@vtex/admin-ui'
-import { Dropdown } from 'vtex.styleguide'
+import { Dropdown, Modal, Button } from 'vtex.styleguide'
+import { useIntl } from 'react-intl'
+
+import {
+  costCenterMessages,
+  organizationMessages as messages,
+  organizationCustomFieldsMessages as customFieldsMessages,
+} from './utils/messages'
+import DefaultCustomField from './DefaultCustomField'
 
 // props are passed to the component
 interface CustomFieldsTableProps {
-  customFields: any
+  customFields: CustomField[]
   handleDelete: (index: number) => void
+  handleUpdate: (index: number, customField: any) => void
 }
 
 const CustomFieldsTable: React.FC<CustomFieldsTableProps> = ({
   customFields,
   handleDelete,
+  handleUpdate,
 }) => {
-  const modal = useModalState()
+  const [isModalOpen, setIsModalOpen] = React.useState(false)
 
   const toggleModal = () => {
-    modal.toggle()
+    setIsModalOpen(!isModalOpen)
   }
+
+  const [
+    selectedCustomFieldIndex,
+    setSelectedCustomFieldIndex,
+  ] = React.useState<number>(0)
+
+  // save custom filed locally
+  const [localCustomField, setLocalCustomField] = React.useState<CustomField>({
+    name: '',
+    type: 'text',
+    value: '',
+    dropdownValues: [],
+    useOnRegistration: false,
+  })
+
+  const handleUpdateLocal = (customField: CustomField) => {
+    setLocalCustomField(customField)
+  }
+
+  const { formatMessage } = useIntl()
 
   const columns = createColumns([
     {
@@ -59,7 +80,7 @@ const CustomFieldsTable: React.FC<CustomFieldsTableProps> = ({
         render: ({ item }) => {
           return item.dropdownValues?.length ? (
             <Dropdown
-              // label="Field Type"
+              aria-label="Field Type"
               size="medium"
               options={item.dropdownValues ?? []}
               value={item.dropdownValues[0].value}
@@ -72,12 +93,19 @@ const CustomFieldsTable: React.FC<CustomFieldsTableProps> = ({
     },
     {
       id: 'useOnRegistration',
-      header: 'UseOnRegistration',
+      header: 'Use on Registration',
       width: '1fr',
       resolver: {
         type: 'root',
         render: ({ item }) => {
-          return <Tag label={`${!!item.useOnRegistration}`} size="normal"></Tag>
+          return (
+            <Tag
+              // if not set comes as null, converting to boolean
+              label={`${!!item.useOnRegistration}`}
+              variant={item.useOnRegistration ? 'green' : 'gray'}
+              size="normal"
+            ></Tag>
+          )
         },
       },
     },
@@ -91,17 +119,24 @@ const CustomFieldsTable: React.FC<CustomFieldsTableProps> = ({
             icon: <IconEye />,
             onClick: item => {
               toggleModal()
-              // eslint-disable-next-line no-console
-              console.log(item, 'edit3')
+
+              const index = customFields.findIndex(
+                customField => customField === item
+              )
+
+              setSelectedCustomFieldIndex(index)
+              setLocalCustomField(item)
             },
           },
           {
             label: 'Delete',
             icon: <IconTrash />,
             onClick: item => {
-              // eslint-disable-next-line no-console
-              console.log(item)
-              handleDelete(1)
+              const index = customFields.findIndex(
+                customField => customField === item
+              )
+
+              handleDelete(index)
             },
           },
         ],
@@ -109,36 +144,15 @@ const CustomFieldsTable: React.FC<CustomFieldsTableProps> = ({
     },
   ])
 
-  /**
-   * The hook returns the Table state
-   */
   const { data, getBodyCell, getHeadCell, getTable } = useTableState({
-    /**
-     * Columns shape, read more about it on the rendering section
-     */
     columns,
-    /**
-     * List of items to render
-     */
-    items: customFields,
+    // item type is built using columns which makes it incompatible with customFields type
+    items: customFields as any,
   })
 
-  /**
-   * You must use the `state` prop so that your Table comes to life
-   * This is the only prop that is required
-   */
   return (
     <>
-      <Table
-        {...getTable()}
-        className="test"
-        style={{
-          width: '100%',
-          height: '100%',
-          overflow: 'auto',
-          // target a child element
-        }}
-      >
+      <Table {...getTable()}>
         <THead>
           {columns.map(column => (
             <THeadCell {...getHeadCell(column)} />
@@ -147,10 +161,7 @@ const CustomFieldsTable: React.FC<CustomFieldsTableProps> = ({
         <TBody>
           {data.map((item: any) => {
             return (
-              <TBodyRow
-                key={item.name}
-                // onClick={() => alert(`Item: ${item.name}`)}
-              >
+              <TBodyRow key={item.name}>
                 {columns.map(column => {
                   return <TBodyCell {...getBodyCell(column, item)} />
                 })}
@@ -159,27 +170,37 @@ const CustomFieldsTable: React.FC<CustomFieldsTableProps> = ({
           })}
         </TBody>
 
-        <Button onClick={modal.toggle}>Toggle modal</Button>
-        <Modal state={modal} backdrop={'sup'} size="medium">
-          <ModalHeader>
-            <ModalTitle>Update Custom Field</ModalTitle>
-            <ModalDismiss />
-          </ModalHeader>
-          <ModalContent>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non
-            tincidunt lacus. Vivamus sed ullamcorper ipsum, vitae pharetra sem.
-            Quisque dapibus tellus ex, vehicula suscipit quam scelerisque
-            egestas. Donec feugiat pulvinar fringilla. Morbi sed risus a augue
-            interdum imperdiet. Maecenas fermentum felis quis sollicitudin
-            cursus. Vestibulum massa felis, laoreet at turpis vel, ornare
-            tristique mi. Fusce ultrices auctor neque dapibus consequat. Fusce
-            eu sagittis dui, quis gravida augue. Aenean dignissim odio ac nibh
-            volutpat porta. Integer at pretium justo.
-          </ModalContent>
-          <ModalFooter>
-            <ModalButton variant="secondary">Cancel</ModalButton>
-            <ModalButton>Confirm</ModalButton>
-          </ModalFooter>
+        <Modal
+          isOpen={isModalOpen}
+          onClose={toggleModal}
+          responsiveFullScreen
+          bottomBar={
+            <div className="nowrap">
+              <span className="mr4">
+                <Button variation="tertiary" onClick={toggleModal}>
+                  {formatMessage(messages.cancel)}
+                </Button>
+              </span>
+              <span>
+                <Button
+                  variation="primary"
+                  onClick={() => {
+                    toggleModal()
+                    handleUpdate(selectedCustomFieldIndex, localCustomField)
+                  }}
+                >
+                  {formatMessage(costCenterMessages.update)}
+                </Button>
+              </span>
+            </div>
+          }
+        >
+          <DefaultCustomField
+            customField={localCustomField}
+            name={formatMessage(customFieldsMessages.customFieldsTitleSingular)}
+            index={selectedCustomFieldIndex}
+            handleUpdate={handleUpdateLocal}
+          />
         </Modal>
       </Table>
     </>

@@ -305,7 +305,7 @@
   "store/b2b-organizations.stop-impersonation-error": "خطأ في إيقاف تعيين المستخدم. راجع وحدة التحكم للحصول على التفاصيل.",
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "الحقول المخصصة",
   "admin/b2b-organizations.custom-fields.title": "الحقول المخصصة",
-  "admin/b2b-organizations.custom-fields.titleSingular": "حقل مخصص",
+  "admin/b2b-organizations.custom-fields.name-singular": "اسم الحقل المخصص",
   "admin/b2b-organizations.custom-fields.explanation": "يتم استخدام الحقول المخصصة لحفظ معلومات إضافية عن النماذج المركزية للتركيز أو التكلفة.",
   "admin/b2b-organizations.custom-fields.addField": "إضافة حقل",
   "admin/b2b-organizations.custom-fields.removeField": "إزالة الحقل",

@@ -305,7 +305,7 @@
   "store/b2b-organizations.stop-impersonation-error": "S'ha produït un error en aturar la suplantació. Per obtenir-ne més informació, consulteu la consola.",
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "  Camps personalitzats",
   "admin/b2b-organizations.custom-fields.title": "Camps personalitzats",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Camp personalitzat",
+  "admin/b2b-organizations.custom-fields.name-singular": "Nom del camp personalitzat",
   "admin/b2b-organizations.custom-fields.explanation": "Els camps personalitzats s’utilitzen per estalviar informació addicional sobre els formularis d’organització o centre de costos.",
   "admin/b2b-organizations.custom-fields.addField": "Afegiu camp",
   "admin/b2b-organizations.custom-fields.removeField": "Eliminar el camp",

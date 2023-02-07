@@ -305,7 +305,7 @@
   "store/b2b-organizations.stop-impersonation-error": "Vyskytla sa chyba pri zastavení vydávanie sa za používateľa. Podrobnosti nájdete v konzole.",
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Vlastné polia",
   "admin/b2b-organizations.custom-fields.title": "Vlastné polia",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Vlastné pole",
+  "admin/b2b-organizations.custom-fields.name-singular": "Vlastný názov poľa",
   "admin/b2b-organizations.custom-fields.explanation": "Vlastné polia sa používajú na ukladanie ďalších informácií o formulároch organizácie alebo nákladového strediska.",
   "admin/b2b-organizations.custom-fields.addField": "Pole pridať",
   "admin/b2b-organizations.custom-fields.removeField": "Odstrániť pole",

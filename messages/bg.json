@@ -305,7 +305,7 @@
   "store/b2b-organizations.stop-impersonation-error": "Грешка при спиране на въплъщаването. Вижте конзолата за подробности.",
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "  Персонализирани полета",
   "admin/b2b-organizations.custom-fields.title": "Персонализирани полета",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Персонализирано поле",
+  "admin/b2b-organizations.custom-fields.name-singular": "Име на персонализирано поле",
   "admin/b2b-organizations.custom-fields.explanation": "Персонализираните полета се използват за запазване на допълнителна информация за формуляри за организация или разходи.",
   "admin/b2b-organizations.custom-fields.addField": "Добавете поле",
   "admin/b2b-organizations.custom-fields.removeField": "Извадете полето",

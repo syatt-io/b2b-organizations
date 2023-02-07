@@ -305,7 +305,7 @@
   "store/b2b-organizations.stop-impersonation-error": "Wystąpił błąd podczas zatrzymywania odgrywania roli. Zobacz konsolę, aby poznać szczegóły.",
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Pola niestandardowe",
   "admin/b2b-organizations.custom-fields.title": "Pola niestandardowe",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Pole niestandardowe",
+  "admin/b2b-organizations.custom-fields.name-singular": "Niestandardowa nazwa pola",
   "admin/b2b-organizations.custom-fields.explanation": "Pola niestandardowe służą do oszczędzania dodatkowych informacji na temat formularzy organizacji lub centrów kosztów.",
   "admin/b2b-organizations.custom-fields.addField": "Dodaj pole",
   "admin/b2b-organizations.custom-fields.removeField": "Usuń pole",

@@ -305,7 +305,7 @@
   "store/b2b-organizations.stop-impersonation-error": "Fejl med at stoppe efterligning. Se konsol for detaljer.",
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "  Brugerdefinerede felter",
   "admin/b2b-organizations.custom-fields.title": "Brugerdefinerede felter",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Brugerdefineret felt",
+  "admin/b2b-organizations.custom-fields.name-singular": "Brugerdefineret feltnavn",
   "admin/b2b-organizations.custom-fields.explanation": "Brugerdefinerede felter bruges til at gemme yderligere oplysninger om organiserings- eller omkostningscenterformer.",
   "admin/b2b-organizations.custom-fields.addField": "Tilføj felt",
   "admin/b2b-organizations.custom-fields.removeField": "Fjern feltet",

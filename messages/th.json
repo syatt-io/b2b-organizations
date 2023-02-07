@@ -305,7 +305,7 @@
   "store/b2b-organizations.stop-impersonation-error": "มีข้อผิดพลาดในการหยุดเลียนแบบ โปรดดูรายละเอียดในคอนโซล",
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "ฟิลด์ที่กำหนดเอง",
   "admin/b2b-organizations.custom-fields.title": "ฟิลด์ที่กำหนดเอง",
-  "admin/b2b-organizations.custom-fields.titleSingular": "ฟิลด์แบบกำหนดเอง",
+  "admin/b2b-organizations.custom-fields.name-singular": "ชื่อฟิลด์ที่กำหนดเอง",
   "admin/b2b-organizations.custom-fields.explanation": "ฟิลด์ที่กำหนดเองใช้เพื่อบันทึกข้อมูลเพิ่มเติมเกี่ยวกับแบบฟอร์มองค์กรหรือศูนย์ต้นทุน.",
   "admin/b2b-organizations.custom-fields.addField": "เพิ่มฟิลด์",
   "admin/b2b-organizations.custom-fields.removeField": "ลบฟิลด์",
