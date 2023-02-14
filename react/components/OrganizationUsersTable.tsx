@@ -597,11 +597,15 @@ const OrganizationUsersTable: FunctionComponent<Props> = ({
       onClear: handleInputSearchClear,
       onSubmit: handleInputSearchSubmit,
     },
-    newLine: {
-      label: formatMessage(isAdmin ? adminMessages.new : storeMessages.new),
-      handleCallback: () => setAddUserModalOpen(true),
-      disabled: !canEdit && !canEditSales,
-    },
+    // don't show the add new button if the user doesn't have permission to add new users
+    ...(canEdit &&
+      canEditSales && {
+        newLine: {
+          label: formatMessage(isAdmin ? adminMessages.new : storeMessages.new),
+          handleCallback: () => setAddUserModalOpen(true),
+          disabled: !canEdit && !canEditSales,
+        },
+      }),
   }
 
   const pagination = {

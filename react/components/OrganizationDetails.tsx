@@ -340,15 +340,15 @@ const OrganizationDetails: FunctionComponent<RouterProps> = ({
                   ?.pagination?.total ?? 0,
               rowsOptions: [25, 50, 100],
             }}
-            toolbar={{
-              newLine: {
-                label: formatMessage(messages.new),
-                handleCallback: () => setNewCostCenterModalState(true),
-                disabled: !permissionsState.includes(
-                  'create-cost-center-organization'
-                ),
-              },
-            }}
+            toolbar={
+              // don't show the add new button if the user doesn't have permission to create a new cost center
+              permissionsState.includes('create-cost-center-organization') && {
+                newLine: {
+                  label: formatMessage(messages.new),
+                  handleCallback: () => setNewCostCenterModalState(true),
+                },
+              }
+            }
           />
         </PageBlock>
       )}
