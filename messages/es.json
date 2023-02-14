@@ -305,7 +305,7 @@
   "store/b2b-organizations.stop-impersonation-error": "Error al detener la suplantación. Consulta la consola para ver los detalles.",
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Campos Personalizados",
   "admin/b2b-organizations.custom-fields.title": "Campos Personalizados",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Campo personalizado",
+  "admin/b2b-organizations.custom-fields.name-singular": "Nombre de campo personalizado",
   "admin/b2b-organizations.custom-fields.explanation": "Los campos personalizados se utilizan para ahorrar información adicional sobre formularios de organización o centro de costos.",
   "admin/b2b-organizations.custom-fields.addField": "Agregue campo",
   "admin/b2b-organizations.custom-fields.removeField": "Eliminar el campo",

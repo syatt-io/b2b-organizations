@@ -305,7 +305,7 @@
   "store/b2b-organizations.stop-impersonation-error": "Kesalahan saat menghentikan peniruan. Lihat konsol untuk detailnya.",
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Bidang khusus",
   "admin/b2b-organizations.custom-fields.title": "Bidang khusus",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Tanah adat",
+  "admin/b2b-organizations.custom-fields.name-singular": "Nama Bidang Kustom",
   "admin/b2b-organizations.custom-fields.explanation": "Bidang khusus digunakan untuk menyimpan informasi tambahan tentang formulir organisasi atau pusat biaya.",
   "admin/b2b-organizations.custom-fields.addField": "Tambahkan bidang",
   "admin/b2b-organizations.custom-fields.removeField": "Hapus bidang",

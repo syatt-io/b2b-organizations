@@ -305,7 +305,7 @@
   "store/b2b-organizations.stop-impersonation-error": "Fout bij stoppen impersonatie. Zie console voor details.",
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Aangepaste velden",
   "admin/b2b-organizations.custom-fields.title": "Aangepaste velden",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Aangepast veld",
+  "admin/b2b-organizations.custom-fields.name-singular": "Aangepaste veldnaam",
   "admin/b2b-organizations.custom-fields.explanation": "Aangepaste velden worden gebruikt om aanvullende informatie over organisatie- of kostencentrumformulieren op te slaan.",
   "admin/b2b-organizations.custom-fields.addField": "Voeg veld toe",
   "admin/b2b-organizations.custom-fields.removeField": "Verwijder het veld",

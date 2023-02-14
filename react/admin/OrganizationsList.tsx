@@ -213,7 +213,7 @@ const OrganizationsList: FunctionComponent = () => {
         setLoadingState(false)
         resetNewOrganizationForm()
         showToast({
-          type: 'success',
+          variant: 'positive',
           message: formatMessage(messages.toastAddOrgSuccess),
         })
         refetch(initialState)
@@ -223,7 +223,7 @@ const OrganizationsList: FunctionComponent = () => {
         setLoadingState(false)
         console.error(error)
         showToast({
-          type: 'error',
+          variant: 'critical',
           message: formatMessage(messages.toastAddOrgFailure),
         })
       })

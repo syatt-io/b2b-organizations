@@ -186,7 +186,7 @@ const OrganizationDetailsCostCenters = ({
         setNewCostCenterModalState(false)
         setLoadingState(false)
         showToast({
-          type: 'success',
+          variant: 'positive',
           message: formatMessage(messages.toastAddCostCenterSuccess),
         })
         refetchCostCenters({ ...costCenterPaginationState, id: params?.id })
@@ -196,7 +196,7 @@ const OrganizationDetailsCostCenters = ({
         setLoadingState(false)
         console.error(error)
         showToast({
-          type: 'error',
+          variant: 'critical',
           message: formatMessage(messages.toastAddCostCenterFailure),
         })
       })

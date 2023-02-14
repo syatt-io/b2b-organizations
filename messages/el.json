@@ -305,7 +305,7 @@
   "store/b2b-organizations.stop-impersonation-error": "Σφάλμα κατά τη διακοπή της προσωποποίησης. Δείτε την κονσόλα για λεπτομέρειες.",
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "  Προσαρμοσμένα πεδία",
   "admin/b2b-organizations.custom-fields.title": "Προσαρμοσμένα πεδία",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Προσαρμοσμένο πεδίο",
+  "admin/b2b-organizations.custom-fields.name-singular": "Προσαρμοσμένο όνομα πεδίου",
   "admin/b2b-organizations.custom-fields.explanation": "Τα προσαρμοσμένα πεδία χρησιμοποιούνται για την εξοικονόμηση πρόσθετων πληροφοριών σχετικά με τα έντυπα του οργανισμού ή του κέντρου κόστους.",
   "admin/b2b-organizations.custom-fields.addField": "Προσθήκη πεδίου",
   "admin/b2b-organizations.custom-fields.removeField": "Αφαιρέστε το πεδίο",

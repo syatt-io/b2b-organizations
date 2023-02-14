@@ -6,12 +6,12 @@ import { useToast, Dropdown, useDropdownState } from '@vtex/admin-ui'
 
 import GET_B2BSETTINGS from '../graphql/getB2BSettings.graphql'
 import SAVE_B2BSETTINGS from '../graphql/saveB2BSettings.graphql'
-import DefaultCustomField from './DefaultCustomField'
 import {
   organizationCustomFieldsMessages as customFieldsMessages,
   organizationSettingsMessages as settingMessage,
   organizationMessages as messages,
 } from './utils/messages'
+import CustomFieldsTable from './CustomFieldsTable'
 
 const CustomFields: React.FC = () => {
   /**
@@ -74,11 +74,11 @@ const CustomFields: React.FC = () => {
 
   const toastMessage = (
     message: MessageDescriptor,
-    type: 'error' | 'info' | 'success' | 'warning'
+    type: 'critical' | 'info' | 'positive' | 'warning'
   ) => {
     const translatedMessage = translateMessage(message)
 
-    showToast({ message: translatedMessage, duration: 5000, type })
+    showToast({ message: translatedMessage, duration: 5000, variant: type })
   }
 
   const saveB2BSettings = () => {
@@ -93,10 +93,10 @@ const CustomFields: React.FC = () => {
       },
     })
       .then(() => {
-        toastMessage(settingMessage.toastUpdateSuccess, 'success')
+        toastMessage(settingMessage.toastUpdateSuccess, 'positive')
       })
       .catch(() => {
-        toastMessage(settingMessage.toastUpdateFailure, 'error')
+        toastMessage(settingMessage.toastUpdateFailure, 'warning')
       })
   }
 
@@ -104,10 +104,10 @@ const CustomFields: React.FC = () => {
     setActiveCustomFields([...activeCustomFields, { name: '', type: 'text' }])
   }
 
-  const removeCustomField = () => {
-    const customFieldsWithoutLastItem = activeCustomFields.slice(
-      0,
-      activeCustomFields.length - 1
+  const removeCustomField = (indexToRemove: number) => {
+    // remove item at the provided index
+    const customFieldsWithoutLastItem = activeCustomFields.filter(
+      (_, index) => index !== indexToRemove
     )
 
     setActiveCustomFields(customFieldsWithoutLastItem)
@@ -120,6 +120,7 @@ const CustomFields: React.FC = () => {
 
   const handleUpdate = (index: number, customField: CustomField) => {
     // populate activeCustomFields array with values from inputs
+
     const newCustomFields = [...activeCustomFields]
 
     newCustomFields[index] = customField
@@ -193,33 +194,17 @@ const CustomFields: React.FC = () => {
       {b2bSettingsLoading ? (
         <Spinner />
       ) : (
-        activeCustomFields.map((customField, index: number) => (
-          <DefaultCustomField
-            key={index}
-            index={index}
-            customField={customField}
-            name={`${formatMessage(
-              customFieldsMessages.customFieldsTitleSingular
-            )} ${index + 1}`}
-            handleUpdate={handleUpdate}
-          />
-        ))
+        <CustomFieldsTable
+          customFields={activeCustomFields}
+          handleDelete={removeCustomField}
+          handleUpdate={handleUpdate}
+        />
       )}
 
-      <div className="mt3 flex">
+      <div className="mt6 flex flex-row-reverse">
         <Button variation="primary" onClick={() => addCustomField()}>
           <FormattedMessage id="admin/b2b-organizations.custom-fields.addField" />
         </Button>
-
-        <div className="ml2">
-          <Button
-            variation="secondary"
-            onClick={() => removeCustomField()}
-            disabled={activeCustomFields?.length === 0}
-          >
-            <FormattedMessage id="admin/b2b-organizations.custom-fields.removeField" />
-          </Button>
-        </div>
       </div>
     </>
   )

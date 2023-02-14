@@ -305,7 +305,7 @@
   "store/b2b-organizations.stop-impersonation-error": "Erro ao interromper a personificação. Consulte o console para mais detalhes.",
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Os campos personalizados",
   "admin/b2b-organizations.custom-fields.title": "Os campos personalizados",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Campo customizado",
+  "admin/b2b-organizations.custom-fields.name-singular": "Nome do campo personalizado",
   "admin/b2b-organizations.custom-fields.explanation": "Os campos personalizados são usados para salvar informações adicionais sobre formulários de organização ou centro de custo.",
   "admin/b2b-organizations.custom-fields.addField": "Adicionar campo",
   "admin/b2b-organizations.custom-fields.removeField": "Remova o campo",

@@ -305,7 +305,7 @@
   "store/b2b-organizations.stop-impersonation-error": "Virhe toiseksi käyttäjäksi tekeytymisen lopettamisessa. Katso lisätietoja konsolista.",
   "admin/b2b-organizations.organization-settings-admin.customFieldsTitle": "Mukautetut kentät",
   "admin/b2b-organizations.custom-fields.title": "Mukautetut kentät",
-  "admin/b2b-organizations.custom-fields.titleSingular": "Räätälöity kenttä",
+  "admin/b2b-organizations.custom-fields.name-singular": "Mukautettu kentän nimi",
   "admin/b2b-organizations.custom-fields.explanation": "Mukautettuja kenttiä käytetään lisätietoja organisaation tai kustannuskeskuksen lomakkeista.",
   "admin/b2b-organizations.custom-fields.addField": "Lisätä",
   "admin/b2b-organizations.custom-fields.removeField": "Poista kenttä",
