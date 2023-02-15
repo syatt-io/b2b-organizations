@@ -5,7 +5,7 @@ import { Button, Spinner } from 'vtex.styleguide'
 import { useToast, Dropdown, useDropdownState } from '@vtex/admin-ui'
 
 import GET_B2BSETTINGS from '../graphql/getB2BSettings.graphql'
-import SAVE_B2BSETTINGS from '../graphql/saveB2BSettings.graphql'
+import SAVE_B2BSETTINGS from '../graphql/updateB2BSettings.graphql'
 import {
   organizationCustomFieldsMessages as customFieldsMessages,
   organizationSettingsMessages as settingMessage,

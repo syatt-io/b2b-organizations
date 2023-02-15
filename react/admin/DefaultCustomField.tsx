@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Input, IconDelete, IconPlus, Toggle, Dropdown } from 'vtex.styleguide'
 import { Button, Flex } from '@vtex/admin-ui'
+import { useIntl } from 'react-intl'
+
+import { organizationCustomFieldsMessages as customFieldsMessages } from './utils/messages'
 
 interface CustomFieldProps {
   index: number
@@ -21,6 +24,8 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
   customField,
   customField: { type, value, dropdownValues, useOnRegistration = false },
 }) => {
+  const { formatMessage } = useIntl()
+
   const [dropdownValuesLocal, setDropdownValuesLocal] = useState<
     DropdownValue[]
   >([])
@@ -35,11 +40,11 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
   const fieldOptionsNew = [
     {
       value: 'text',
-      label: 'Text',
+      label: formatMessage(customFieldsMessages.customFieldsTextLabel),
     },
     {
       value: 'dropdown',
-      label: 'Dropdown',
+      label: formatMessage(customFieldsMessages.customFieldsDropdownLabel),
     },
   ]
 
@@ -136,12 +141,14 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
         <Toggle
           checked={useOnRegistrationLocal}
           onChange={handleToggle}
-          label="Show on registration form"
+          label={formatMessage(
+            customFieldsMessages.customFieldsTableUseOnRegistration
+          )}
         />
       </Flex>
 
       <Dropdown
-        label="Field Type"
+        label={formatMessage(customFieldsMessages.customFieldsTableFieldType)}
         size="large"
         options={fieldOptionsNew ?? []}
         onChange={handleDropdownChange}
@@ -172,7 +179,9 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
                     <Input
                       autocomplete="off"
                       size="medium"
-                      label="Value"
+                      label={formatMessage(
+                        customFieldsMessages.customFieldsDropdownLineValue
+                      )}
                       value={dropdownValue.value}
                       type="text"
                       className="mr4 w-50"
@@ -187,7 +196,9 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
                   <Input
                     autocomplete="off"
                     size="medium"
-                    label="Label"
+                    label={formatMessage(
+                      customFieldsMessages.customFieldsDropdownLineLabel
+                    )}
                     value={dropdownValue.label}
                     type="text"
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -195,8 +206,16 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
                     }
                   />
                   <Button
-                    icon={<IconDelete title="Delete" />}
-                    aria-label="Delete line"
+                    icon={
+                      <IconDelete
+                        title={formatMessage(
+                          customFieldsMessages.customFieldsRemoveDropdownLine
+                        )}
+                      />
+                    }
+                    aria-label={formatMessage(
+                      customFieldsMessages.customFieldsRemoveDropdownLine
+                    )}
                     variant="secondary"
                     onClick={() => handleDeleteDropdownItem(i)}
                     csx={{
@@ -211,8 +230,16 @@ const DefaultCustomField: React.FC<CustomFieldProps> = ({
       </Flex>
       {dropdownState === 'dropdown' ? (
         <Button
-          icon={<IconPlus title="Add field" />}
-          aria-label="Add field"
+          icon={
+            <IconPlus
+              title={formatMessage(
+                customFieldsMessages.customFieldsAddDropdownLine
+              )}
+            />
+          }
+          aria-label={formatMessage(
+            customFieldsMessages.customFieldsAddDropdownLine
+          )}
           onClick={handleAddDropdownItem}
           csx={{
             marginTop: '35px',

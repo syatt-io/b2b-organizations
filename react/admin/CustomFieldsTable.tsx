@@ -22,7 +22,6 @@ import {
 } from './utils/messages'
 import DefaultCustomField from './DefaultCustomField'
 
-// props are passed to the component
 interface CustomFieldsTableProps {
   customFields: CustomField[]
   handleDelete: (index: number) => void
@@ -63,24 +62,28 @@ const CustomFieldsTable: React.FC<CustomFieldsTableProps> = ({
   const columns = createColumns([
     {
       id: 'name',
-      header: 'Field Name',
+      header: formatMessage(customFieldsMessages.customFieldsTableFieldName),
       width: '2fr',
     },
     {
       id: 'type',
-      header: 'Type',
+      header: formatMessage(customFieldsMessages.customFieldsTableFieldType),
       width: '2fr',
     },
     {
       id: 'dropdownValues',
-      header: 'Dropdown Preview',
+      header: formatMessage(
+        customFieldsMessages.customFieldsTableDropdownPreview
+      ),
       width: '2fr',
       resolver: {
         type: 'root',
         render: ({ item }) => {
           return item.dropdownValues?.length ? (
             <Dropdown
-              aria-label="Field Type"
+              aria-label={formatMessage(
+                customFieldsMessages.customFieldsTableDropdownPreview
+              )}
               size="medium"
               options={item.dropdownValues ?? []}
               value={item.dropdownValues[0].value}
@@ -93,7 +96,9 @@ const CustomFieldsTable: React.FC<CustomFieldsTableProps> = ({
     },
     {
       id: 'useOnRegistration',
-      header: 'Use on Registration',
+      header: formatMessage(
+        customFieldsMessages.customFieldsTableUseOnRegistration
+      ),
       width: '1fr',
       resolver: {
         type: 'root',
@@ -115,7 +120,7 @@ const CustomFieldsTable: React.FC<CustomFieldsTableProps> = ({
         type: 'menu',
         actions: [
           {
-            label: 'Edit',
+            label: formatMessage(costCenterMessages.addressEdit),
             icon: <IconEye />,
             onClick: item => {
               toggleModal()
@@ -129,7 +134,7 @@ const CustomFieldsTable: React.FC<CustomFieldsTableProps> = ({
             },
           },
           {
-            label: 'Delete',
+            label: formatMessage(costCenterMessages.addressDelete),
             icon: <IconTrash />,
             onClick: item => {
               const index = customFields.findIndex(

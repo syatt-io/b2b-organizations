@@ -174,7 +174,7 @@ const OrganizationSettings: FunctionComponent = () => {
       }).catch(error => {
         console.error(error)
         showToast({
-          type: 'error',
+          variant: 'critical',
           message: formatMessage(messages.toastUpdateFailure),
         })
       })

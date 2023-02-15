@@ -441,9 +441,6 @@ export const organizationSettingsMessages = defineMessages({
   addToBinding: {
     id: `${adminPrefix}organization-settings-select.add-to-binding`,
   },
-  autoApprove: {
-    id: `${adminPrefix}organization-settings-autoApprove`,
-  },
   showModal: {
     id: `${adminPrefix}organization-settings-showModal`,
   },
@@ -461,5 +458,41 @@ export const organizationCustomFieldsMessages = defineMessages({
   },
   customFieldsExplanation: {
     id: `${adminPrefix}custom-fields.explanation`,
+  },
+  customFieldsTableFieldName: {
+    id: `${adminPrefix}custom-fields.table.field-name`,
+  },
+  customFieldsTableFieldType: {
+    id: `${adminPrefix}custom-fields.table.field-type`,
+  },
+  customFieldsTableDropdownPreview: {
+    id: `${adminPrefix}custom-fields.table.dropdown-preview`,
+  },
+  customFieldsTableUseOnRegistration: {
+    id: `${adminPrefix}custom-fields.table.use-on-registration`,
+  },
+  customFieldsAddField: {
+    id: `${adminPrefix}custom-fields.add-field`,
+  },
+  customFieldsRemoveField: {
+    id: `${adminPrefix}custom-fields.remove-field`,
+  },
+  customFieldsAddDropdownLine: {
+    id: `${adminPrefix}custom-fields.table.add-dropdown-line`,
+  },
+  customFieldsRemoveDropdownLine: {
+    id: `${adminPrefix}custom-fields.table.remove-dropdown-line`,
+  },
+  customFieldsDropdownLineValue: {
+    id: `${adminPrefix}custom-fields.table.dropdown-line-value`,
+  },
+  customFieldsDropdownLineLabel: {
+    id: `${adminPrefix}custom-fields.table.dropdown-line-label`,
+  },
+  customFieldsTextLabel: {
+    id: `${adminPrefix}custom-fields.table.text-label`,
+  },
+  customFieldsDropdownLabel: {
+    id: `${adminPrefix}custom-fields.table.dropdown-label`,
   },
 })
