@@ -19,7 +19,7 @@ mutation UpdateOrganization(
     priceTables: $priceTables
     sellers: $sellers
     customFields: $customFields
-  ) @context(provider: "vtex.b2b-organizations-graphql") {
+  ) @context(provider: "syatt.b2b-organizations-graphql") {
     id
     status
     message
