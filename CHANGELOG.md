@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.5.5] - 2023-02-22
+
+- fixed trade policy not saving
 
 ### Added
 
@@ -23,7 +26,6 @@ Custom Fields:
 ### Fixed
 
 - When the user logs in or switches the organization, the data into `__RUNTIME__` is updated
-
 
 ## [1.21.0] - 2023-02-13
 
