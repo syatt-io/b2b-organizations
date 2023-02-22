@@ -6031,9 +6031,9 @@ verror@1.10.0:
   version "2.36.4"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.admin-graphql@2.36.4/public/@types/vtex.admin-graphql#69a4ec822fd7d593f11181d8db796203b0538f91"
 
-"vtex.b2b-organizations-graphql@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.b2b-organizations-graphql@0.9.0/public/@types/vtex.b2b-organizations-graphql":
-  version "0.9.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.b2b-organizations-graphql@0.9.0/public/@types/vtex.b2b-organizations-graphql#fbc442585514eac64c348e04bf339a637409aacb"
+"vtex.b2b-organizations-graphql@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.b2b-organizations-graphql@0.30.0/public/@types/vtex.b2b-organizations-graphql":
+  version "0.30.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.b2b-organizations-graphql@0.30.0/public/@types/vtex.b2b-organizations-graphql#94560a01539e439672b88deb54b16e2a6a0992a6"
 
 "vtex.b2b-organizations@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.b2b-organizations@0.3.0/public/@types/vtex.b2b-organizations":
   version "0.3.0"

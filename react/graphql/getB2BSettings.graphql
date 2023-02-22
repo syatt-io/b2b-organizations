@@ -10,5 +10,23 @@ query GetB2BSettings {
       showModal
       clearCart
     }
+    organizationCustomFields {
+      name
+      type
+      dropdownValues {
+        value
+        label
+      }
+      useOnRegistration
+    }
+    costCenterCustomFields {
+      name
+      type
+      dropdownValues {
+        value
+        label
+      }
+      useOnRegistration
+    }
   }
 }
