@@ -1,12 +1,16 @@
 {
   "name": "b2b-organizations",
-  "vendor": "vtex",
-  "version": "1.21.1",
+  "vendor": "syatt",
+  "version": "2.5.4",
   "title": "B2B Organizations",
   "description": "App to create and manage B2B Organizations and Cost Centers",
   "mustUpdateAt": "2022-08-28",
   "scripts": {
     "postreleasy": "vtex publish"
+  },
+  "billingOptions": {
+    "type": "free",
+    "availableCountries": ["*"]
   },
   "dependencies": {
     "vtex.b2b-organizations-graphql": "0.x",
