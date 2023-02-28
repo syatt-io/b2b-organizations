@@ -340,15 +340,6 @@ const OrganizationDetails: FunctionComponent<RouterProps> = ({
                   ?.pagination?.total ?? 0,
               rowsOptions: [25, 50, 100],
             }}
-            toolbar={{
-              newLine: {
-                label: formatMessage(messages.new),
-                handleCallback: () => setNewCostCenterModalState(true),
-                disabled: !permissionsState.includes(
-                  'create-cost-center-organization'
-                ),
-              },
-            }}
           />
         </PageBlock>
       )}
